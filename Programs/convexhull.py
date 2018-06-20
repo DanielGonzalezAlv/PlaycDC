@@ -44,10 +44,17 @@ if __name__ == "__main__":
     # Insert your Path and image
     
     path_img = "../Data/Images/Post-Processed/"
-    cardname = "2c_2"
-    img = cv2.imread(path_img + cardname +".JPG")
+    cardname = "2s_2"
     ###########################
     
+    img = cv2.imread(path_img + cardname +".JPG")
+    
+    try:
+        if img == None:
+            img = cv2.imread(path_img + cardname +".jpg")
+    except:
+        pass
+
     height, width, _ = img.shape
             
     # For the first bounding box
@@ -81,7 +88,7 @@ if __name__ == "__main__":
     # Verify points of convex hull
     plotplot(img, points_hull1, points_hull2)
     
-    mat_card = [points_hull1, points_hull2, cardname]
+    mat_card = [points_hull1, points_hull2, cardname.lower()]
 
     # save numpy_array 
     file_save = "../Data/npConvex/" + cardname 
