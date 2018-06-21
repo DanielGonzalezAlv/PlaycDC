@@ -7,16 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import ConvexHull
 
-###########################
-# Insert your Path and image
-
-path_img = "../Data/Images/Post-Processed/"
-cardname = "2c_2"
-img = cv2.imread(path_img + cardname +".JPG")
-###########################
-
-height, width, _ = img.shape
-
 def convex_hull_for_part_of_image(img):
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img_gray = img_gray * -1
@@ -41,29 +31,65 @@ def plot_all_hulls(img, hulls, offsets):
             plt.plot(b[simplex, 0] + offset[0], b[simplex, 1]+ offset[1], 'k-')        
     plt.show()
 
-# For the first bounding box
-xmin_1 = 4     
-xmax_1 = 100
-ymin_1 = 4
-ymax_1 = 230
+def plotplot(img, points_hull1, points_hull2):
+    plt.imshow(img)
+    plt.scatter(points_hull1[:,0], points_hull1[:,1])
+    plt.scatter(points_hull2[:,0], points_hull2[:,1])
 
-img1 = img[ymin_1:ymax_1, xmin_1:xmax_1, :]
+    plt.show()
+    
+if __name__ == "__main__":
+    
+    ###########################
+    # Insert your Path and image
+    
+    path_img = "../Data/Images/Post-Processed/"
+    cardname = "2s_2"
+    ###########################
+    
+    img = cv2.imread(path_img + cardname +".JPG")
+    
+    try:
+        if img == None:
+            img = cv2.imread(path_img + cardname +".jpg")
+    except:
+        pass
 
-# For the second bounding box
-xmin_2 = -100     
-xmax_2 = -1
-ymin_2 = -220
-ymax_2 = -1
-img2 = img[ymin_2:ymax_2, xmin_2:, :]
+    height, width, _ = img.shape
+            
+    # For the first bounding box
+    xmin1, xmax1 = 4, 100   
+    ymin1, ymax1 = 4, 230
+    img1 = img[ymin1:ymax1, xmin1:xmax1, :]
+    
+    # For the second bounding box
+    xmin2, xmax2 = -100, -1     # This values have to be negative
+    ymin2, ymax2 = -220, -1     # This values have to be negative
+    img2 = img[ymin2:ymax2, xmin2:, :]
+    
+    # compute convex Hulls 
+    hull1, b1 = convex_hull_for_part_of_image(img1)
+    hull2, b2 = convex_hull_for_part_of_image(img2)
+    
+    # Plot
+    plot_all_hulls(img, [[hull1, b1], [hull2, b2]], [[xmin1,ymin1],[width+xmin2, height+ymin2]])
+   
+    # Compute the points of the convex hulls 
+    points_hull1 = []
+    for vert in hull1.vertices:
+        points_hull1.append([b1[vert, 0] + xmin1, b1[vert, 1] + ymin1])
+    points_hull1 = np.array(points_hull1)
 
-# compute convex Hulls 
-hull1, b1 = convex_hull_for_part_of_image(img1)
-hull2, b2 = convex_hull_for_part_of_image(img2)
+    points_hull2 = []
+    for vert in hull2.vertices:
+        points_hull2.append([b2[vert, 0] + width+xmin2, b2[vert, 1] + height + ymin2])
+    points_hull2 = np.array(points_hull2)
+    
+    # Verify points of convex hull
+    plotplot(img, points_hull1, points_hull2)
+    
+    mat_card = [points_hull1, points_hull2, cardname.lower()]
 
-# Plot
-plot_all_hulls(img, [[hull1, b1], [hull2, b2]], [[xmin_1, ymin_1], [width-xmax_1, height-ymax_1]])
-
-
-# save numpy_array 
-#file_save = "../Data/npConvex/" + cardname
-#np.save(file_save, b1)
+    # save numpy_array 
+    file_save = "../Data/npConvex/" + cardname 
+    np.save(file_save, mat_card)
