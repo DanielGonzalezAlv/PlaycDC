@@ -3,6 +3,8 @@
 """
 Created on Wed Jun 20 23:31:53 2018
 
+The idea of this code was to reange the data, to work in an easier
+waz.  Maybe it won't be used.
 @author: PlaycDC
 """
 import numpy as np
@@ -22,7 +24,4 @@ if __name__ == "__main__":
             np_file[2]= np_file[2][0:2]
         np_math = np.vstack([np_math, np_file])
         
-
- #    path_files = "../Data/npConvex"
-##    file = path_files + "2c_2.npy"
-##    ans = np.load(file)
+# TODO ERASE 1 COLUMN OF np_math
