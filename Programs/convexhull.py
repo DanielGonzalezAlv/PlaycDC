@@ -44,7 +44,11 @@ if __name__ == "__main__":
     # Insert your Path and image
     
     path_img = "../Data/Images/Post-Processed/"
+<<<<<<< HEAD
     cardname = "qs_2"
+=======
+    cardname = "2d"
+>>>>>>> a31ece3a89a2d4c284d0ad0d42471cbd5886b2ec
     ###########################
     
     img = cv2.imread(path_img + cardname +".JPG")
@@ -58,6 +62,7 @@ if __name__ == "__main__":
     height, width, _ = img.shape
             
     # For the first bounding box
+<<<<<<< HEAD
     xmin1, xmax1 = 2, 73  
     ymin1, ymax1 = 2, 230
     img1 = img[ymin1:ymax1, xmin1:xmax1, :]
@@ -66,6 +71,16 @@ if __name__ == "__main__":
     xmin2, xmax2 = -79, -1     # This values have to be negative
     ymin2, ymax2 = -250, -1     # This values have to be negative
     img2 = img[ymin2:ymax2, xmin2:, :]
+=======
+    xmin1, xmax1 = 10, 76   
+    ymin1, ymax1 = 4, 240
+    img1 = img[ymin1:ymax1, xmin1:xmax1, :]
+    
+    # For the second bounding box
+    xmin2, xmax2 = -90, -10     # This values have to be negative
+    ymin2, ymax2 = -233, -10     # This values have to be negative
+    img2 = img[ymin2:ymax2, xmin2:xmax2, :]
+>>>>>>> a31ece3a89a2d4c284d0ad0d42471cbd5886b2ec
     
     # compute convex Hulls 
     hull1, b1 = convex_hull_for_part_of_image(img1)
