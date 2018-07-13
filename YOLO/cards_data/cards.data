@@ -1,0 +1,5 @@
+train  = cards_data/cardstrain.txt
+valid  = cards_data/cardsval.txt
+names = cards_data/cards.names
+backup = backup
+gpus  = 1

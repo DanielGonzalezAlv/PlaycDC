@@ -1,0 +1,8 @@
+python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w 000060.weights
+
+python detect.py cards_data/yolov3-tiny.cfg backup/000060.weights data/train3.jpg cards_data/cards.names
+
+python valid.py cards_data/cards.data cards_data/yolov3-tiny.cfg backup/000060.weights
+
+python scripts/sketch_eval.py results/comp4_det_test_ cards_data/cardsval.txt cards_data/cards.names
+python eval.py cards_data/cards.data cards_data/yolov3-tiny.cfg backup/000060.weights
