@@ -36,6 +36,21 @@
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 
+% For more fonts: see http://www.tug.dk/FontCatalogue/allfonts.html
+%\input ArtNouvc.fd
+%\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+%\input Acorn.fd
+%\newcommand*\initfamily{\usefont{U}{Acorn}{xl}{n}}
+\input Kinigcap.fd
+\newcommand*\initfamily{\usefont{U}{Kinigcap}{xl}{n}}
+%\input Sanremo.fd
+%\newcommand*\initfamily{\usefont{U}{Sanremo}{xl}{n}}
+%\input Starburst.fd
+%\newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
+\definecolor{supercolor}{rgb}{0.1, 0.188, 1}
+
+
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -51,21 +66,24 @@
 \begin{minipage}[b]{0.48\linewidth}
 \veryHuge \color{NavyBlue} \textbf{PlayCDC - Playing Card Detection} \color{Black}\\ % Title
 \Huge\textit{Learning to detect suits and ranks of playing cards}\\[1cm] % Subtitle
-\huge \textbf{Daniel Gonzales \& Frank Gabel}\\ % Author(s)
-\huge University and Department Name\\ % University/organization
+\huge \textbf{Daniel Gonzalez \& Frank Gabel}\\ % Author(s)
+\huge Ruprecht-Karls-Universit\"at Heidelberg
+\\ % University/organization
 \end{minipage}
 %
 \begin{minipage}[b]{0.17\linewidth}
 \color{DarkSlateGray}\Large \textbf{Contact Information:}\\
-Department Name\\ % Address
-University Name\\
-123 Broadway, State, Country\\\\
-Phone: +1 (000) 111 1111\\ % Phone number
-Email: \texttt{john@LaTeXTemplates.com}\\ % Email address
+Daniel Gonzalez\\ % Name
+Email: \texttt{d.gonzalez@stud.uni-heidelberg.de}\
+\\\\
+Frank Gabel \\
+%Phone: +1 (000) 111 1111\\ % Phone number
+Email: \texttt{ey143@uni-heidelberg.de}\\ % Email address
 \end{minipage}
 %
-\begin{minipage}[b]{0.29\linewidth}
-\includegraphics[width=40cm]{playcdc.png} % Logo or a photo of you, adjust its dimensions here
+\begin{minipage}[b]{0.49\linewidth}
+\quad \center \textcolor{supercolor} {\fontsize{140}{50} \initfamily PLAYCDC} \vspace{4cm}
+%\includegraphics[width=30cm]{playcdc.png} % Logo or a photo of you, adjust its dimensions here
 \end{minipage}
 
 \vspace{1cm} % A bit of extra whitespace between the header and poster content
@@ -122,9 +140,39 @@ The objectives of this project are summarized as follows:
 
 \section*{Methods}
 \subsection*{The dataset creation pipeline}
+The dataset was created in manly 2 big steps. \\
+First, we took two photos for each card in a deck of 52 cards, crop the cards to a selection and rescale the result by 600x900 pixels.
+This was done manually using  the selection/rotation/cropping/re-scale -tools provided by GIMP.  Concluding this, we manage to detect the convex hulls of the
+cards suits and  ranks using the SciPy library.  \\
+The next step was to generate a big amount of data for each card applying linear transfomations, as well as blurring and sharping on the image.
+First we paste the images in canvances using the Describable Textures Dataset [cite], in order to have different textures arround the image.
+For the next, we use the imgaug library in order to perform the mentioned transformations, keeping track of the convex hulls. \\
+For each of the 52 cards of the deck, we generate in total 450 images for trainig. 
 
-Fusce magna risus, molestie ut porttitor in, consectetur sed mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque consectetur blandit pellentesque. Sed odio justo, viverra nec porttitor vel, lacinia a nunc. Suspendisse pulvinar euismod arcu, sit amet accumsan enim fermentum quis. In id mauris ut dui feugiat egestas. Vestibulum ac turpis lacinia nisl commodo sagittis eget sit amet sapien. Phasellus imperdiet, tortor vitae congue bibendum, felis enim sagittis lorem, et volutpat ante orci sagittis mi. Morbi rutrum laoreet semper. Morbi accumsan enim nec tortor consectetur non commodo nisi sollicitudin. Proin sollicitudin.
 
+
+
+% IMAGES
+% \centering\vspace{1cm}
+ %	\begin{minipage}[b]{0.16\textwidth}
+  % 		\includegraphics[width=\textwidth]{7-full}
+%		\captionof{figure}{\color{Green} Figure caption}
+% 	 \end{minipage}
+% \hspace{2cm}
+% 	\begin{minipage}[b]{0.12\textwidth}
+ %  		\includegraphics[width=\textwidth]{7}
+%		\captionof{figure}{\color{Green} Figure caption}
+% 	\end{minipage}\vspace{1cm}
+
+\centering\vspace{1cm}
+\begin{minipage}[b]{0.25\textwidth}
+\includegraphics[width=\textwidth]{7-p}
+\captionof{figure}{\color{Green} Figure caption}
+\end{minipage}
+%\begin{center}\vspace{1cm}
+%\includegraphics[width=0.5\linewidth]{placeholder}
+%\captionof{figure}{\color{Green} Figure caption}
+%\end{center}\vspace{1cm}
 %------------------------------------------------
 
 \subsection*{The tiny-YOLO-v3 object detection algorithm}
@@ -153,7 +201,6 @@ and
 -\cos\phi_j Q_{j,k,t} + Q_{j,k,y}-\frac{\sin^2\phi_j}{T\cos\phi_j} Q_{j,k}.\label{edgej}
 \end{eqnarray} 
 
-Nulla sed arcu arcu. Duis et ante gravida orci venenatis tincidunt. Fusce vitae lacinia metus. Pellentesque habitant morbi. $\mathbf{A}\underline{\xi}=\underline{\beta}$ Vim $\underline{\xi}$ enum nidi $3(P+2)^{2}$ lacina. Id feugain $\mathbf{A}$ nun quis; magno. Fusce convallis rutrum turpis, quis aliquet enim accumsan id. Vestibulum ullamcorper porttitor convallis. Integer sagittis interdum malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed adipiscing tristique orci at ullamcorper. Morbi accumsan, urna et porttitor pulvinar, lacus risus dignissim massa. Proin sollicitudin. Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh.
 
 %----------------------------------------------------------------------------------------
 %	RESULTS 
