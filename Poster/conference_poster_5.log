@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  15 JUL 2018 10:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  15 JUL 2018 10:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,86 +394,83 @@ Overfull \hbox (240.2246pt too wide) in paragraph at lines 68--69
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
-
-LaTeX Warning: Citation `Smith:2012qr' on page 1 undefined on input line 98.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
-[]\OT1/ptm/m/n/24.88 covering
- []
-
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <29.86> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
-LaTeX Font Info:    Try loading font information for U+msa on input line 137.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
+LaTeX Font Info:    Try loading font information for U+msa on input line 133.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 137.
+LaTeX Font Info:    Try loading font information for U+msb on input line 133.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (51.61647pt too wide) in paragraph at lines 170--179
+Overfull \hbox (51.61647pt too wide) in paragraph at lines 166--175
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
-\OT1/ptm/m/n/24.88 rutrum laoreet sem-per.
+Underfull \hbox (badness 10000) in paragraph at lines 163--176
+\OT1/ptm/m/n/24.88 Donec fau-cibus pu-rus at tor-tor eges-tas eu fer-men-tum do
+-lor fa-cil-i-sis. Mae-ce-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
-\OT1/ptm/m/n/24.88 Morbi ac-cum-san enim
+Underfull \hbox (badness 10000) in paragraph at lines 163--176
+\OT1/ptm/m/n/24.88 nean vi-tae risus ante. Pel-len-tesque condi-men-tum dui. Et
+iam sagit-tis pu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--176
+\OT1/ptm/m/n/24.88 rus non tel-lus tem-por vo-lut-pat. Donec et dui non massa t
+ris-tique adip-isc-ing.
  []
 
 <figures/placeholder.jpg, id=2, 351.3125pt x 193.72375pt>
 File: figures/placeholder.jpg Graphic file (type jpg)
 
 <use figures/placeholder.jpg>
-Package pdftex.def Info: figures/placeholder.jpg used on input line 187.
-(pdftex.def)             Requested size: 559.24794pt x 308.43903pt.
+Package pdftex.def Info: figures/placeholder.jpg used on input line 183.
+(pdftex.def)             Requested size: 772.3307pt x 425.95706pt.
 File: figures/placeholder.jpg Graphic file (type jpg)
  <use figures/placeholder.jpg>
-Package pdftex.def Info: figures/placeholder.jpg used on input line 211.
-(pdftex.def)             Requested size: 559.24794pt x 308.43903pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 224.
+Package pdftex.def Info: figures/placeholder.jpg used on input line 207.
+(pdftex.def)             Requested size: 772.3307pt x 425.95706pt.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 220.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <24.88> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 224.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
 
 (./conference_poster_5.bbl) [1
 
 
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
 figures/playcdc.png (PNG copy)> <./figures/placeholder.jpg>]
-(./conference_poster_5.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+(./conference_poster_5.aux) ) 
 Here is how much of TeX's memory you used:
- 4566 strings out of 493029
- 68009 string characters out of 6136234
- 182494 words of memory out of 5000000
- 8014 multiletter control sequences out of 15000+600000
+ 4565 strings out of 493029
+ 67995 string characters out of 6136234
+ 174894 words of memory out of 5000000
+ 8013 multiletter control sequences out of 15000+600000
  30698 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,39p,1008b,386s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
-b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_poster_5.pdf (1 page, 119536 bytes).
+ 38i,8n,39p,1008b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/bas
+e/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on conference_poster_5.pdf (1 page, 118645 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  29 compressed objects within 1 object stream
