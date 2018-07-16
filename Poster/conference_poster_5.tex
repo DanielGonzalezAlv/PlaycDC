@@ -71,7 +71,7 @@
 \\ % University/organization
 \end{minipage}
 %
-\begin{minipage}[b]{0.17\linewidth}
+\begin{minipage}[b]{0.27\linewidth}
 \color{DarkSlateGray}\Large \textbf{Contact Information:}\\
 Daniel Gonzalez\\ % Name
 Email: \texttt{d.gonzalez@stud.uni-heidelberg.de}\
@@ -81,9 +81,9 @@ Frank Gabel \\
 Email: \texttt{ey143@uni-heidelberg.de}\\ % Email address
 \end{minipage}
 %
-\begin{minipage}[b]{0.49\linewidth}
-\quad \center \textcolor{supercolor} {\fontsize{140}{50} \initfamily PLAYCDC} \vspace{4cm}
-%\includegraphics[width=30cm]{playcdc.png} % Logo or a photo of you, adjust its dimensions here
+\begin{minipage}[b]{0.45\linewidth}
+
+\includegraphics[width=30cm]{playcdc.png} % Logo or a photo of you, adjust its dimensions here
 \end{minipage}
 
 \vspace{1cm} % A bit of extra whitespace between the header and poster content
@@ -98,22 +98,23 @@ Email: \texttt{ey143@uni-heidelberg.de}\\ % Email address
 
 \color{Navy} % Navy color for the abstract
 
-\begin{abstract}
-
+\centering\section*{Abstract}
+\raggedright	
+\Large
 With the capabilities of upcoming small video capturing devices in, for example, smart contact lenses with built-in camerass, whole new ways of cheating in certain cardgames emerge. In order to help facilitate these cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.
 
-
-\end{abstract}
 
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
+\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
 
-\color{SaddleBrown} % SaddleBrown color for the introduction
 
+\large
 \section*{Introduction}
-Object detection deals with detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos. 
-
+A big topic in computer vision is the search of methods that are, given a query image, capable of answering questions like: What is present in an image? Is there a particular object in it? Where exactly in the image is this object located?
+Object detection deals with detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos. Typically, object detection deals with two sub-taks: \textbf{object localization} using bounding boxes and \textbf{multiclass object classification} within said bounding boxes.
+In this project, we implement the YOLOv3 object detection algorithm.
 
 %----------------------------------------------------------------------------------------
 %	OBJECTIVES
@@ -140,14 +141,14 @@ The objectives of this project are summarized as follows:
 
 \section*{Methods}
 \subsection*{The dataset creation pipeline}
-The dataset was created in manly 2 big steps. \\
-First, we took two photos for each card in a deck of 52 cards, crop the cards to a selection and rescale the result by 600x900 pixels.
-This was done manually using  the selection/rotation/cropping/re-scale -tools provided by GIMP.  Concluding this, we manage to detect the convex hulls of the
-cards suits and  ranks using the SciPy library.  \\
+The dataset was created in mainly 2 big steps. \\
+First, we took two photos for each card in a deck of 52 cards, crop the cards to a selection and rescale the result by 900$\times$600 pixels.
+This was done manually using  the selection/rotation/cropping/rescale-tools provided by GIMP.  Concluding this, we manage to detect the convex hulls of the
+cards suits and ranks using the SciPy library.  \\
 The next step was to generate a big amount of data for each card applying linear transfomations, as well as blurring and sharping on the image.
-First we paste the images in canvances using the Describable Textures Dataset [cite], in order to have different textures arround the image.
+First we paste the images in canvances using the Describable Textures Dataset \cite{cimpoi14describing}, in order to have different textures arround the image.
 For the next, we use the imgaug library in order to perform the mentioned transformations, keeping track of the convex hulls. \\
-For each of the 52 cards of the deck, we generate in total 450 images for trainig. 
+For each of the 52 cards of the deck, we generate in total 450 training images. 
 
 
 
@@ -164,10 +165,10 @@ For each of the 52 cards of the deck, we generate in total 450 images for traini
 %		\captionof{figure}{\color{Green} Figure caption}
 % 	\end{minipage}\vspace{1cm}
 
-\centering\vspace{1cm}
-\begin{minipage}[b]{0.25\textwidth}
+\vspace{1cm}
+\begin{minipage}[b]{0.30\textwidth}
 \includegraphics[width=\textwidth]{7-p}
-\captionof{figure}{\color{Green} Figure caption}
+\captionof{figure}{\color{Green} The dataset creation pipeline: paste photographs of images onto textures and apply random transformations to both images and corresponding convex hulls/bounding boxes}
 \end{minipage}
 %\begin{center}\vspace{1cm}
 %\includegraphics[width=0.5\linewidth]{placeholder}
@@ -175,9 +176,24 @@ For each of the 52 cards of the deck, we generate in total 450 images for traini
 %\end{center}\vspace{1cm}
 %------------------------------------------------
 
-\subsection*{The tiny-YOLO-v3 object detection algorithm}
+\subsection*{The YOLO approach to object detection}
 
-Nulla vel nisl sed mauris auctor mollis non sed. 
+Prior detection systems repurpose classifiers or localizers to perform detection. They apply the model to an image at multiple locations and scales. High scoring regions of the image are considered detections.
+
+In YOLO, the approach is totally different in that a single neural network is applied to the full image. This network divides the image into regions and predicts bounding boxes and probabilities for each region. These bounding boxes are weighted by the predicted probabilities. The general steps can be subsumed as follows:
+\begin{description}
+\item[Predict candidate bounding boxes]
+\item[Class Prediction]
+\item[Predictions Across Scales]
+\item[Training using the Darknet-53 feature extractor]
+\end{description}
+\subsubsection*{tiny-YOLO-v3}
+
+The particular architecture we used for training on our dataset is \textbf{tiny YOLOv3} which essentially is a smaller version of YOLO for constrained environments.
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.9\linewidth]{tinyyolo}
+\captionof{figure}{\color{Green} Figure caption}
+\end{center}\vspace{1cm}
 \subsection*{Evaluation strategy}
 \begin{equation}
 E = mc^{2}
@@ -227,10 +243,7 @@ Phasellus imperdiet, tortor vitae congue bibendum, felis enim sagittis lorem, et
 
 Nulla ut porttitor enim. Suspendisse venenatis dui eget eros gravida tempor. Mauris feugiat elit et augue placerat ultrices. Morbi accumsan enim nec tortor consectetur non commodo. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing. Quisque vestibulum eros eu. Phasellus imperdiet, tortor vitae congue bibendum, felis enim sagittis lorem, et volutpat ante orci sagittis mi. Morbi rutrum laoreet semper. Morbi accumsan enim nec tortor consectetur non commodo nisi sollicitudin.
 
-\begin{center}\vspace{1cm}
-\includegraphics[width=0.8\linewidth]{placeholder}
-\captionof{figure}{\color{Green} Figure caption}
-\end{center}\vspace{1cm}
+
 
 In hac habitasse platea dictumst. Etiam placerat, risus ac.
 

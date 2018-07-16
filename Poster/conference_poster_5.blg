@@ -3,46 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: conference_poster_5.aux
 The style file: alpha.bst
 Database file #1: sample.bib
-Warning--I didn't find a database entry for "Smith:2012qr"
-You've used 1 entry,
+You've used 2 entries,
             2543 wiz_defined-function locations,
-            567 strings with 4638 characters,
-and the built_in function-call counts, 351 in all, are:
-= -- 33
-> -- 19
+            570 strings with 4821 characters,
+and the built_in function-call counts, 838 in all, are:
+= -- 73
+> -- 59
 < -- 0
-+ -- 6
-- -- 6
-* -- 22
-:= -- 71
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 6
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 13
-empty$ -- 21
-format.name$ -- 7
-if$ -- 66
++ -- 21
+- -- 21
+* -- 61
+:= -- 158
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 16
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 30
+empty$ -- 52
+format.name$ -- 22
+if$ -- 160
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 8
-num.names$ -- 3
-pop$ -- 3
+missing$ -- 2
+newline$ -- 14
+num.names$ -- 6
+pop$ -- 16
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 18
 quote$ -- 0
-skip$ -- 15
+skip$ -- 24
 stack$ -- 0
-substring$ -- 7
-swap$ -- 1
+substring$ -- 14
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 16
 warning$ -- 0
-while$ -- 3
-width$ -- 2
-write$ -- 15
-(There was 1 warning)
+while$ -- 6
+width$ -- 4
+write$ -- 28

@@ -1,4 +1,11 @@
-\begin{thebibliography}{RF18}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{CMK{\etalchar{+}}14}
+
+\bibitem[CMK{\etalchar{+}}14]{cimpoi14describing}
+M.~Cimpoi, S.~Maji, I.~Kokkinos, S.~Mohamed, , and A.~Vedaldi.
+\newblock Describing textures in the wild.
+\newblock In {\em Proceedings of the {IEEE} Conf. on Computer Vision and
+  Pattern Recognition ({CVPR})}, 2014.
 
 \bibitem[RF18]{DBLP:journals/corr/abs-1804-02767}
 Joseph Redmon and Ali Farhadi.
