@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  16 JUL 2018 12:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  16 JUL 2018 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -390,20 +390,7 @@ Overfull \hbox (643.69084pt too wide) in paragraph at lines 66--88
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <29.86> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 116.
-LaTeX Font Info:    Try loading font information for U+msa on input line 145.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 145.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Citation `cimpoi14describing' on page 1 undefined on input line 
-149.
-
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 130.
 <figures/7-p.jpg, id=3, 1370.87157pt x 684.30656pt>
 File: figures/7-p.jpg Graphic file (type jpg)
  <use figures/7-p.jpg>
@@ -412,67 +399,88 @@ Package pdftex.def Info: figures/7-p.jpg used on input line 170.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 190.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
 
 <figures/tinyyolo.png, id=4, 561.09625pt x 185.69376pt>
 File: figures/tinyyolo.png Graphic file (type png)
 
 <use figures/tinyyolo.png>
-Package pdftex.def Info: figures/tinyyolo.png used on input line 194.
+Package pdftex.def Info: figures/tinyyolo.png used on input line 191.
 (pdftex.def)             Requested size: 868.86282pt x 287.5645pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 195.
 
-Overfull \hbox (123.08374pt too wide) in paragraph at lines 230--239
-[][] 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 195.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<figures/mAP.png, id=5, 453.1329pt x 407.6028pt>
+File: figures/mAP.png Graphic file (type png)
+ <use figures/mAP.png>
+Package pdftex.def Info: figures/mAP.png used on input line 218.
+(pdftex.def)             Requested size: 619.23636pt x 557.01929pt.
+
+Overfull \hbox (506.43852pt too wide) in paragraph at lines 215--221
+\OT1/ptm/m/n/29.86 sadddddddddddddddddddddddddddddddddddsdasadasdsfsadafadsfads
+fdsfadsfdsafsadfdsafvdfsadafdsfdsafsdafsdfsadfsdfdf 
  []
 
-[1
+
+Package wrapfig Warning: Collision between wrapping environments on input line 
+225.
+
+<figures/traindev.png, id=6, 425.59pt x 281.05pt>
+File: figures/traindev.png Graphic file (type png)
+ <use figures/traindev.png>
+Package pdftex.def Info: figures/traindev.png used on input line 227.
+(pdftex.def)             Requested size: 619.23636pt x 408.95297pt.
 
 
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
-figures/playcdc.png> <./figures/7-p.jpg> <./figures/tinyyolo.png>]
-<figures/placeholder.jpg, id=19, 351.3125pt x 193.72375pt>
-File: figures/placeholder.jpg Graphic file (type jpg)
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 23
+0.
 
-<use figures/placeholder.jpg>
-Package pdftex.def Info: figures/placeholder.jpg used on input line 268.
-(pdftex.def)             Requested size: 772.3307pt x 425.95706pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 281.
-
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 246.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <29.86> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 281.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
 
-(./conference_poster_5.bbl) [2 <./figures/placeholder.jpg>]
-(./conference_poster_5.aux)
-
-LaTeX Warning: There were undefined references.
+(./conference_poster_5.bbl [1
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
+figures/playcdc.png> <./figures/7-p.jpg> <./figures/tinyyolo.png> <./figures/mA
+P.png> <./figures/traindev.png>])
+Overfull \hbox (50.03043pt too wide) in paragraph at lines 263--263
+[]\OT1/ptm/b/n/35.83 Acknowledgements 
+ []
 
- ) 
+[2] (./conference_poster_5.aux) ) 
 Here is how much of TeX's memory you used:
- 4585 strings out of 493029
- 68441 string characters out of 6136234
- 153022 words of memory out of 5000000
- 8028 multiletter control sequences out of 15000+600000
+ 4587 strings out of 493029
+ 68484 string characters out of 6136234
+ 150029 words of memory out of 5000000
+ 8029 multiletter control sequences out of 15000+600000
  30076 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,39p,574b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_poster_5.pdf (2 pages, 749142 bytes).
+ 38i,8n,39p,440b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
+mes/utmri8a.pfb>
+Output written on conference_poster_5.pdf (2 pages, 758931 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
+ 50 PDF objects out of 1000 (max. 8388607)
  29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
