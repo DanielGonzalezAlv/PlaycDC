@@ -142,14 +142,14 @@ The objectives of this project are summarized as follows:
 \section*{Methods}
 \subsection*{The dataset creation pipeline}
 The dataset was created in mainly 2 big steps. \\
-First, we took two photos for each card in a deck of 52 cards, crop the cards to a selection and rescale the result by 900$\times$600 pixels.
-This was done manually using  the selection/rotation/cropping/rescale-tools provided by GIMP.  Concluding this, we manage to detect the convex hulls of the
-cards suits and ranks using the SciPy library.  \\
-The next step was to generate a big amount of data for each card applying linear transfomations, as well as blurring and sharping on the image.
-First we paste the images in canvances using the Describable Textures Dataset \cite{cimpoi14describing}, in order to have different textures arround the image.
-For the next, we use the imgaug library in order to perform the mentioned transformations, keeping track of the convex hulls. \\
-For each of the 52 cards of the deck, we generate in total 450 training images. 
-
+\begin{description}
+\item[Data Preparation: ] We took two photos for each card of a deck of 52 cards, manually crop the cards to a selection and rescale the result by 900$\times$600 pixels using GIMP.
+After this, we detect the convex hulls of the cards suits and ranks using the SciPy python-library.  \\
+\item[Data Generation: ]  First, we paste the images in canvances provided by DTD \cite{cimpoi14describing}, in order to have different textures arround the images.
+Then, we apply to each image linear transfomations, as well as blurring and sharping to generate a considerable amount of data for training.
+The latest step was performed using the imgaug python-library in order to keep track of the convex hulls. \\
+We generate in total 450 training images for each card. 
+\end{description}
 
 
 
@@ -192,10 +192,8 @@ The particular architecture we used for training on our dataset is \textbf{tiny 
 \captionof{figure}{\color{Green} Figure caption}
 \end{center}\vspace{1cm}
 \subsection*{Evaluation strategy}
-\begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
+For the evaluation, we use the Mean Average Precision (mAP). \\  
+We determinate True Positives and True Negatives using a Threshold of 0.5, i.e if $IoU > 0.5$ or $IoU < 0.5$, and taking together the False Negatives, we compute the Precision x Recall curve [see Figures].  The overall mean average precision was of $95.10 \%$.
 
 
 Vestibulum ac diam a odio tempus congue. Vivamus id enim nisi:
