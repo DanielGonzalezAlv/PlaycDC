@@ -140,15 +140,15 @@ The objectives of this project are summarized as follows:
 %----------------------------------------------------------------------------------------
 
 \section*{Methods}
-\subsection*{The dataset creation pipeline}
+\subsection*{Dataset creation pipeline}
 The dataset was created in mainly 2 big steps. \\
 \begin{description}
-\item[Data Preparation: ] We took two photos for each card of a deck of 52 cards, manually crop the cards to a selection and rescale the result by 900$\times$600 pixels using GIMP.
-After this, we detect the convex hulls of the cards suits and ranks using the SciPy python-library.  \\
-\item[Data Generation: ]  First, we paste the images in canvances provided by DTD \cite{cimpoi14describing}, in order to have different textures arround the images.
-Then, we apply to each image linear transfomations, as well as blurring and sharping to generate a considerable amount of data for training.
-The latest step was performed using the imgaug python-library in order to keep track of the convex hulls. \\
-We generate in total 450 training images for each card. 
+\item[Prepare raw card images] We took two photos for each card of a deck of 52 cards, manually crop the cards to a selection and rescale the result by 900$\times$600 pixels using GIMP.
+After this, we detect the convex hulls of the cards suits and ranks using the Python libraries SciPy and OpenCV.  \\
+\item[Synthesize a general dataset]  First, we pasted the images in canvances provided by DTD \cite{cimpoi14describing} in order to have different textures around the images.
+In order to generate a considerable amount of training data, we apply different transformations to each image (blurring, sharpening, change of lighting, rotation, small shears).
+As convex hull information changes during operations such as rotation, we used the Python library imgaug to keep track of the correct coordinates at all times. \\
+The final datasets consisted of up to 25000 images.
 \end{description}
 
 
@@ -168,7 +168,7 @@ We generate in total 450 training images for each card.
 \vspace{1cm}
 \begin{minipage}[b]{0.30\textwidth}
 \includegraphics[width=\textwidth]{7-p}
-\captionof{figure}{\color{Green} The dataset creation pipeline: paste photographs of images onto textures and apply random transformations to both images and corresponding convex hulls/bounding boxes}
+\captionof{figure}{The dataset creation pipeline: paste photographs of images onto textures and apply random transformations to both images and corresponding convex hulls/bounding boxes}
 \end{minipage}
 %\begin{center}\vspace{1cm}
 %\includegraphics[width=0.5\linewidth]{placeholder}
@@ -179,29 +179,21 @@ We generate in total 450 training images for each card.
 \subsection*{The YOLO approach to object detection}
 The general steps can be subsumed as follows:
 \begin{description}
-\item[Predict candidate bounding boxes]
-\item[Class Prediction]
-\item[Predictions Across Scales]
-\item[Training using the Darknet-53 feature extractor]
+\item[Predict candidate bounding boxes] using k-means clustering
+\item[Class prediction] within bounding boxes across different scales
+\item[Train using the tiny YOLO feature extractor]
 \end{description}
-\subsubsection*{tiny-YOLO-v3}
+\subsubsection*{tiny YOLO-v3}
 
 The particular architecture we used for training on our dataset is \textbf{tiny YOLOv3} which essentially is a smaller version of YOLO for constrained environments.
 \begin{center}\vspace{1cm}
 \includegraphics[width=0.9\linewidth]{tinyyolo}
-\captionof{figure}{\color{Green} Figure caption}
+\captionof{figure}{tiny YOLO-v3 feature extractor}
 \end{center}\vspace{1cm}
 \subsection*{Evaluation strategy}
-For the evaluation, we use the Mean Average Precision (mAP). \\  
-We determinate True Positives and True Negatives using a Threshold of 0.5, i.e if $IoU > 0.5$ or $IoU < 0.5$, and taking together the False Negatives, we compute the Precision x Recall curve [see Figures].  The overall mean average precision was of $95.10 \%$.
+Evaluation of object detection algorithms is not easy as two tasks need to be evaluated: localization and classification.
+Therefore, often, mean Average Precision (mAP) is used in literature where mean classification performance (as measured by the precision) is averaged across predictions using different IOU thresholds.
 
-
-Vestibulum ac diam a odio tempus congue. Vivamus id enim nisi:
-
-\begin{eqnarray}
-\cos\bar{\phi}_k Q_{j,k+1,t} + Q_{j,k+1,x}+\frac{\sin^2\bar{\phi}_k}{T\cos\bar{\phi}_k} Q_{j,k+1} &=&\nonumber\\ 
--\cos\phi_k Q_{j,k,t} + Q_{j,k,x}-\frac{\sin^2\phi_k}{T\cos\phi_k} Q_{j,k}\label{edgek}
-\end{eqnarray}
 
 
 %----------------------------------------------------------------------------------------
@@ -209,24 +201,19 @@ Vestibulum ac diam a odio tempus congue. Vivamus id enim nisi:
 %----------------------------------------------------------------------------------------
 
 \section*{Results}
-
-sadddddddddddddddddddddddddddddddddddsdasadasdsfsadafadsfadsfdsfadsfdsafsadfdsafvdfsadafdsfdsafsdafsdfsadfsdfdf
-example, smart contact lenses with built-in camerass, whole new ways of \begin{wrapfigure}{r}{0.2\textwidth}
-  \begin{center}
-    \includegraphics[width=0.2\textwidth]{mAP}
-  \end{center}
-  \caption{A gull}
-\end{wrapfigure}
-cheating in certain cardgames emerge. In order to help facilitate these 
-cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.example, smart contact lenses with built-in camerass, whole new ways of cheating in certain cardgames emerge. 
-sadddddddddddddddddddddddddddddddddddddd
 \begin{wrapfigure}{r}{0.2\textwidth}
-  \begin{center}
-    \includegraphics[width=0.2\textwidth]{traindev}
-  \end{center}
+
+    \includegraphics[width=0.22\textwidth]{traindev}
+
+
+
+    \includegraphics[width=0.22\textwidth]{mAP}
+
   \caption{A gull}
 \end{wrapfigure}
-In order to help facilitate these cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.
+
+We consecutively trained on increasingly general datasets, starting with cards pasted on a white canvas to cards pasted on varying textures as backgrounds.
+For the most general dataset, we reached a mAP of \textbf{97.30\%}. Using a dataset consisting of "easier" transformations (in particular, less blurring) resulted in a mAP of \textbf{99.11\%}, but did considerably worse on random images of cards not from the same deck.
 
 
 
@@ -236,17 +223,15 @@ In order to help facilitate these cheating endeavours, we implement an algorithm
 %	CONCLUSIONS
 %----------------------------------------------------------------------------------------
 
-\color{SaddleBrown} % SaddleBrown color for the conclusions to make them stand out
-
+\begin{center}
 \section*{Conclusions}
 
 \begin{itemize}
 \item Using an artificially created dataset, we achieve a mAP score of 95.10\% on a holdout dataset.
 \item The task of object detection on ranks/suits of playing cards appears to be rather easy - it can be thought of being 2D rather than 3D.
-\item Deploying the model on a webcam results in 180 FPS on a 480x480 resolution, which is state-of-the-art fast.
 
 \end{itemize}
-
+  \end{center}
 \color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
 
 
@@ -254,13 +239,6 @@ In order to help facilitate these cheating endeavours, we implement an algorithm
 \bibliographystyle{alpha} % Plain referencing style
 \bibliography{sample} % Use the example bibliography file sample.bib
 
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
-
-\section*{Acknowledgements}
-
-Etiam fermentum, arcu ut gravida fringilla, dolor arcu laoreet justo, ut imperdiet urna arcu a arcu. Donec nec ante a dui tempus consectetur. Cras nisi turpis, dapibus sit amet mattis sed, laoreet.
 
 %----------------------------------------------------------------------------------------
 
