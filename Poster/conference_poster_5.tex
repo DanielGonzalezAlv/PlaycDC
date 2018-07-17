@@ -78,7 +78,7 @@ Email: \texttt{d.gonzalez@stud.uni-heidelberg.de}\
 \\\\
 Frank Gabel \\
 %Phone: +1 (000) 111 1111\\ % Phone number
-Email: \texttt{ey143@uni-heidelberg.de}\\ % Email address
+Email: \texttt{kpazrael2@gmail.com}\\ % Email address
 \end{minipage}
 %
 \begin{minipage}[b]{0.45\linewidth}
@@ -111,7 +111,7 @@ With the capabilities of upcoming small video capturing devices in, for example,
 
 
 \large
-\section*{Introduction}
+
 %A big topic in computer vision is the search of methods that are, given a query image, capable of answering questions like: What is present in an image? Is there a particular object in it? Where exactly in the image is this object located?
 %Object detection deals with detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos. Typically, object detection deals with two sub-taks: \textbf{object localization} using bounding boxes and \textbf{multiclass object classification} within said bounding boxes.
 %In this project, we implement the YOLOv3 object detection algorithm.
@@ -177,12 +177,8 @@ The final datasets consisted of up to 25000 images.
 %------------------------------------------------
 
 \subsection*{The YOLO approach to object detection}
-The general steps can be subsumed as follows:
-\begin{description}
-\item[Predict candidate bounding boxes] using k-means clustering
-\item[Class prediction] within bounding boxes across different scales
-\item[Train using the tiny YOLO feature extractor]
-\end{description}
+The YOLO approach works by modelling detection as a \textbf{regression problem}, where the image is divided into an $S\times S$ grid and for each grid cell \textbf{$B$ bounding boxes} are predicted along with the \textbf{confidence} and \textbf{$C$ class probabilities} for these boxes. \\
+These predictions are performed simultaneously by a single CNN.
 \subsubsection*{tiny YOLO-v3}
 
 The particular architecture we used for training on our dataset is \textbf{tiny YOLOv3} which essentially is a smaller version of YOLO for constrained environments.
@@ -209,7 +205,7 @@ Therefore, often, mean Average Precision (mAP) is used in literature where mean 
 
     \includegraphics[width=0.22\textwidth]{mAP}
 
-  \caption{A gull}
+  \caption{Training performance on holdout datasets across epochs (above) and performance of the final, trained model across different classes (below)}
 \end{wrapfigure}
 
 We consecutively trained on increasingly general datasets, starting with cards pasted on a white canvas to cards pasted on varying textures as backgrounds.
@@ -227,8 +223,8 @@ For the most general dataset, we reached a mAP of \textbf{97.30\%}. Using a data
 \section*{Conclusions}
 
 \begin{itemize}
-\item Using an artificially created dataset, we achieve a mAP score of 95.10\% on a holdout dataset.
-\item The task of object detection on ranks/suits of playing cards appears to be rather easy - it can be thought of being 2D rather than 3D.
+\item Using an artificially created dataset, we achieve a mAP score of 97.30\% on a holdout dataset.
+\item The task of object detection on ranks/suits of playing cards appears to be easy as it can be thought of as 2D rather than 3D.
 
 \end{itemize}
   \end{center}
