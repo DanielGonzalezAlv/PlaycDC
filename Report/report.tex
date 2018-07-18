@@ -44,9 +44,21 @@ The goal in this step was to generate a big amount of new data for each card des
 \section{Related work}
 FRANK
 \section{Methods}
-FRANK
+\subsection{YOLO}
+The YOLO model’s novel motivation is that it re-frames
+object detection as a single regression problem, directly
+from image pixels to bounding box coordinates and class
+probabilities. This means that the YOLO model only ”looks
+once” at an image for object detection.
+It works by dividing an image into S x S grid. Each grid
+cell predicts B bounding boxes and a confidence score for
+each box. The confidence scores show how confident the
+model is that there is an object in that bounding box. This
+is formally defined as:
+\subsection{Webcam deployment}
+DANIEL
 \subsection{Evaluation}
-DANIEL WRITE SOMETHING ABOUT MAP, YOU CAN PUT FORMULAS IN HERE LIKE A BOSS, BUILD UPON WHAT I WROTEIN THE POSTER MAYBE
+DANIEL - WRITE SOMETHING ABOUT MAP, YOU CAN PUT FORMULAS IN HERE LIKE A BOSS, BUILD UPON WHAT I WROTEIN THE POSTER MAYBE
 \section{Results}
 FRANK 
 \section{Discussion}
