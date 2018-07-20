@@ -1,46 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: conference_poster_5.aux
-The style file: alpha.bst
+The style file: acm.bst
 Database file #1: sample.bib
 You've used 2 entries,
-            2543 wiz_defined-function locations,
-            570 strings with 4821 characters,
-and the built_in function-call counts, 838 in all, are:
-= -- 73
-> -- 59
+            2253 wiz_defined-function locations,
+            539 strings with 4261 characters,
+and the built_in function-call counts, 654 in all, are:
+= -- 52
+> -- 44
 < -- 0
-+ -- 21
-- -- 21
-* -- 61
-:= -- 158
++ -- 18
+- -- 16
+* -- 53
+:= -- 118
 add.period$ -- 6
 call.type$ -- 2
-change.case$ -- 16
-chr.to.int$ -- 2
+change.case$ -- 14
+chr.to.int$ -- 0
 cite$ -- 2
-duplicate$ -- 30
-empty$ -- 52
-format.name$ -- 22
-if$ -- 160
-int.to.chr$ -- 1
-int.to.str$ -- 0
+duplicate$ -- 25
+empty$ -- 49
+format.name$ -- 16
+if$ -- 127
+int.to.chr$ -- 0
+int.to.str$ -- 2
 missing$ -- 2
-newline$ -- 14
-num.names$ -- 6
-pop$ -- 16
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 18
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 12
 quote$ -- 0
-skip$ -- 24
+skip$ -- 11
 stack$ -- 0
-substring$ -- 14
-swap$ -- 3
+substring$ -- 10
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 8
 warning$ -- 0
-while$ -- 6
-width$ -- 4
-write$ -- 28
+while$ -- 4
+width$ -- 3
+write$ -- 20

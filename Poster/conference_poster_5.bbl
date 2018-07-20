@@ -1,15 +1,14 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{CMK{\etalchar{+}}14}
+\begin{thebibliography}{1}
 
-\bibitem[CMK{\etalchar{+}}14]{cimpoi14describing}
-M.~Cimpoi, S.~Maji, I.~Kokkinos, S.~Mohamed, , and A.~Vedaldi.
+\bibitem{cimpoi14describing}
+{\sc Cimpoi, M., Maji, S., Kokkinos, I., Mohamed, S., , and Vedaldi, A.}
 \newblock Describing textures in the wild.
 \newblock In {\em Proceedings of the {IEEE} Conf. on Computer Vision and
-  Pattern Recognition ({CVPR})}, 2014.
+  Pattern Recognition ({CVPR})\/} (2014).
 
-\bibitem[RF18]{DBLP:journals/corr/abs-1804-02767}
-Joseph Redmon and Ali Farhadi.
+\bibitem{DBLP:journals/corr/abs-1804-02767}
+{\sc Redmon, J., and Farhadi, A.}
 \newblock Yolov3: An incremental improvement.
-\newblock {\em CoRR}, abs/1804.02767, 2018.
+\newblock {\em CoRR abs/1804.02767\/} (2018).
 
 \end{thebibliography}

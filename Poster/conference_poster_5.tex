@@ -73,12 +73,12 @@
 %
 \begin{minipage}[b]{0.27\linewidth}
 \color{DarkSlateGray}\Large \textbf{Contact Information:}\\
-Daniel Gonzalez\\ % Name
-Email: \texttt{d.gonzalez@stud.uni-heidelberg.de}\
+Frank Gabel\\ % Name
+Email: \texttt{frank.gabel@med.uni-heidelberg.de}\
 \\\\
-Frank Gabel \\
+Daniel Gonzalez \\
 %Phone: +1 (000) 111 1111\\ % Phone number
-Email: \texttt{kpazrael2@gmail.com}\\ % Email address
+Email: \texttt{d.gonzalez@stud.uni-heidelberg.de}\\ % Email address
 \end{minipage}
 %
 \begin{minipage}[b]{0.45\linewidth}
@@ -101,7 +101,7 @@ Email: \texttt{kpazrael2@gmail.com}\\ % Email address
 \centering\section*{Abstract}
 \raggedright	
 \Large
-With the capabilities of upcoming small video capturing devices in, for example, smart contact lenses with built-in camerass, whole new ways of cheating in certain cardgames emerge. In order to help facilitate these cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.
+With the capabilities of upcoming small video capturing devices in, for example, smart contact lenses with built-in cameras, whole new ways of cheating in cardgames emerge. In order to help facilitate these cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.
 
 
 %----------------------------------------------------------------------------------------
@@ -166,7 +166,7 @@ The final datasets consisted of up to 25000 images.
 % 	\end{minipage}\vspace{1cm}
 
 \vspace{1cm}
-\begin{minipage}[b]{0.30\textwidth}
+\begin{minipage}[b]{0.27\textwidth}
 \includegraphics[width=\textwidth]{7-p}
 \captionof{figure}{The dataset creation pipeline: paste photographs of images onto textures and apply random transformations to both images and corresponding convex hulls/bounding boxes}
 \end{minipage}
@@ -182,14 +182,14 @@ These predictions are performed simultaneously by a single CNN.
 \subsubsection*{tiny YOLO-v3}
 
 The particular architecture we used for training on our dataset is \textbf{tiny YOLOv3} which essentially is a smaller version of YOLO for constrained environments.
-\begin{center}\vspace{1cm}
-\includegraphics[width=0.9\linewidth]{tinyyolo}
+\begin{center}\vspace{0cm}
+\includegraphics[width=0.7\linewidth]{tinyyolo}
 \captionof{figure}{tiny YOLO-v3 feature extractor}
-\end{center}\vspace{1cm}
-\subsection*{Evaluation strategy}
-Evaluation of object detection algorithms is not easy as two tasks need to be evaluated: localization and classification.
-Therefore, often, mean Average Precision (mAP) is used in literature where mean classification performance (as measured by the precision) is averaged across predictions using different IOU thresholds.
+\end{center}\vspace{0cm}
 
+%\subsection*{Evaluation strategy}
+%The evaluation of object detection algorithms is not easy as two tasks need to be evaluated: \textbf{localization} and \textbf{classification}.
+%Therefore, often, mean Average Precision (mAP) is used in literature where mean classification performance (as measured by the precision) is averaged across predictions using different IOU thresholds.
 
 
 %----------------------------------------------------------------------------------------
@@ -197,6 +197,9 @@ Therefore, often, mean Average Precision (mAP) is used in literature where mean 
 %----------------------------------------------------------------------------------------
 
 \section*{Results}
+
+
+We consecutively trained on increasingly general datasets, starting with cards pasted on a white canvas to cards pasted on varying textures as backgrounds. This strategy improved generalisability on random test images, but also decreased the test mAP slightly as the tasks became "harder". Deploying tinyYOLO on a webcam using a (rather slow) GPU (GeForce GTX 960M) resulted in about 35 FPS depending on brightness levels which is essentially real-time.
 \begin{wrapfigure}{r}{0.2\textwidth}
 
     \includegraphics[width=0.22\textwidth]{traindev}
@@ -204,13 +207,11 @@ Therefore, often, mean Average Precision (mAP) is used in literature where mean 
 
 
     \includegraphics[width=0.22\textwidth]{mAP}
+\hspace*{2cm}\includegraphics[width=0.18\textwidth]{ex}
 
-  \caption{Training performance on holdout datasets across epochs (above) and performance of the final, trained model across different classes (below)}
+  \caption{Training performance on holdout datasets across epochs (top) and performance of the final trained model across different classes (mid), cherry-picked test result on a randomly taken photo (bottom)}
 \end{wrapfigure}
-
-We consecutively trained on increasingly general datasets, starting with cards pasted on a white canvas to cards pasted on varying textures as backgrounds.
 For the most general dataset, we reached a mAP of \textbf{97.30\%}. Using a dataset consisting of "easier" transformations (in particular, less blurring) resulted in a mAP of \textbf{99.11\%}, but did considerably worse on random images of cards not from the same deck.
-
 
 
 
@@ -219,7 +220,7 @@ For the most general dataset, we reached a mAP of \textbf{97.30\%}. Using a data
 %	CONCLUSIONS
 %----------------------------------------------------------------------------------------
 
-\begin{center}
+
 \section*{Conclusions}
 
 \begin{itemize}
@@ -227,12 +228,15 @@ For the most general dataset, we reached a mAP of \textbf{97.30\%}. Using a data
 \item The task of object detection on ranks/suits of playing cards appears to be easy as it can be thought of as 2D rather than 3D.
 
 \end{itemize}
-  \end{center}
+
+
+
 \color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
 
 
 \nocite{*} % Print all references regardless of whether they were cited in the poster or not
-\bibliographystyle{alpha} % Plain referencing style
+\bibliographystyle{acm} % Plain referencing style
+\footnotesize
 \bibliography{sample} % Use the example bibliography file sample.bib
 
 
