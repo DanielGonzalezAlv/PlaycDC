@@ -53,8 +53,7 @@ At the last step, we saved the convex hulls as an NumPy array \textbf{(cite??)} 
 \normalsize
 The goal in this step was to generate a big amount of new data for each card destined for training or NN. We wanted to perform image transformations, like translations, rotations and re scaling, as well as blurring and sharping to generate new data.  We decided to use the imgaug python library, because it provided a nice way to keep track of the convex hulls after doing transformations. 
 \section{Related work - The object detection landscape}
-The task of object detection in images encompasses both the "simple" form of localizing and subsequently classifying objects as well as the more "advanced" form of additionally segmenting objects pixel-wise. For these task, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Network (Faster R-CNN)} (CITE) has come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN fixes the major shortcoming of these networks of having 
-
+The task of object detection in images encompasses both the "simple" form of localizing and subsequently classifying objects as well as the more "advanced" form of additionally segmenting objects pixel-wise. For these task, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Network (Faster R-CNN)} (CITE) has come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing  of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
 
 \textbf{You Only Look Once (YOLO)}
 \textbf{Single-Shot Detector (SSD)}
@@ -96,7 +95,31 @@ DANIEL
 \subsection{Evaluation}
 DANIEL - WRITE SOMETHING ABOUT MAP, YOU CAN PUT FORMULAS IN HERE LIKE A BOSS, BUILD UPON WHAT I WROTEIN THE POSTER MAYBE
 \section{Results}
-FRANK 
+Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in REF TABLE 1 and REF FIGURE X. We generally achieved the best results for the datasets without textures and ....
+In total, training always converged rather quickly. Again, datasets without complex textures led to better (i.e. faster) convergence which intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card.\\
+\begin{table}[h]
+
+\begin{tabular}{lllllr}
+\hline
+\multicolumn{5}{c}{Dataset situation} \\
+\cline{1-2}
+Dataset    & Description  & Precision & Recall & mAP \\
+\hline
+1 - Simple      & Paste cards on simple canvases    &  0.111  & &  \\
+          & \textit{random rotations, brightness, blurring}     &  13 & & \\
+2 - Medium       & Paste randomly scaled cards on simple canvases     &  2 & &   \\
+          & \textit{random rotations, brightness, blurring}     &  13 & & \\
+3 - Elaborate       & Paste randomly scaled cards on textures     &  2 & &   \\
+          & \textit{random rotations, brightness, blurring}     &  13 & & \\
+4 - Hardest & Paste randomly scaled cards on textures       &  2 & &   \\
+          & \textit{random rotations, brightness, blurring}     &  13 & & \\
+\hline
+
+
+\end{tabular}
+\caption{Your caption here} 
+\end{table}
+\subsection*{Extensions and tricks used in training}
 \section{Discussion}
 FRANK and DANIEL
 \section{Conclusion}
