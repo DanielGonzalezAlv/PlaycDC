@@ -53,7 +53,16 @@ At the last step, we saved the convex hulls as an NumPy array \textbf{(cite??)} 
 \normalsize
 The goal in this step was to generate a big amount of new data for each card destined for training or NN. We wanted to perform image transformations, like translations, rotations and re scaling, as well as blurring and sharping to generate new data.  We decided to use the imgaug python library, because it provided a nice way to keep track of the convex hulls after doing transformations. 
 \section{Related work - The object detection landscape}
-FRANK TEH TANK WILL WRITE THIS
+The task of object detection in images encompasses both the "simple" form of localizing and subsequently classifying objects as well as the more "advanced" form of additionally segmenting objects pixel-wise. For these task, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Network (Faster R-CNN)} (CITE) has come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN fixes the major shortcoming of these networks of having 
+
+
+\textbf{You Only Look Once (YOLO)}
+\textbf{Single-Shot Detector (SSD)}
+
+\textbf{Focal Loss for Dense Object Detection (RetinaNet)}
+\textbf{Mask Region-based Convolutional Network (Mask R-CNN)}
+The Mask-RCNN consitutes the current state-of-the-art in semantic object segmentation. The basic idea is to.....
+As this extends the scope of our project, we will not dive deeper and rather refer interested readers to the orginal research paper (CITE) or ...
 \section{Methods}
 \subsection*{The YOLO approach to object detection}
 The YOLO model’s novel motivation is that it re-frames
@@ -67,7 +76,10 @@ each box. The confidence scores show how confident the
 model is that there is an object in that bounding box. This
 is formally defined as:
 
-
+\subsubsection*{techniques}
+\begin{description}
+\item[Non-max suppression] Non max suppression removes the low probability bounding boxes which are very close to a high probability bounding boxes.
+\end{description}
 
 \subsubsection*{tiny YOLO-v3}
 
