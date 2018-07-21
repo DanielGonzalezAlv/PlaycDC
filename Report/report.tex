@@ -15,7 +15,12 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{makecell}
 
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
 %% Title
 \title{\textbf{Playing card detection}\\ PlayCDC\\Object recognition and image understanding lecture}
 \author{Frank Gabel and Daniel Gonzalez}
@@ -103,25 +108,48 @@ In total, training always converged rather quickly. Again, datasets without comp
 \hline
 \multicolumn{5}{c}{Dataset situation} \\
 \cline{1-2}
-Dataset    & Description  & Precision & Recall & mAP \\
+name    & description  & precision & recall & mAP \\
 \hline
-1 - Simple      & Paste cards on simple canvases    &  0.111  & &  \\
+\textbf{1 - Simple}      & Paste cards on simple canvases    &  0.977  & 0.983 & \textbf{0.991} \\
+          & \textit{random rotations, brightness, blurring}     &  & & \\
+\textbf{2 - Medium}      & Paste randomly scaled cards on simple canvases & 0.977 & 0.983 & \textbf{0.991} \\
           & \textit{random rotations, brightness, blurring}     &  13 & & \\
-2 - Medium       & Paste randomly scaled cards on simple canvases     &  2 & &   \\
+\textbf{3 - Elaborate}       & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.991} \\
           & \textit{random rotations, brightness, blurring}     &  13 & & \\
-3 - Elaborate       & Paste randomly scaled cards on textures     &  2 & &   \\
-          & \textit{random rotations, brightness, blurring}     &  13 & & \\
-4 - Hardest & Paste randomly scaled cards on textures       &  2 & &   \\
-          & \textit{random rotations, brightness, blurring}     &  13 & & \\
+\textbf{4 - Hardest} & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.991} \\
+          & \textit{random rotations, brightness, blurring, more zoom}     &  13 & & \\
 \hline
 
 
 \end{tabular}
 \caption{Your caption here} 
 \end{table}
+\subsection*{Exemplary test results and failure cases}
+Metrics are helpful in measuring the effectiveness of algorithms, but computer vision often allows for an additional sensoric inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (REF FIGURE3).
+\begin{figure}[h]
+
+\begin{tabular}{ccc}
+
+ \includegraphics[width=44mm]{success3} &   \includegraphics[width=44mm]{success2} &   \includegraphics[width=44mm]{success1}\\
+\makecell{\textbf{success:} scenario with a \\ highly diverse background}  & \makecell{\textbf{success:}  multiple cards \\ with trivial background} & \makecell{\textbf{success:}  angled shot of sheared card \\ in front of highly diverse background}\\[6pt]
+  \includegraphics[width=44mm]{fail1} &   \includegraphics[width=44mm]{fail2} &   \includegraphics[width=44mm]{fail3}\\
+\makecell{\textbf{fail:}  misdetection of 8c \\ due to motion blur} & \makecell{\textbf{fail:} misdetection of Qc and non- \\detection of 9h for unknown reason} & \makecell{\textbf{fail:} non-detection of Kd, Kh, Ks \\ due to wildly different distribution} \\[6pt]
+
+
+
+\end{tabular}
+\caption{Successful cases of detection (top row) and typical fail cases (bottom row) }
+\end{figure}
+As was to be expected, it was harder to find a rightfully classified image with multiple cards than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering ongoing. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
 \subsection*{Extensions and tricks used in training}
+\subsubsection*{The use of pre-trained network architectures}
+For all experiments above, we started training using a network pre-trained on the VOC dataset (CITE). However, we also experimented with using our own fine-tuned weights from previous datasets for training. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and further speed-ups were not needed.
+\subsubsection*{BLABLABLA}
 \section{Discussion}
 FRANK and DANIEL
+We did not include shadow and stuff
 \section{Conclusion}
-FRANK and DANIEL
+Using an artificially created annotated dataset of playing cards in situations reflecting realistic scenarios as good as possible, we perform object detection using the YOLOv3 object detection algorithm, achieving a mAP score of 97.30\% on a holdout dataset. 
+The training procedure went rather swiftly. We hypothesize that this has to do with this particular task of detecting ranks/suits of playing cards can be thought of as 2D-ish rather than 3D-ish - in the end, playing cards are flat pieces of paper that do not show much variation in a 3D-world unlike other natural objects where algorithms have to learn representations of varying angles and shadow conditions. \\
+Further implementations are inclined to.... see githubs
 \end{document}
