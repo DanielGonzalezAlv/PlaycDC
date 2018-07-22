@@ -6,7 +6,9 @@
 \usepackage{tabu}
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
-
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{amsfonts}
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -80,6 +82,75 @@ each box. The confidence scores show how confident the
 model is that there is an object in that bounding box. This
 is formally defined as:
 
+YOLO is implemented as a 32 layer deep convolutional
+neural network (DNN). The open source implementation released
+along with the paper is built upon a custom DNN
+framework written by YOLO’s authors, called darknet 1
+.
+This application provides the baseline by which we compare
+our implementation of YOLO 2
+. Redmon et al. have
+released several variants of YOLO. For our purposes, we
+chose the variant "tiny YOLOv3" which is a simplified version of YOLOv3 for restricted environments such as ours.\footnote{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}. In places in which the paper lacks details, we refer to the baseline darknet implementation
+to resolve ambiguities.
+\subsubsection*{Loss function}
+YOLO’s loss function must simultaneously solve the object detection and object classification tasks. This function
+simultaneously penalizes incorrect object detections
+as well as considers what the best possible classification
+would be. We employ the stochastic gradient descent
+optimization method offered by TensorFlow[10] with the
+Adam optimizer [7] to minimize the cost function. We
+implement the following loss function, composed of five
+terms:
+\begin{align*}
+\lambda_\textbf{coord}
+\sum_{i = 0}^{S^2}
+    \sum_{j = 0}^{B}
+     {\mathbb{1}}_{ij}^{\text{obj}}
+            \left[
+            \left(
+                x_i - \hat{x}_i
+            \right)^2 +
+            \left(
+                y_i - \hat{y}_i
+            \right)^2
+            \right]&\textbf{\ coordinate loss}
+\\\\
++ \lambda_\textbf{coord} 
+\sum_{i = 0}^{S^2}
+    \sum_{j = 0}^{B}
+         {\mathbb{1}}_{ij}^{\text{obj}}
+         \left[
+        \left(
+            \sqrt{w_i} - \sqrt{\hat{w}_i}
+        \right)^2 +
+        \left(
+            \sqrt{h_i} - \sqrt{\hat{h}_i}
+        \right)^2
+        \right]\\
++ \sum_{i = 0}^{S^2}
+    \sum_{j = 0}^{B}
+        {\mathbb{1}}_{ij}^{\text{obj}}
+        \left(
+            C_i - \hat{C}_i
+        \right)^2&\textbf{\ desc}
+\\
++ \lambda_\textrm{noobj}
+\sum_{i = 0}^{S^2}
+    \sum_{j = 0}^{B}
+    {\mathbb{1}}_{ij}^{\text{noobj}}
+        \left(
+            C_i - \hat{C}_i
+        \right)^2\\ 
++ \sum_{i = 0}^{S^2}
+{{1}}_i^{\text{obj}}
+    \sum_{c \in \textrm{classes}}
+        \left(
+            p_i(c) - \hat{p}_i(c)
+        \right)^2&\textbf{\ desc}
+\end{align*}
+
+
 \subsubsection*{techniques}
 \begin{description}
 \item[Non-max suppression] Non max suppression removes the low probability bounding boxes which are very close to a high probability bounding boxes.
@@ -142,7 +213,7 @@ Metrics are helpful in measuring the effectiveness of algorithms, but computer v
 \end{figure}
 As was to be expected, it was harder to find a rightfully classified image with multiple cards than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering ongoing. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
 \subsection*{Extensions and tricks used in training}
-\subsubsection*{The use of pre-trained network architectures}
+\subsubsection*{Transfer learning}
 For all experiments above, we started training using a network pre-trained on the VOC dataset (CITE). However, we also experimented with using our own fine-tuned weights from previous datasets for training. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and further speed-ups were not needed.
 \subsubsection*{BLABLABLA}
 \section{Discussion}
