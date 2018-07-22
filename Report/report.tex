@@ -196,7 +196,7 @@ name    & description  & precision & recall & mAP \\
 \caption{Your caption here} 
 \end{table}
 \subsection*{Exemplary test results and failure cases}
-Metrics are helpful in measuring the effectiveness of algorithms, but computer vision often allows for an additional sensoric inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (REF FIGURE3).
+Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision allows for an additional sensoric inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (REF FIGURE3).
 \begin{figure}[h]
 
 \begin{tabular}{ccc}
@@ -211,7 +211,7 @@ Metrics are helpful in measuring the effectiveness of algorithms, but computer v
 \end{tabular}
 \caption{Successful cases of detection (top row) and typical fail cases (bottom row) }
 \end{figure}
-As was to be expected, it was harder to find a rightfully classified image with multiple cards than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering ongoing. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
+As was to be expected, when multiple cards were present in an image, it was harder to find a rightfully classified image than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering going on. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
 \subsection*{Extensions and tricks used in training}
 \subsubsection*{Transfer learning}
 For all experiments above, we started training using a network pre-trained on the VOC dataset (CITE). However, we also experimented with using our own fine-tuned weights from previous datasets for training. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and further speed-ups were not needed.
