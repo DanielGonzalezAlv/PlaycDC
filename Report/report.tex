@@ -133,7 +133,7 @@ terms:
         {\mathbb{1}}_{ij}^{\text{obj}}
         \left(
             C_i - \hat{C}_i
-        \right)^2&\textbf{\ desc}
+        \right)^2&\textbf{\ objectness loss}
 \\
 + \lambda_\textrm{noobj}
 \sum_{i = 0}^{S^2}
@@ -147,7 +147,7 @@ terms:
     \sum_{c \in \textrm{classes}}
         \left(
             p_i(c) - \hat{p}_i(c)
-        \right)^2&\textbf{\ desc}
+        \right)^2&\textbf{\ classification loss}
 \end{align*}
 
 
