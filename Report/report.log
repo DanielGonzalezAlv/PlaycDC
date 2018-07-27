@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  23 JUL 2018 01:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  27 JUL 2018 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -499,13 +499,46 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2010/09/12 v5.6 Page Geometry
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks26
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen127
+\captionmargin@=\dimen128
+\captionwidth=\dimen129
+\caption@tempdima=\dimen130
+\caption@indent=\dimen131
+\caption@parindent=\dimen132
+\caption@hangindent=\dimen133
+)
+\c@ContinuedFloat=\count109
+)
+\c@KVtest=\count110
+\sf@farskip=\skip50
+\sf@captopadj=\dimen134
+\sf@capskip=\skip51
+\sf@nearskip=\skip52
+\c@subfigure=\count111
+\c@subfigure@save=\count112
+\c@lofdepth=\count113
+\c@subtable=\count114
+\c@subtable@save=\count115
+\c@lotdepth=\count116
+\sf@top=\skip53
+\sf@bottom=\skip54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
@@ -517,18 +550,35 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count109
-\Gm@cntv=\count110
-\c@Gm@tempcnt=\count111
-\Gm@bindingoffset=\dimen127
-\Gm@wd@mp=\dimen128
-\Gm@odd@mp=\dimen129
-\Gm@even@mp=\dimen130
-\Gm@layoutwidth=\dimen131
-\Gm@layoutheight=\dimen132
-\Gm@layouthoffset=\dimen133
-\Gm@layoutvoffset=\dimen134
+\Gm@cnth=\count117
+\Gm@cntv=\count118
+\c@Gm@tempcnt=\count119
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
 \Gm@dimlist=\toks27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathbbol.sty
+Package: mathbbol 1995/01/01
+\symbbold=\mathgroup6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+Package: sidecap 2003/06/06 v1.6f SideCap Package (RN/HjG)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\SC@BOXWD=\dimen143
+\SC@CAPWD=\dimen144
+\SC@tempdima=\dimen145
+\SC@tempdimb=\dimen146
+\c@SC@C=\count120
+\SC@BOX=\box34
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -544,55 +594,60 @@ File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 95.
 )
-\Gin@req@height=\dimen135
-\Gin@req@width=\dimen136
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip50
-\f@ncyO@elh=\skip51
-\f@ncyO@erh=\skip52
-\f@ncyO@olh=\skip53
-\f@ncyO@orh=\skip54
-\f@ncyO@elf=\skip55
-\f@ncyO@erf=\skip56
-\f@ncyO@olf=\skip57
-\f@ncyO@orf=\skip58
+\fancy@headwidth=\skip55
+\f@ncyO@elh=\skip56
+\f@ncyO@erh=\skip57
+\f@ncyO@olh=\skip58
+\f@ncyO@orh=\skip59
+\f@ncyO@elf=\skip60
+\f@ncyO@erf=\skip61
+\f@ncyO@olf=\skip62
+\f@ncyO@orf=\skip63
 )
 (/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen137
-\c@nlinenum=\count112
+\rotheadsize=\dimen149
+\c@nlinenum=\count121
 \TeXr@lab=\toks28
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen138
-\scratchbox=\box34
-\nofMPsegments=\count114
-\nofMParguments=\count115
+\scratchcounter=\count122
+\scratchdimen=\dimen150
+\scratchbox=\box35
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen139
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen151
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks30
 )
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: sidecap package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -627,6 +682,30 @@ LaTeX Font Info:    ... okay on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 126.
+)
+\CenteringLeftskip=\skip64
+\RaggedLeftLeftskip=\skip65
+\RaggedRightLeftskip=\skip66
+\CenteringRightskip=\skip67
+\RaggedLeftRightskip=\skip68
+\RaggedRightRightskip=\skip69
+\CenteringParfillskip=\skip70
+\RaggedLeftParfillskip=\skip71
+\RaggedRightParfillskip=\skip72
+\JustifyingParfillskip=\skip73
+\CenteringParindent=\skip74
+\RaggedLeftParindent=\skip75
+\RaggedRightParindent=\skip76
+\JustifyingParindent=\skip77
+)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -671,137 +750,371 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for U+bbold on input line 38.
+
+(/usr/share/texlive/texmf-dist/tex/latex/bbold/Ubbold.fd)
 <contact_lense.jpg, id=1, 948.54375pt x 533.995pt>
 File: contact_lense.jpg Graphic file (type jpg)
  <use contact_lense.jpg>
-Package pdftex.def Info: contact_lense.jpg used on input line 37.
+Package pdftex.def Info: contact_lense.jpg used on input line 42.
 (pdftex.def)             Requested size: 237.13535pt x 133.49841pt.
 
 <poker_player.jpg, id=2, 381.425pt x 250.9375pt>
 File: poker_player.jpg Graphic file (type jpg)
  <use poker_player.jpg>
-Package pdftex.def Info: poker_player.jpg used on input line 38.
+Package pdftex.def Info: poker_player.jpg used on input line 43.
 (pdftex.def)             Requested size: 202.9167pt x 133.49783pt.
 
-Overfull \hbox (15.48238pt too wide) in paragraph at lines 37--39
+Overfull \hbox (15.48238pt too wide) in paragraph at lines 42--44
 [][] [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
-
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./contact_lense.jpg> <./po
 ker_player.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 53--62
+Underfull \hbox (badness 10000) in paragraph at lines 59--62
 
  []
 
-[2] <tinyyolo.png, id=23, 561.09625pt x 185.69376pt>
+<qs_2.jpg, id=14, 226.9278pt x 295.5843pt>
+File: qs_2.jpg Graphic file (type jpg)
+ <use qs_2.jpg>
+Package pdftex.def Info: qs_2.jpg used on input line 79.
+(pdftex.def)             Requested size: 133.20755pt x 173.50922pt.
+
+<qs_2_1.jpg, id=15, 73.7154pt x 245.718pt>
+File: qs_2_1.jpg Graphic file (type jpg)
+ <use qs_2_1.jpg>
+Package pdftex.def Info: qs_2_1.jpg used on input line 82.
+(pdftex.def)             Requested size: 50.12578pt x 167.08601pt.
+
+<qs_2_2.jpg, id=16, 73.7154pt x 224.037pt>
+File: qs_2_2.jpg Graphic file (type jpg)
+ <use qs_2_2.jpg>
+Package pdftex.def Info: qs_2_2.jpg used on input line 82.
+(pdftex.def)             Requested size: 54.54964pt x 165.7882pt.
+
+Underfull \hbox (badness 2435) in paragraph at lines 82--82
+\T1/cmr/m/n/7 points were saved as a
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 71--86
+[]$[]$ 
+ []
+
+
+LaTeX Warning: Citation `cimpoi14describing' on page 2 undefined on input line 
+89.
+
+<2h_1.jpg, id=17, 3011.25pt x 3011.25pt>
+File: 2h_1.jpg Graphic file (type jpg)
+ <use 2h_1.jpg>
+Package pdftex.def Info: 2h_1.jpg used on input line 101.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+<4c_1.jpg, id=18, 3011.25pt x 3011.25pt>
+File: 4c_1.jpg Graphic file (type jpg)
+ <use 4c_1.jpg>
+Package pdftex.def Info: 4c_1.jpg used on input line 101.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+<5h_1.jpg, id=19, 3011.25pt x 3011.25pt>
+File: 5h_1.jpg Graphic file (type jpg)
+ <use 5h_1.jpg>
+Package pdftex.def Info: 5h_1.jpg used on input line 101.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+<6c_1.jpg, id=20, 3011.25pt x 3011.25pt>
+File: 6c_1.jpg Graphic file (type jpg)
+ <use 6c_1.jpg>
+Package pdftex.def Info: 6c_1.jpg used on input line 106.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+<as_1.jpg, id=21, 3011.25pt x 3011.25pt>
+File: as_1.jpg Graphic file (type jpg)
+ <use as_1.jpg>
+Package pdftex.def Info: as_1.jpg used on input line 106.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+<qc_1.jpg, id=22, 3011.25pt x 3011.25pt>
+File: qc_1.jpg Graphic file (type jpg)
+ <use qc_1.jpg>
+Package pdftex.def Info: qc_1.jpg used on input line 106.
+(pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 92--114
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--114
+
+ []
+
+[2 <./qs_2.jpg> <./qs_2_1.jpg> <./qs_2_2.jpg>]
+<2h_2.jpg, id=30, 803.0pt x 803.0pt>
+File: 2h_2.jpg Graphic file (type jpg)
+ <use 2h_2.jpg>
+Package pdftex.def Info: 2h_2.jpg used on input line 124.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<2h_4.jpg, id=31, 130.086pt x 130.086pt>
+File: 2h_4.jpg Graphic file (type jpg)
+ <use 2h_4.jpg>
+Package pdftex.def Info: 2h_4.jpg used on input line 124.
+(pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
+
+<4c_2.jpg, id=32, 803.0pt x 803.0pt>
+File: 4c_2.jpg Graphic file (type jpg)
+ <use 4c_2.jpg>
+Package pdftex.def Info: 4c_2.jpg used on input line 128.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<4c_4.jpg, id=33, 72.27pt x 72.27pt>
+File: 4c_4.jpg Graphic file (type jpg)
+ <use 4c_4.jpg>
+Package pdftex.def Info: 4c_4.jpg used on input line 128.
+(pdftex.def)             Requested size: 91.78296pt x 91.78296pt.
+
+<6c_2.jpg, id=34, 803.0pt x 803.0pt>
+File: 6c_2.jpg Graphic file (type jpg)
+ <use 6c_2.jpg>
+Package pdftex.def Info: 6c_2.jpg used on input line 132.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<6c_4.jpg, id=35, 130.086pt x 130.086pt>
+File: 6c_4.jpg Graphic file (type jpg)
+ <use 6c_4.jpg>
+Package pdftex.def Info: 6c_4.jpg used on input line 132.
+(pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
+
+<5h_2.jpg, id=36, 803.0pt x 803.0pt>
+File: 5h_2.jpg Graphic file (type jpg)
+ <use 5h_2.jpg>
+Package pdftex.def Info: 5h_2.jpg used on input line 136.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<5h_4.jpg, id=37, 72.27pt x 72.27pt>
+File: 5h_4.jpg Graphic file (type jpg)
+ <use 5h_4.jpg>
+Package pdftex.def Info: 5h_4.jpg used on input line 136.
+(pdftex.def)             Requested size: 91.78296pt x 91.78296pt.
+
+<qc_2.jpg, id=38, 803.0pt x 803.0pt>
+File: qc_2.jpg Graphic file (type jpg)
+ <use qc_2.jpg>
+Package pdftex.def Info: qc_2.jpg used on input line 140.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<qc_4.jpg, id=39, 130.086pt x 130.086pt>
+File: qc_4.jpg Graphic file (type jpg)
+ <use qc_4.jpg>
+Package pdftex.def Info: qc_4.jpg used on input line 140.
+(pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
+
+<as_2.jpg, id=40, 803.0pt x 803.0pt>
+File: as_2.jpg Graphic file (type jpg)
+ <use as_2.jpg>
+Package pdftex.def Info: as_2.jpg used on input line 144.
+(pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
+
+<as_4.jpg, id=41, 72.27pt x 72.27pt>
+File: as_4.jpg Graphic file (type jpg)
+ <use as_4.jpg>
+Package pdftex.def Info: as_4.jpg used on input line 144.
+(pdftex.def)             Requested size: 90.33725pt x 90.33725pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 115--149
+[]$[]$ 
+ []
+
+[3 <./2h_1.jpg> <./4c_1.jpg> <./5h_1.jpg> <./6c_1.jpg> <./as_1.jpg> <./qc_1.jpg
+>] <ch_vs_bb.jpg, id=45, 1168.365pt x 1150.2975pt>
+File: ch_vs_bb.jpg Graphic file (type jpg)
+ <use ch_vs_bb.jpg>
+Package pdftex.def Info: ch_vs_bb.jpg used on input line 162.
+(pdftex.def)             Requested size: 198.61942pt x 195.54799pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 155--166
+[]$[]$ 
+ []
+
+[4 <./2h_2.jpg> <./2h_4.jpg> <./4c_2.jpg> <./4c_4.jpg> <./6c_2.jpg> <./6c_4.jpg
+> <./5h_2.jpg> <./5h_4.jpg> <./qc_2.jpg> <./qc_4.jpg> <./as_2.jpg> <./as_4.jpg>
+] [5 <./ch_vs_bb.jpg>] <yolo_model.jpeg, id=55, 764.8575pt x 460.72125pt>
+File: yolo_model.jpeg Graphic file (type jpg)
+
+<use yolo_model.jpeg>
+Package pdftex.def Info: yolo_model.jpeg used on input line 198.
+(pdftex.def)             Requested size: 267.70413pt x 161.25485pt.
+
+Underfull \hbox (badness 1394) in paragraph at lines 203--203
+[] []\T1/cmr/m/n/10 : |For each of the $\OML/cmm/m/it/10 S[]$
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 203--203
+\T1/cmr/m/n/10 po-si-tional pre-dic-tions for
+ []
+
+<yolo_mechanics.jpg, id=56, 870.25125pt x 369.38pt>
+File: yolo_mechanics.jpg Graphic file (type jpg)
+ <use yolo_mechanics.jpg>
+Package pdftex.def Info: yolo_mechanics.jpg used on input line 209.
+(pdftex.def)             Requested size: 304.5925pt x 129.28493pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+\T1/cmr/m/n/10 cell, we pre-dict
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+\T1/cmr/m/n/10 bound-ing boxes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+\T1/cmr/m/n/10 (here, only one
+ []
+
+
+Underfull \hbox (badness 5533) in paragraph at lines 212--212
+\T1/cmr/m/n/10 bound-ing box is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+\T1/cmr/m/n/10 pre-dic-tion vec-tor
+ []
+
+[6 <./yolo_model.jpeg> <./yolo_mechanics.jpg>]
+<tinyyolo.png, id=63, 561.09625pt x 185.69376pt>
 File: tinyyolo.png Graphic file (type png)
  <use tinyyolo.png>
-Package pdftex.def Info: tinyyolo.png used on input line 165.
+Package pdftex.def Info: tinyyolo.png used on input line 296.
 (pdftex.def)             Requested size: 426.79135pt x 141.24489pt.
+ [7 <./tinyyolo.png>]
+Overfull \hbox (36.81766pt too wide) in paragraph at lines 315--319
+\T1/cmr/m/n/10 http://tarangshah.com/blog/2018-01-27/what-is-map-understanding-
+the-statistic-of-choice-for-comparing-
+ []
 
-[3 <./tinyyolo.png>]
-Overfull \hbox (7.49666pt too wide) in paragraph at lines 178--196
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
+
+ []
+
+
+Overfull \hbox (7.49666pt too wide) in paragraph at lines 324--342
 [][] 
  []
 
-<success3.jpg, id=36, 481.8pt x 481.8pt>
+<success3.jpg, id=74, 481.8pt x 481.8pt>
 File: success3.jpg Graphic file (type jpg)
  <use success3.jpg>
-Package pdftex.def Info: success3.jpg used on input line 204.
+Package pdftex.def Info: success3.jpg used on input line 350.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<success2.jpg, id=37, 481.8pt x 481.8pt>
+<success2.jpg, id=75, 481.8pt x 481.8pt>
 File: success2.jpg Graphic file (type jpg)
  <use success2.jpg>
-Package pdftex.def Info: success2.jpg used on input line 204.
+Package pdftex.def Info: success2.jpg used on input line 350.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<success1.jpg, id=38, 401.5pt x 401.5pt>
+<success1.jpg, id=76, 401.5pt x 401.5pt>
 File: success1.jpg Graphic file (type jpg)
  <use success1.jpg>
-Package pdftex.def Info: success1.jpg used on input line 204.
+Package pdftex.def Info: success1.jpg used on input line 350.
 (pdftex.def)             Requested size: 125.19212pt x 125.19275pt.
 
-<fail1.jpg, id=39, 481.8pt x 481.8pt>
+<fail1.jpg, id=77, 481.8pt x 481.8pt>
 File: fail1.jpg Graphic file (type jpg)
  <use fail1.jpg>
-Package pdftex.def Info: fail1.jpg used on input line 206.
+Package pdftex.def Info: fail1.jpg used on input line 352.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<fail2.jpg, id=40, 481.8pt x 481.8pt>
+<fail2.jpg, id=78, 481.8pt x 481.8pt>
 File: fail2.jpg Graphic file (type jpg)
  <use fail2.jpg>
-Package pdftex.def Info: fail2.jpg used on input line 206.
+Package pdftex.def Info: fail2.jpg used on input line 352.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<fail3.jpg, id=41, 320.19624pt x 323.2075pt>
+<fail3.jpg, id=79, 320.19624pt x 323.2075pt>
 File: fail3.jpg Graphic file (type jpg)
  <use fail3.jpg>
-Package pdftex.def Info: fail3.jpg used on input line 206.
+Package pdftex.def Info: fail3.jpg used on input line 352.
 (pdftex.def)             Requested size: 125.19212pt x 126.36604pt.
 
-Overfull \hbox (51.89685pt too wide) in paragraph at lines 202--212
+Overfull \hbox (51.89685pt too wide) in paragraph at lines 348--358
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail1.jpg> <./fail
-2.jpg> <./fail3.jpg>] (./report.aux) ) 
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+[9 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail1.jpg> <./fail2.jp
+g> <./fail3.jpg>] [10] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5412 strings out of 493029
- 69922 string characters out of 6136234
- 164085 words of memory out of 5000000
- 8831 multiletter control sequences out of 15000+600000
- 21461 words of font info for 55 fonts, out of 8000000 for 9000
+ 6987 strings out of 493029
+ 97015 string characters out of 6136234
+ 185105 words of memory out of 5000000
+ 10341 multiletter control sequences out of 15000+600000
+ 22573 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,17n,43p,849b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-supe
-r/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/c
-m-super/sfbx0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb
-></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/f
-onts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm
--super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb>
-</usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fo
-nts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-
-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
-/usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fon
-ts/type1/public/cm-super/sfti1000.pfb>
-Output written on report.pdf (5 pages, 589869 bytes).
+ 44i,17n,49p,862b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+></usr/share/texmf/fonts/type1/public/cm-super/sfbx0700.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm
+-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on report.pdf (10 pages, 4822377 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 156 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
