@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  27 JUL 2018 23:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  28 JUL 2018 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -958,7 +958,12 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 155--166
 
 [4 <./2h_2.jpg> <./2h_4.jpg> <./4c_2.jpg> <./4c_4.jpg> <./6c_2.jpg> <./6c_4.jpg
 > <./5h_2.jpg> <./5h_4.jpg> <./qc_2.jpg> <./qc_4.jpg> <./as_2.jpg> <./as_4.jpg>
-] [5 <./ch_vs_bb.jpg>] <yolo_model.jpeg, id=55, 764.8575pt x 460.72125pt>
+]
+
+LaTeX Warning: Citation `DBLP:journals/corr/RenHG015' on page 5 undefined on in
+put line 171.
+
+[5 <./ch_vs_bb.jpg>] <yolo_model.jpeg, id=55, 764.8575pt x 460.72125pt>
 File: yolo_model.jpeg Graphic file (type jpg)
 
 <use yolo_model.jpeg>
@@ -977,30 +982,30 @@ Underfull \hbox (badness 3219) in paragraph at lines 203--203
 <yolo_mechanics.jpg, id=56, 870.25125pt x 369.38pt>
 File: yolo_mechanics.jpg Graphic file (type jpg)
  <use yolo_mechanics.jpg>
-Package pdftex.def Info: yolo_mechanics.jpg used on input line 209.
+Package pdftex.def Info: yolo_mechanics.jpg used on input line 210.
 (pdftex.def)             Requested size: 304.5925pt x 129.28493pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 \T1/cmr/m/n/10 cell, we pre-dict
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 \T1/cmr/m/n/10 bound-ing boxes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 \T1/cmr/m/n/10 (here, only one
  []
 
 
-Underfull \hbox (badness 5533) in paragraph at lines 212--212
+Underfull \hbox (badness 5533) in paragraph at lines 213--213
 \T1/cmr/m/n/10 bound-ing box is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--212
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 \T1/cmr/m/n/10 pre-dic-tion vec-tor
  []
 
@@ -1008,91 +1013,162 @@ Underfull \hbox (badness 10000) in paragraph at lines 212--212
 <tinyyolo.png, id=63, 561.09625pt x 185.69376pt>
 File: tinyyolo.png Graphic file (type png)
  <use tinyyolo.png>
-Package pdftex.def Info: tinyyolo.png used on input line 296.
+Package pdftex.def Info: tinyyolo.png used on input line 300.
 (pdftex.def)             Requested size: 426.79135pt x 141.24489pt.
  [7 <./tinyyolo.png>]
-Overfull \hbox (36.81766pt too wide) in paragraph at lines 315--319
+Overfull \hbox (36.81766pt too wide) in paragraph at lines 319--323
 \T1/cmr/m/n/10 http://tarangshah.com/blog/2018-01-27/what-is-map-understanding-
 the-statistic-of-choice-for-comparing-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--319
+Underfull \hbox (badness 10000) in paragraph at lines 319--323
 
  []
 
+<loss.png, id=74, 317.185pt x 213.79875pt>
+File: loss.png Graphic file (type png)
+ <use loss.png>
+Package pdftex.def Info: loss.png used on input line 329.
+(pdftex.def)             Requested size: 317.1842pt x 213.79822pt.
 
-Overfull \hbox (7.49666pt too wide) in paragraph at lines 324--342
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+[] []\T1/cmr/m/n/10 : |Pre-ci-sion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 val-ues af-ter
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 each train-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 epochs eval-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 u-ated on the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 test set per-
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 334--334
+\T1/cmr/m/n/10 tain-ing to the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 dataset be-ing
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 334--334
+\T1/cmr/m/n/10 you would ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 the dataset,
+ []
+
+
+Underfull \hbox (badness 4072) in paragraph at lines 334--334
+\T1/cmr/m/n/10 the faster the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/10 train-ing and
+ []
+
+
+Underfull \hbox (badness 2173) in paragraph at lines 334--334
+\T1/cmr/m/n/10 the bet-ter the
+ []
+
+
+Overfull \hbox (1.23706pt too wide) in paragraph at lines 338--356
 [][] 
  []
 
-<success3.jpg, id=74, 481.8pt x 481.8pt>
+<success3.jpg, id=76, 481.8pt x 481.8pt>
 File: success3.jpg Graphic file (type jpg)
  <use success3.jpg>
-Package pdftex.def Info: success3.jpg used on input line 350.
+Package pdftex.def Info: success3.jpg used on input line 365.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<success2.jpg, id=75, 481.8pt x 481.8pt>
+<success2.jpg, id=77, 481.8pt x 481.8pt>
 File: success2.jpg Graphic file (type jpg)
  <use success2.jpg>
-Package pdftex.def Info: success2.jpg used on input line 350.
+Package pdftex.def Info: success2.jpg used on input line 365.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<success1.jpg, id=76, 401.5pt x 401.5pt>
+<success1.jpg, id=78, 401.5pt x 401.5pt>
 File: success1.jpg Graphic file (type jpg)
  <use success1.jpg>
-Package pdftex.def Info: success1.jpg used on input line 350.
+Package pdftex.def Info: success1.jpg used on input line 365.
 (pdftex.def)             Requested size: 125.19212pt x 125.19275pt.
 
-<fail1.jpg, id=77, 481.8pt x 481.8pt>
+<fail1.jpg, id=79, 481.8pt x 481.8pt>
 File: fail1.jpg Graphic file (type jpg)
  <use fail1.jpg>
-Package pdftex.def Info: fail1.jpg used on input line 352.
+Package pdftex.def Info: fail1.jpg used on input line 367.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<fail2.jpg, id=78, 481.8pt x 481.8pt>
+<fail2.jpg, id=80, 481.8pt x 481.8pt>
 File: fail2.jpg Graphic file (type jpg)
  <use fail2.jpg>
-Package pdftex.def Info: fail2.jpg used on input line 352.
+Package pdftex.def Info: fail2.jpg used on input line 367.
 (pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
 
-<fail3.jpg, id=79, 320.19624pt x 323.2075pt>
+<fail3.jpg, id=81, 320.19624pt x 323.2075pt>
 File: fail3.jpg Graphic file (type jpg)
  <use fail3.jpg>
-Package pdftex.def Info: fail3.jpg used on input line 352.
+Package pdftex.def Info: fail3.jpg used on input line 367.
 (pdftex.def)             Requested size: 125.19212pt x 126.36604pt.
 
-Overfull \hbox (51.89685pt too wide) in paragraph at lines 348--358
+Overfull \hbox (51.89685pt too wide) in paragraph at lines 363--373
 [][] 
  []
 
+[8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-[9 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail1.jpg> <./fail2.jp
-g> <./fail3.jpg>] [10] (./report.aux)
+[9 <./loss.png>] [10 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail
+1.jpg> <./fail2.jpg> <./fail3.jpg>] (./report.bbl) [11] (./report.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6987 strings out of 493029
- 97015 string characters out of 6136234
- 185105 words of memory out of 5000000
- 10341 multiletter control sequences out of 15000+600000
+ 6998 strings out of 493029
+ 97144 string characters out of 6136234
+ 187145 words of memory out of 5000000
+ 10348 multiletter control sequences out of 15000+600000
  22573 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,17n,49p,862b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,17n,49p,904b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
@@ -1111,10 +1187,10 @@ super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb><
 /usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fon
 ts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-s
 uper/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on report.pdf (10 pages, 4822377 bytes).
+Output written on report.pdf (11 pages, 4841824 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 162 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

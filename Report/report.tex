@@ -168,7 +168,7 @@ As mentioned before, we decided to work with convex hulls instead BBs from the b
 
 
 \section{Related work - The object detection landscape}
-The task of object detection in images encompasses both the ``simpler'' form of only localizing and subsequently classifying objects as well as the more ``advanced'' form of additionally segmenting objects pixel-wise. For these tasks, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs)} (CITE) have come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
+The task of object detection in images encompasses both the ``simpler'' form of only localizing and subsequently classifying objects as well as the more ``advanced'' form of additionally segmenting objects pixel-wise. For these tasks, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs)}\cite{DBLP:journals/corr/RenHG015} have come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
 
 \textbf{You Only Look Once (YOLO)}
 \textbf{Single-Shot Detector (SSD)}
@@ -204,7 +204,8 @@ model is that there is an object in that bounding box. At test time the conditio
 
 
 \subsubsection*{Anchor boxes}
-Instead of wildly predicting $B$ bounding boxes per grid cell, the idea of YOLO is to predict offsets to $B$ so-called anchor boxes. Anchor boxes are pre-defined rectangular boxes that should be representative of as many ground-truth bounding boxes as possible.
+Instead of wildly predicting $B$ bounding boxes per grid cell, the idea of YOLO is to predict offsets to $B$ so-called anchor boxes. Anchor boxes are rectangular boxes that are not learned, but rather pre-defined - the idea being that they should be representative of as many ground-truth bounding boxes as possible. \\
+Usually, one sets these boxes beforehand. However, an even better way to do this in one of the later YOLO research papers, is to use a k-means algorithm, to group together conceivable anchor boxes of objects shapes you tend to get. 
 \begin{SCfigure}
 \includegraphics[scale=0.35]{yolo_mechanics}
 \caption{For each grid cell, we predict vectors of multiple bounding boxes (here, only one bounding box is predicted, $B=1$), but only one class prediction vector of length $C$ (here, $C$=3).}
@@ -213,6 +214,8 @@ Instead of wildly predicting $B$ bounding boxes per grid cell, the idea of YOLO 
 Confidence is formally defined as $P(Object) \times \text{IOU}^{pred}_{truth}$
 
 . So its not something that model learns but something that you have to do up front. Look at the shape of bounding boxes in training data and separate then (maybe using some sort of clustering) and move those boxes to correct anchorbox (part of array) of training data.
+
+\subsubsection*{Architecture and training hyperparameters}
 YOLO is implemented as a 32 layer deep convolutional
 neural network (DNN). The open source implementation released
 along with the paper is built upon a custom DNN
@@ -225,7 +228,7 @@ released several variants of YOLO. For our purposes, we
 chose the variant "tiny YOLOv3" which is a simplified version of YOLOv3 for restricted environments such as ours.\footnote{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}. In places in which the paper lacks details, we refer to the baseline darknet implementation
 to resolve ambiguities.
 \subsubsection*{Loss function}
-YOLO’s loss function must simultaneously solve the object detection and object classification tasks. This function
+YOLO’s loss function must optimize the network's parameters as to simultaneously solve the object localization and object classification tasks. This function
 simultaneously penalizes incorrect object detections
 as well as considers what the best possible classification
 would be. We employ the stochastic gradient descent
@@ -233,6 +236,7 @@ optimization method offered by TensorFlow[10] with the
 Adam optimizer [7] to minimize the cost function. We
 implement the following loss function, composed of five
 terms:
+The scale factors $\lambda_\textbf{coord}, \lambda_\textbf{obj}, \lambda_\textbf{no\_obj}$ determine how much to penalize coordinate and classification errors. ${\mathbb{1}}_{ij}^{\text{obj}}$ is 1 for the $i$-th grid square and $j$-th bounding box predictor and 0 otherwise ${{\mathbb{1}}}_i^{\text{obj}}$ is 1 if an object appears in the $i$-th grid square and 0 otherwise.
 \begin{align*}
 \lambda_\textbf{coord}
 \sum_{i = 0}^{S^2}
@@ -259,22 +263,22 @@ terms:
             \sqrt{h_i} - \sqrt{\hat{h}_i}
         \right)^2
         \right]\\
-+ \sum_{i = 0}^{S^2}
++ \lambda_\textbf{obj}\sum_{i = 0}^{S^2}
     \sum_{j = 0}^{B}
         {\mathbb{1}}_{ij}^{\text{obj}}
         \left(
             C_i - \hat{C}_i
         \right)^2&\textbf{\ objectness loss}
 \\
-+ \lambda_\textrm{noobj}
++ \lambda_\textbf{no\_obj}
 \sum_{i = 0}^{S^2}
     \sum_{j = 0}^{B}
-    {\mathbb{1}}_{ij}^{\text{noobj}}
+    {\mathbb{1}}_{ij}^{\text{no\_obj}}
         \left(
             C_i - \hat{C}_i
         \right)^2\\ 
 + \sum_{i = 0}^{S^2}
-{{1}}_i^{\text{obj}}
+{{\mathbb{1}}}_i^{\text{obj}}
     \sum_{c \in \textrm{classes}}
         \left(
             p_i(c) - \hat{p}_i(c)
@@ -317,9 +321,19 @@ http://tarangshah.com/blog/2018-01-27/what-is-map-understanding-the-statistic-of
 \\
 https://github.com/rafaelpadilla/Object-Detection-Metrics\\
 \section{Results}
-Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in REF TABLE 1 and REF FIGURE X. We generally achieved the best results for the datasets without textures and ....
+Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations. However, this is quite the bogus claim as our test sets were composed of 5 \% random samples from the particular dataset that had been trained on.
+
 In total, training always converged rather quickly. Again, datasets without complex textures led to better (i.e. faster) convergence which intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card.\\
+\begin{SCfigure}
+
+\includegraphics[scale=1]{loss}
+
+\caption{Precision values after each training epochs evaluated on the test set pertaining to the dataset being trained on. As you would expect, the easier the dataset, the faster the training and the better the results. }
+
+
+\end{SCfigure}
 \begin{table}[h]
+
 
 \begin{tabular}{lllllr}
 \hline
@@ -334,12 +348,13 @@ name    & description  & precision & recall & mAP \\
 \textbf{3 - Elaborate}       & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.971} \\
           & \textit{random rotations, brightness, blurring}     & & & \\
 \textbf{4 - Hardest} & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.973} \\
-          & \textit{random rotations, brightness, blurring, more zoom}     & & & \\
+          & \textit{random rotations, brightness, blurring, less zoom}     & & & \\
 \hline
 
 
 \end{tabular}
-\caption{Precision and recall values are for } 
+\caption{Precision and recall values have been calculated using a IOU threshold of 0.5. mAP values are based on averaged precision values over IOU thresholds of $[0.1, 0.2, \dots 0.8, 0.9] $  }
+\label{tab:res}
 \end{table}
 \subsection*{Exemplary test results and failure cases}
 Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision allows for an additional inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (REF FIGURE3).
@@ -385,5 +400,5 @@ We did not include shadow and stuff
 \section{Conclusion}
 Using the YOLOv3 object detection algorithm, we managed to detect the suits and ranks of playing cards in a general setting. Hereby, our project served as a proof-of-concept - in order to build a model that is actually able to help people cheat effectively, several extensions would need to be made to our approach, which include... \\ Another issue to solving this is the lack of commodity contact lenses equipped with video cameras and GPUs in close proximity - until then, card game players will be protected from this kind of fraud.
 
-
+\bibliography{cite}
 \end{document}
