@@ -8,4 +8,4 @@ Create your own card dataset.
 - Use generate_data to perform rotations, translations and cropping of the
   image.
 
-
+![picture](poster/figures/7-p.jpg)
