@@ -10,7 +10,7 @@ Playing card detection and classification toolkit.
 - **Deploy the model on a camera** as a proof of concept.
 
 ## Examples
-![picture](report/images/success2.jpg =300x300)
+![picture](report/images/success2.jpg width="200")
 ![picture](report/images/predictions.jpg)
 ![picture](report/images/success3.jpg)
 
