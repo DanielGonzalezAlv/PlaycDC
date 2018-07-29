@@ -3,6 +3,11 @@
 """
 This code generates new images by using randomly linear transformations.
 
+Usage:
+Following directories need to be created if not existing:
+"../data/YOLO/YOLO_txt/"
+"../data/YOLO/YOLO_img/"
+
 @author: Frank Gabel & Daniel Gonzalez
 @PlayCDC
 """
@@ -145,7 +150,7 @@ if __name__ == "__main__":
             for i in range(len(np_file[1]))], shape= img.shape)     
 
         # Generate 3 tranformations per card
-        for j in range(3):
+        for j in range(5):
             seq = my_seq()
             seq_det = seq.to_deterministic()
             img_aug = seq_det.augment_images([img])[0]
@@ -214,9 +219,9 @@ if __name__ == "__main__":
                 card_name = cards_dict[np_file[2]]
 
             # save textfile
-            file_name_txt = "../data/YOLO/YOLO_txt2/" + file_name + "-" + str(j) + ".txt"
+            file_name_txt = "../data/YOLO/YOLO_txt/" + file_name + "-" + str(j) + ".txt"
             create_txt_files(file_name_txt, card_name, list_coords1, list_coords2)   
  
             # Save images
-            file_name_img = "../data/YOLO/YOLO_img2/" + file_name + "-" + str(j)+ ".jpg"
+            file_name_img = "../data/YOLO/YOLO_img/" + file_name + "-" + str(j)+ ".jpg"
             scipy.misc.imsave(file_name_img, img_aug_cut)
