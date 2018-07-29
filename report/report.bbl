@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{cimpoi14describing}
+{\sc Cimpoi, M., Maji, S., Kokkinos, I., Mohamed, S., , and Vedaldi, A.}
+\newblock Describing textures in the wild.
+\newblock In {\em Proceedings of the {IEEE} Conf. on Computer Vision and
+  Pattern Recognition ({CVPR})\/} (2014).
+
 \bibitem{Everingham15}
 {\sc Everingham, M., Eslami, S. M.~A., Van~Gool, L., Williams, C. K.~I., Winn,
   J., and Zisserman, A.}
