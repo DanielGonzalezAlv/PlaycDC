@@ -6,6 +6,11 @@ cards and later paste it into canvanses provided by DDT
 (see: https://github.com/datadriventests/ddt).
 For this is important to save the dtd images in the "../data/" directory
 
+Usage:
+Following directories need to be created if not existing:
+"../data/textures/images/"
+"../data/textures/np_convex/"
+
 @author: Frank Gabel & Daniel Gonzalez
 @PlayCDC
 """
@@ -43,10 +48,10 @@ if __name__ == "__main__":
     path_textures = "../data/dtd-r1.0.1/dtd/images"  # Make sure to download the data first
 
     # images per directory
-    images_per_texture = 1 
+    images_per_texture = 5 
 
     # number of directories to go through
-    ndirs = 5
+    ndirs = 15
 
     for subdir, dirs, files in os.walk(path_textures):
         break_directory = 0
@@ -92,11 +97,11 @@ if __name__ == "__main__":
                          
                     ##### Save
                     # Save images
-                    file_name_img = "../data/textures/final_try/" + str(np_file[2]) + "-"+ name_of_texture + ".jpg"
+                    file_name_img = "../data/textures/images/" + str(np_file[2]) + "-"+ name_of_texture + ".jpg"
                     scipy.misc.imsave(file_name_img, image_aug)
 
                     # save npfiles
-                    file_name_np = "../data/textures/np_convex_final_try/" + str(np_file[2]) + "-"+ name_of_texture 
+                    file_name_np = "../data/textures/np_convex/" + str(np_file[2]) + "-"+ name_of_texture 
                     np.save(file_name_np, np_file)
 
                     #break for textures
