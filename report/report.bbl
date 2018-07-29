@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+
+\bibitem{Everingham15}
+{\sc Everingham, M., Eslami, S. M.~A., Van~Gool, L., Williams, C. K.~I., Winn,
+  J., and Zisserman, A.}
+\newblock The pascal visual object classes challenge: A retrospective.
+\newblock {\em International Journal of Computer Vision 111}, 1 (Jan. 2015),
+  98--136.
+
+\bibitem{DBLP:journals/corr/LinDGHHB16}
+{\sc Lin, T., Doll{\'{a}}r, P., Girshick, R.~B., He, K., Hariharan, B., and
+  Belongie, S.~J.}
+\newblock Feature pyramid networks for object detection.
+\newblock {\em CoRR abs/1612.03144\/} (2016).
+
+\bibitem{DBLP:journals/corr/abs-1708-02002}
+{\sc Lin, T., Goyal, P., Girshick, R.~B., He, K., and Doll{\'{a}}r, P.}
+\newblock Focal loss for dense object detection.
+\newblock {\em CoRR abs/1708.02002\/} (2017).
+
+\bibitem{DBLP:journals/corr/LiuAESR15}
+{\sc Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S.~E., Fu, C., and
+  Berg, A.~C.}
+\newblock {SSD:} single shot multibox detector.
+\newblock {\em CoRR abs/1512.02325\/} (2015).
+
+\bibitem{DBLP:journals/corr/RedmonDGF15}
+{\sc Redmon, J., Divvala, S.~K., Girshick, R.~B., and Farhadi, A.}
+\newblock You only look once: Unified, real-time object detection.
+\newblock {\em CoRR abs/1506.02640\/} (2015).
+
+\bibitem{DBLP:journals/corr/RedmonF16}
+{\sc Redmon, J., and Farhadi, A.}
+\newblock {YOLO9000:} better, faster, stronger.
+\newblock {\em CoRR abs/1612.08242\/} (2016).
+
+\bibitem{DBLP:journals/corr/abs-1804-02767}
+{\sc Redmon, J., and Farhadi, A.}
+\newblock Yolov3: An incremental improvement.
+\newblock {\em CoRR abs/1804.02767\/} (2018).
+
+\bibitem{DBLP:journals/corr/RenHG015}
+{\sc Ren, S., He, K., Girshick, R.~B., and Sun, J.}
+\newblock Faster {R-CNN:} towards real-time object detection with region
+  proposal networks.
+\newblock {\em CoRR abs/1506.01497\/} (2015).
+
+\end{thebibliography}
