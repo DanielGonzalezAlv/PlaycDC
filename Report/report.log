@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  28 JUL 2018 13:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.5)  29 JUL 2018 12:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -536,6 +536,18 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \sf@top=\skip53
 \sf@bottom=\skip54
 )
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen135
+\WF@size=\dimen136
+\c@WF@wrappedlines=\count117
+\WF@box=\box34
+\WF@everypar=\toks27
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -550,18 +562,18 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count117
-\Gm@cntv=\count118
-\c@Gm@tempcnt=\count119
-\Gm@bindingoffset=\dimen135
-\Gm@wd@mp=\dimen136
-\Gm@odd@mp=\dimen137
-\Gm@even@mp=\dimen138
-\Gm@layoutwidth=\dimen139
-\Gm@layoutheight=\dimen140
-\Gm@layouthoffset=\dimen141
-\Gm@layoutvoffset=\dimen142
-\Gm@dimlist=\toks27
+\Gm@cnth=\count118
+\Gm@cntv=\count119
+\c@Gm@tempcnt=\count120
+\Gm@bindingoffset=\dimen137
+\Gm@wd@mp=\dimen138
+\Gm@odd@mp=\dimen139
+\Gm@even@mp=\dimen140
+\Gm@layoutwidth=\dimen141
+\Gm@layoutheight=\dimen142
+\Gm@layouthoffset=\dimen143
+\Gm@layoutvoffset=\dimen144
+\Gm@dimlist=\toks28
 )
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathbbol.sty
 Package: mathbbol 1995/01/01
@@ -573,12 +585,12 @@ Package: sidecap 2003/06/06 v1.6f SideCap Package (RN/HjG)
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\SC@BOXWD=\dimen143
-\SC@CAPWD=\dimen144
-\SC@tempdima=\dimen145
-\SC@tempdimb=\dimen146
-\c@SC@C=\count120
-\SC@BOX=\box34
+\SC@BOXWD=\dimen145
+\SC@CAPWD=\dimen146
+\SC@tempdima=\dimen147
+\SC@tempdimb=\dimen148
+\c@SC@C=\count121
+\SC@BOX=\box35
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -594,8 +606,8 @@ File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 95.
 )
-\Gin@req@height=\dimen147
-\Gin@req@width=\dimen148
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip55
@@ -610,42 +622,43 @@ Package graphics Info: Driver file: pdftex.def on input line 95.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen149
-\c@nlinenum=\count121
-\TeXr@lab=\toks28
+\rotheadsize=\dimen151
+\c@nlinenum=\count122
+\TeXr@lab=\toks29
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen150
-\scratchbox=\box35
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen151
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count123
+\scratchdimen=\dimen152
+\scratchbox=\box36
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen153
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks31
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: sidecap package is loaded.
+Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
@@ -750,32 +763,32 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 38.
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 38.
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+bbold on input line 38.
+LaTeX Font Info:    Try loading font information for U+bbold on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/bbold/Ubbold.fd)
 <contact_lense.jpg, id=1, 948.54375pt x 533.995pt>
 File: contact_lense.jpg Graphic file (type jpg)
  <use contact_lense.jpg>
-Package pdftex.def Info: contact_lense.jpg used on input line 42.
+Package pdftex.def Info: contact_lense.jpg used on input line 43.
 (pdftex.def)             Requested size: 237.13535pt x 133.49841pt.
 
 <poker_player.jpg, id=2, 381.425pt x 250.9375pt>
 File: poker_player.jpg Graphic file (type jpg)
  <use poker_player.jpg>
-Package pdftex.def Info: poker_player.jpg used on input line 43.
+Package pdftex.def Info: poker_player.jpg used on input line 44.
 (pdftex.def)             Requested size: 202.9167pt x 133.49783pt.
 
-Overfull \hbox (15.48238pt too wide) in paragraph at lines 42--44
+Overfull \hbox (15.48238pt too wide) in paragraph at lines 43--45
 [][] [] 
  []
 
@@ -783,88 +796,88 @@ Overfull \hbox (15.48238pt too wide) in paragraph at lines 42--44
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./contact_lense.jpg> <./po
 ker_player.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 59--62
+Underfull \hbox (badness 10000) in paragraph at lines 60--63
 
  []
 
 <qs_2.jpg, id=14, 226.9278pt x 295.5843pt>
 File: qs_2.jpg Graphic file (type jpg)
  <use qs_2.jpg>
-Package pdftex.def Info: qs_2.jpg used on input line 79.
+Package pdftex.def Info: qs_2.jpg used on input line 80.
 (pdftex.def)             Requested size: 133.20755pt x 173.50922pt.
 
 <qs_2_1.jpg, id=15, 73.7154pt x 245.718pt>
 File: qs_2_1.jpg Graphic file (type jpg)
  <use qs_2_1.jpg>
-Package pdftex.def Info: qs_2_1.jpg used on input line 82.
+Package pdftex.def Info: qs_2_1.jpg used on input line 83.
 (pdftex.def)             Requested size: 50.12578pt x 167.08601pt.
 
 <qs_2_2.jpg, id=16, 73.7154pt x 224.037pt>
 File: qs_2_2.jpg Graphic file (type jpg)
  <use qs_2_2.jpg>
-Package pdftex.def Info: qs_2_2.jpg used on input line 82.
+Package pdftex.def Info: qs_2_2.jpg used on input line 83.
 (pdftex.def)             Requested size: 54.54964pt x 165.7882pt.
 
-Underfull \hbox (badness 2435) in paragraph at lines 82--82
+Underfull \hbox (badness 2435) in paragraph at lines 83--83
 \T1/cmr/m/n/7 points were saved as a
  []
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 71--86
+Overfull \hbox (15.0pt too wide) in paragraph at lines 72--87
 []$[]$ 
  []
 
 
 LaTeX Warning: Citation `cimpoi14describing' on page 2 undefined on input line 
-89.
+90.
 
 <2h_1.jpg, id=17, 3011.25pt x 3011.25pt>
 File: 2h_1.jpg Graphic file (type jpg)
  <use 2h_1.jpg>
-Package pdftex.def Info: 2h_1.jpg used on input line 101.
+Package pdftex.def Info: 2h_1.jpg used on input line 102.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
 <4c_1.jpg, id=18, 3011.25pt x 3011.25pt>
 File: 4c_1.jpg Graphic file (type jpg)
  <use 4c_1.jpg>
-Package pdftex.def Info: 4c_1.jpg used on input line 101.
+Package pdftex.def Info: 4c_1.jpg used on input line 102.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
 <5h_1.jpg, id=19, 3011.25pt x 3011.25pt>
 File: 5h_1.jpg Graphic file (type jpg)
  <use 5h_1.jpg>
-Package pdftex.def Info: 5h_1.jpg used on input line 101.
+Package pdftex.def Info: 5h_1.jpg used on input line 102.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
 <6c_1.jpg, id=20, 3011.25pt x 3011.25pt>
 File: 6c_1.jpg Graphic file (type jpg)
  <use 6c_1.jpg>
-Package pdftex.def Info: 6c_1.jpg used on input line 106.
+Package pdftex.def Info: 6c_1.jpg used on input line 107.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
 <as_1.jpg, id=21, 3011.25pt x 3011.25pt>
 File: as_1.jpg Graphic file (type jpg)
  <use as_1.jpg>
-Package pdftex.def Info: as_1.jpg used on input line 106.
+Package pdftex.def Info: as_1.jpg used on input line 107.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
 <qc_1.jpg, id=22, 3011.25pt x 3011.25pt>
 File: qc_1.jpg Graphic file (type jpg)
  <use qc_1.jpg>
-Package pdftex.def Info: qc_1.jpg used on input line 106.
+Package pdftex.def Info: qc_1.jpg used on input line 107.
 (pdftex.def)             Requested size: 120.42949pt x 120.42949pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 92--114
+Overfull \hbox (15.0pt too wide) in paragraph at lines 93--115
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--114
+Underfull \hbox (badness 10000) in paragraph at lines 93--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--114
+Underfull \hbox (badness 10000) in paragraph at lines 93--115
 
  []
 
@@ -872,76 +885,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--114
 <2h_2.jpg, id=30, 803.0pt x 803.0pt>
 File: 2h_2.jpg Graphic file (type jpg)
  <use 2h_2.jpg>
-Package pdftex.def Info: 2h_2.jpg used on input line 124.
+Package pdftex.def Info: 2h_2.jpg used on input line 125.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <2h_4.jpg, id=31, 130.086pt x 130.086pt>
 File: 2h_4.jpg Graphic file (type jpg)
  <use 2h_4.jpg>
-Package pdftex.def Info: 2h_4.jpg used on input line 124.
+Package pdftex.def Info: 2h_4.jpg used on input line 125.
 (pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
 
 <4c_2.jpg, id=32, 803.0pt x 803.0pt>
 File: 4c_2.jpg Graphic file (type jpg)
  <use 4c_2.jpg>
-Package pdftex.def Info: 4c_2.jpg used on input line 128.
+Package pdftex.def Info: 4c_2.jpg used on input line 129.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <4c_4.jpg, id=33, 72.27pt x 72.27pt>
 File: 4c_4.jpg Graphic file (type jpg)
  <use 4c_4.jpg>
-Package pdftex.def Info: 4c_4.jpg used on input line 128.
+Package pdftex.def Info: 4c_4.jpg used on input line 129.
 (pdftex.def)             Requested size: 91.78296pt x 91.78296pt.
 
 <6c_2.jpg, id=34, 803.0pt x 803.0pt>
 File: 6c_2.jpg Graphic file (type jpg)
  <use 6c_2.jpg>
-Package pdftex.def Info: 6c_2.jpg used on input line 132.
+Package pdftex.def Info: 6c_2.jpg used on input line 133.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <6c_4.jpg, id=35, 130.086pt x 130.086pt>
 File: 6c_4.jpg Graphic file (type jpg)
  <use 6c_4.jpg>
-Package pdftex.def Info: 6c_4.jpg used on input line 132.
+Package pdftex.def Info: 6c_4.jpg used on input line 133.
 (pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
 
 <5h_2.jpg, id=36, 803.0pt x 803.0pt>
 File: 5h_2.jpg Graphic file (type jpg)
  <use 5h_2.jpg>
-Package pdftex.def Info: 5h_2.jpg used on input line 136.
+Package pdftex.def Info: 5h_2.jpg used on input line 137.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <5h_4.jpg, id=37, 72.27pt x 72.27pt>
 File: 5h_4.jpg Graphic file (type jpg)
  <use 5h_4.jpg>
-Package pdftex.def Info: 5h_4.jpg used on input line 136.
+Package pdftex.def Info: 5h_4.jpg used on input line 137.
 (pdftex.def)             Requested size: 91.78296pt x 91.78296pt.
 
 <qc_2.jpg, id=38, 803.0pt x 803.0pt>
 File: qc_2.jpg Graphic file (type jpg)
  <use qc_2.jpg>
-Package pdftex.def Info: qc_2.jpg used on input line 140.
+Package pdftex.def Info: qc_2.jpg used on input line 141.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <qc_4.jpg, id=39, 130.086pt x 130.086pt>
 File: qc_4.jpg Graphic file (type jpg)
  <use qc_4.jpg>
-Package pdftex.def Info: qc_4.jpg used on input line 140.
+Package pdftex.def Info: qc_4.jpg used on input line 141.
 (pdftex.def)             Requested size: 91.05956pt x 91.05956pt.
 
 <as_2.jpg, id=40, 803.0pt x 803.0pt>
 File: as_2.jpg Graphic file (type jpg)
  <use as_2.jpg>
-Package pdftex.def Info: as_2.jpg used on input line 144.
+Package pdftex.def Info: as_2.jpg used on input line 145.
 (pdftex.def)             Requested size: 90.33972pt x 90.33972pt.
 
 <as_4.jpg, id=41, 72.27pt x 72.27pt>
 File: as_4.jpg Graphic file (type jpg)
  <use as_4.jpg>
-Package pdftex.def Info: as_4.jpg used on input line 144.
+Package pdftex.def Info: as_4.jpg used on input line 145.
 (pdftex.def)             Requested size: 90.33725pt x 90.33725pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 115--149
+Overfull \hbox (15.0pt too wide) in paragraph at lines 116--150
 []$[]$ 
  []
 
@@ -949,226 +962,261 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 115--149
 >] <ch_vs_bb.jpg, id=45, 1168.365pt x 1150.2975pt>
 File: ch_vs_bb.jpg Graphic file (type jpg)
  <use ch_vs_bb.jpg>
-Package pdftex.def Info: ch_vs_bb.jpg used on input line 162.
+Package pdftex.def Info: ch_vs_bb.jpg used on input line 164.
 (pdftex.def)             Requested size: 198.61942pt x 195.54799pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 155--166
+Overfull \hbox (15.0pt too wide) in paragraph at lines 157--168
 []$[]$ 
  []
 
 [4 <./2h_2.jpg> <./2h_4.jpg> <./4c_2.jpg> <./4c_4.jpg> <./6c_2.jpg> <./6c_4.jpg
 > <./5h_2.jpg> <./5h_4.jpg> <./qc_2.jpg> <./qc_4.jpg> <./as_2.jpg> <./as_4.jpg>
-]
+] <FRCN_architecture.png, id=49, 420.06938pt x 421.9514pt>
+File: FRCN_architecture.png Graphic file (type png)
 
-LaTeX Warning: Citation `DBLP:journals/corr/RenHG015' on page 5 undefined on in
-put line 171.
+<use FRCN_architecture.png>
+Package pdftex.def Info: FRCN_architecture.png used on input line 176.
+(pdftex.def)             Requested size: 159.62802pt x 160.34319pt.
 
-[5 <./ch_vs_bb.jpg>] <yolo_model.jpeg, id=55, 764.8575pt x 460.72125pt>
-File: yolo_model.jpeg Graphic file (type jpg)
-
-<use yolo_model.jpeg>
-Package pdftex.def Info: yolo_model.jpeg used on input line 198.
-(pdftex.def)             Requested size: 267.70413pt x 161.25485pt.
-
-Underfull \hbox (badness 1394) in paragraph at lines 203--203
-[] []\T1/cmr/m/n/10 : |For each of the $\OML/cmm/m/it/10 S[]$
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
+[]\T1/cmr/m/n/10 For these tasks, dif-fer-ent deep learn-ing ar-chi-tec-tures h
+ave emerged, of which
  []
 
 
-Underfull \hbox (badness 3219) in paragraph at lines 203--203
+Package wrapfig Warning: Collision between wrapping environments on input line 
+181.
+
+<retinanet.png, id=51, 811.03pt x 452.69125pt>
+File: retinanet.png Graphic file (type png)
+ <use retinanet.png>
+Package pdftex.def Info: retinanet.png used on input line 183.
+(pdftex.def)             Requested size: 259.5349pt x 144.86415pt.
+
+Overfull \hbox (24.79836pt too wide) in paragraph at lines 183--184
+[][] 
+ []
+
+
+Underfull \hbox (badness 3977) in paragraph at lines 180--185
+\T1/cmr/m/n/10 lowed by a clas-si-fier to clas-sify these pro-pos-als.
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 180--185
+\T1/cmr/m/n/10 they are not fit to be used on em-bed-ded de-vices.
+ []
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+5.
+
+
+Underfull \hbox (badness 5711) in paragraph at lines 190--192
+\T1/cmr/m/n/10 de-vel-oped con-cepts [[]][[]]circumventing
+ []
+
+[5 <./ch_vs_bb.jpg> <./FRCN_architecture.png> <./retinanet.png>]
+<yolo_model.jpeg, id=57, 764.8575pt x 460.72125pt>
+File: yolo_model.jpeg Graphic file (type jpg)
+ <use yolo_model.jpeg>
+Package pdftex.def Info: yolo_model.jpeg used on input line 209.
+(pdftex.def)             Requested size: 267.70413pt x 161.25485pt.
+
+Underfull \hbox (badness 1028) in paragraph at lines 214--214
+\T1/cmr/m/n/10 ness pre-dic-tion and four
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 214--214
 \T1/cmr/m/n/10 po-si-tional pre-dic-tions for
  []
 
-<yolo_mechanics.jpg, id=56, 870.25125pt x 369.38pt>
+<yolo_mechanics.jpg, id=58, 870.25125pt x 369.38pt>
 File: yolo_mechanics.jpg Graphic file (type jpg)
  <use yolo_mechanics.jpg>
-Package pdftex.def Info: yolo_mechanics.jpg used on input line 210.
+Package pdftex.def Info: yolo_mechanics.jpg used on input line 221.
 (pdftex.def)             Requested size: 304.5925pt x 129.28493pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
 \T1/cmr/m/n/10 cell, we pre-dict
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
 \T1/cmr/m/n/10 bound-ing boxes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
 \T1/cmr/m/n/10 (here, only one
  []
 
 
-Underfull \hbox (badness 5533) in paragraph at lines 213--213
+Underfull \hbox (badness 5533) in paragraph at lines 224--224
 \T1/cmr/m/n/10 bound-ing box is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--213
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
 \T1/cmr/m/n/10 pre-dic-tion vec-tor
  []
 
-[6 <./yolo_model.jpeg> <./yolo_mechanics.jpg>]
-<tinyyolo.png, id=63, 561.09625pt x 185.69376pt>
+[6 <./yolo_model.jpeg>] [7 <./yolo_mechanics.jpg>]
+<tinyyolo.png, id=74, 561.09625pt x 185.69376pt>
 File: tinyyolo.png Graphic file (type png)
  <use tinyyolo.png>
-Package pdftex.def Info: tinyyolo.png used on input line 300.
+Package pdftex.def Info: tinyyolo.png used on input line 312.
 (pdftex.def)             Requested size: 426.79135pt x 141.24489pt.
- [7 <./tinyyolo.png>]
-Overfull \hbox (36.81766pt too wide) in paragraph at lines 319--323
+ [8 <./tinyyolo.png>]
+Overfull \hbox (36.81766pt too wide) in paragraph at lines 331--335
 \T1/cmr/m/n/10 http://tarangshah.com/blog/2018-01-27/what-is-map-understanding-
 the-statistic-of-choice-for-comparing-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 319--323
+Underfull \hbox (badness 10000) in paragraph at lines 331--335
 
  []
 
-<loss.png, id=74, 317.185pt x 213.79875pt>
+<loss.png, id=82, 317.185pt x 213.79875pt>
 File: loss.png Graphic file (type png)
  <use loss.png>
-Package pdftex.def Info: loss.png used on input line 329.
+Package pdftex.def Info: loss.png used on input line 341.
 (pdftex.def)             Requested size: 317.1842pt x 213.79822pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
-[] []\T1/cmr/m/n/10 : |Pre-ci-sion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 val-ues af-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 each train-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 epochs eval-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 3872) in paragraph at lines 346--346
 \T1/cmr/m/n/10 u-ated on the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 7722) in paragraph at lines 346--346
 \T1/cmr/m/n/10 test set per-
  []
 
 
-Underfull \hbox (badness 2837) in paragraph at lines 334--334
-\T1/cmr/m/n/10 tain-ing to the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 dataset be-ing
  []
 
 
-Underfull \hbox (badness 2005) in paragraph at lines 334--334
-\T1/cmr/m/n/10 you would ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 the dataset,
  []
 
 
-Underfull \hbox (badness 4072) in paragraph at lines 334--334
+Underfull \hbox (badness 1454) in paragraph at lines 346--346
 \T1/cmr/m/n/10 the faster the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 \T1/cmr/m/n/10 train-ing and
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 334--334
-\T1/cmr/m/n/10 the bet-ter the
- []
-
-
-Overfull \hbox (1.23706pt too wide) in paragraph at lines 338--356
+Overfull \hbox (1.23706pt too wide) in paragraph at lines 350--368
 [][] 
  []
 
-<success3.jpg, id=76, 481.8pt x 481.8pt>
-File: success3.jpg Graphic file (type jpg)
- <use success3.jpg>
-Package pdftex.def Info: success3.jpg used on input line 365.
-(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
-
-<success2.jpg, id=77, 481.8pt x 481.8pt>
-File: success2.jpg Graphic file (type jpg)
- <use success2.jpg>
-Package pdftex.def Info: success2.jpg used on input line 365.
-(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
-
-<success1.jpg, id=78, 401.5pt x 401.5pt>
-File: success1.jpg Graphic file (type jpg)
- <use success1.jpg>
-Package pdftex.def Info: success1.jpg used on input line 365.
-(pdftex.def)             Requested size: 125.19212pt x 125.19275pt.
-
-<fail1.jpg, id=79, 481.8pt x 481.8pt>
-File: fail1.jpg Graphic file (type jpg)
- <use fail1.jpg>
-Package pdftex.def Info: fail1.jpg used on input line 367.
-(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
-
-<fail2.jpg, id=80, 481.8pt x 481.8pt>
-File: fail2.jpg Graphic file (type jpg)
- <use fail2.jpg>
-Package pdftex.def Info: fail2.jpg used on input line 367.
-(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
-
-<fail3.jpg, id=81, 320.19624pt x 323.2075pt>
-File: fail3.jpg Graphic file (type jpg)
- <use fail3.jpg>
-Package pdftex.def Info: fail3.jpg used on input line 367.
-(pdftex.def)             Requested size: 125.19212pt x 126.36604pt.
-
-Overfull \hbox (51.89685pt too wide) in paragraph at lines 363--373
-[][] 
- []
-
-[8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Package caption Warning: \label without proper reference on input line 374.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:testcases' on page 9 undefined on input line 372.
+
+
+<success3.jpg, id=83, 481.8pt x 481.8pt>
+File: success3.jpg Graphic file (type jpg)
+ <use success3.jpg>
+Package pdftex.def Info: success3.jpg used on input line 377.
+(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
+
+<success2.jpg, id=84, 481.8pt x 481.8pt>
+File: success2.jpg Graphic file (type jpg)
+ <use success2.jpg>
+Package pdftex.def Info: success2.jpg used on input line 377.
+(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
+
+<success1.jpg, id=85, 401.5pt x 401.5pt>
+File: success1.jpg Graphic file (type jpg)
+ <use success1.jpg>
+Package pdftex.def Info: success1.jpg used on input line 377.
+(pdftex.def)             Requested size: 125.19212pt x 125.19275pt.
+
+<fail1.jpg, id=86, 481.8pt x 481.8pt>
+File: fail1.jpg Graphic file (type jpg)
+ <use fail1.jpg>
+Package pdftex.def Info: fail1.jpg used on input line 379.
+(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
+
+<fail2.jpg, id=87, 481.8pt x 481.8pt>
+File: fail2.jpg Graphic file (type jpg)
+ <use fail2.jpg>
+Package pdftex.def Info: fail2.jpg used on input line 379.
+(pdftex.def)             Requested size: 125.19212pt x 125.19151pt.
+
+<fail3.jpg, id=88, 320.19624pt x 323.2075pt>
+File: fail3.jpg Graphic file (type jpg)
+ <use fail3.jpg>
+Package pdftex.def Info: fail3.jpg used on input line 379.
+(pdftex.def)             Requested size: 125.19212pt x 126.36604pt.
+
+Overfull \hbox (51.89685pt too wide) in paragraph at lines 375--385
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./loss.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 390.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  []
 
-[9 <./loss.png>] [10 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail
-1.jpg> <./fail2.jpg> <./fail3.jpg>] (./report.bbl) [11] (./report.aux)
+[10] [11 <./success3.jpg> <./success2.jpg> <./success1.jpg> <./fail1.jpg> <./fa
+il2.jpg> <./fail3.jpg>] (./report.bbl) [12] (./report.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6998 strings out of 493029
- 97144 string characters out of 6136234
- 187145 words of memory out of 5000000
- 10348 multiletter control sequences out of 15000+600000
- 22573 words of font info for 61 fonts, out of 8000000 for 9000
+ 7169 strings out of 493029
+ 99867 string characters out of 6136234
+ 188639 words of memory out of 5000000
+ 10504 multiletter control sequences out of 15000+600000
+ 23559 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,17n,49p,904b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,17n,49p,791b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dis
@@ -1182,15 +1230,17 @@ y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 onts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb>
 </usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fo
-nts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-
-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb><
-/usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fon
-ts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-s
-uper/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on report.pdf (11 pages, 4841824 bytes).
+nts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sftt0800.pfb>
+Output written on report.pdf (12 pages, 5173594 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 177 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,7 +10,8 @@
 \usepackage{xcolor}
 \usepackage{amsfonts}
 \usepackage{subfig}
-
+\usepackage{wrapfig}
+\usepackage{url}
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{mathbbol}
@@ -50,8 +51,8 @@ Sometimes, a third sub-task of \textbf{semantic object segmentation} is performe
 In this project, we use the YOLOv3 object detection algorithm (CITE) for object detection (without additional segmentation) in order to tell apart playing cards of a standard 52-part deck.
 
 \section{Dataset}
-The foundation of a machine learning project is based training on data in order to build a model that can recognize patterns.   For our detection model, we needed to have a large dataset of cards, together with the Boundy Boxes information for each of the cards logos.  Unfortunately, as there was no suitable dataset of cards available, we decided to create it by our own.  We did this in mainly two big steps, generating at the end 750 training images for each card, as well as the Bounding Box information necessary for the training step.   \\
-The first necessarily step was to prepare the data in such a way, that it could be easily used later for data generation.  Here, it was important to detect the convex hulls of the card logos, because they were necessary to become the Bounding Boxes information.  The reason why we worked with convex hulls, instead of Bounding Boxes from the beginning on, will be explained in the later subsection.
+Machine learning is based on the idea of learning patterns in training data in order to build a model that can later perform predictions on unseen tst data. For our detection model, we needed to have a large dataset of cards, together with the bounding box information for each of the suit/rank combinations of cards (subsequently referred to as \textbf{logos}.  Unfortunately, such a dataset is non-existent- therefore, we decided to create it on our own.  We did this in two big steps, finally ending up with 750 training images for each card, as well as the bounding box information necessary for the training step.   \\
+The first necessarily step was to prepare the data in  a way that it could be easily used later for data generation.  Here, it was important to detect the convex hulls of the card logos, because they were necessary to become the Bounding Boxes information.  The reason why we worked with convex hulls, instead of bounding boxes from the beginning on, will be explained in the later subsection.
 The second big step was focused on generate new data.  For this, we applied linear transformations, as well as blurring, sharpening, change of lighting and rotation to the cards. 
 For this, it was necessary to keep track of the convex hulls when applying the transformations. 
 
@@ -150,6 +151,7 @@ As mentioned before, we decided to use the imgaug python library, because it all
 \subsection{The convex hull approach}
 YOLOv3 expected for each image, a .txt file with a line for each ground truth object in the image that looks like:
 <object-class><x><y><width><height>, where x, y are the center positions of the Bounding Boxes (BBs) and the width and height, also of the BBs, are relative to the image's width and height. \\
+As is always the case, bounding boxes are perpendicular/aligned with image borders and can't be rotated. Nevertheless, we can rotate bounding boxes around 
 As mentioned before, we decided to work with convex hulls instead BBs from the beginning on.  The reason for this, is that otherwise we might have to increase the size of the BBs when doing rotations. Figure \ref{bb-ch} illustrates this problem.   Working with convex hulls on the other hand,  allowed us to obtain minimal BBs of the logos after applying transformations.
 
 \begin{minipage}{\columnwidth}
@@ -168,17 +170,26 @@ As mentioned before, we decided to work with convex hulls instead BBs from the b
 
 
 \section{Related work - The object detection landscape}
-The task of object detection in images encompasses both the ``simpler'' form of only localizing and subsequently classifying objects as well as the more ``advanced'' form of additionally segmenting objects pixel-wise. For these tasks, different deep learning architectures have emerged, of which we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs)}\cite{DBLP:journals/corr/RenHG015} have come up as an enhancement of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
+The task of object detection in images encompasses both the ``simpler'' form of only localizing and subsequently classifying objects as well as the more ``advanced'' form of additionally segmenting objects pixel-wise. 
 
-\textbf{You Only Look Once (YOLO)}
-\textbf{Single-Shot Detector (SSD)}
-One-stage detectors like YOLO or SSD that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors because of extreme class imbalance encountered during training.
-In \textbf{Focal Loss for Dense Object Detection (RetinaNet)}, researchers from FAIR therefore have developed a concept circumventing this - the idea is to reshape cross entropy loss such that it down-weights the loss assigned to well-classified examples. The novel focal loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. 
+For these tasks, different deep learning architectures have emerged, of which \begin{wrapfigure}{l}{0.40\textwidth}
+\includegraphics[scale=0.38]{FRCN_architecture}
+\caption{The Faster R-CNN architecture. Note the weight sharing between RPN Network and the classifier.}
+\end{wrapfigure} we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs, \cite{DBLP:journals/corr/RenHG015})} have come up as an enhancement  of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
+
+The previous methods of object detection all share one thing in common: they have one part of their network dedicated to providing region proposals followed by a classifier to classify these proposals. These methods are very accurate but come at a big computational cost (low frame-rate), in other words they are not fit to be used on embedded devices.
+\begin{wrapfigure}{h}{0.55\textwidth}
+
+\includegraphics[scale=0.32]{retinanet}
+\caption{Evaluation of different object detection algorithms on the COCO dataset from the RetinaNet paper. Currently, evaluation performance is dominated by the RetinaNet architecture.}
+\end{wrapfigure}
+Another way of doing object detection is by combining these two tasks into one network. We can do this by instead of having a network produce proposals we instead have a set of pre-defined boxes to look for objects.
 
 
 
-For sake of completeness, The \textbf{Mask Region-based Convolutional Network (Mask R-CNN)} consitutes the current state-of-the-art in semantic object segmentation. The basic idea is to.....
-As this extends the scope of our project, we will not dive deeper and rather refer interested readers to the orginal research paper (CITE) or ...
+One-stage detectors like \textbf{You Only Look Once (YOLO)}\cite{DBLP:journals/corr/RedmonDGF15}\cite{DBLP:journals/corr/RedmonF16}\cite{DBLP:journals/corr/abs-1804-02767} or \textbf{Single-Shot Detector (SSD)}\cite{DBLP:journals/corr/LiuAESR15} that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors because of extreme class imbalance encountered during training.
+In 2016 and 2017, researchers from FacebookAI have developed concepts \cite{DBLP:journals/corr/abs-1708-02002}\cite{DBLP:journals/corr/LinDGHHB16}circumventing this - the main idea being to reshape cross entropy loss such that it down-weights the loss assigned to well-classified examples. The novel focal loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. Combining this with the concept of pyramidal...., we get the \textbf{Focal Loss for Dense Object Detection (RetinaNet)} which currently outperformes all other ....
+
 \section{Methods}
 \subsection*{The YOLO approach to object detection}
 The YOLO model’s novel motivation is that it re-frames
@@ -189,12 +200,12 @@ once” at an image for object detection.
 It works as follows: 
 \begin{itemize}
 \item[--] divide an image into an $S\times S$ grid
-\item[--]  predicts $B$ bounding boxes and a confidence score for each box (often called \textit{objectness score}) as well as a single $C$-dimensional vector of class probabilities
+\item[--]  predict $B$ bounding boxes and a confidence score for each box representing the probability that an object is contained inside a bounding box (often called \textit{objectness score}) as well as a single $C$-dimensional vector of class probabilities 
 \item[--]  the output vector $S \times S \times (B\times 5 +C)$-dimensional
-\end{itemize} The confidence scores show how confident the
-model is that there is an object in that bounding box. At test time the conditional class probabilities and the individual box confidence predictions are multiplied, resulting in a feature map of bounding boxes "weighted" by their per-class confidence scores.
+\item[--]  predictions are made using a technique called non-maximum suppression in which we remove low probability bounding boxes that are very close to high probability bounding boxes
+\end{itemize}  At test time the conditional class probabilities and the individual box confidence predictions are multiplied, resulting in a feature map of bounding boxes ``weighted'' by their per-class confidence scores. see figure \ref{fig:yolo_model}
 \begin{SCfigure}
-
+\label{fig:yolo_model}
 \includegraphics[scale=0.35]{yolo_model}
 
 \caption{For each of the $S^2$ grid cells, we make one objectness prediction and four positional predictions for bounding boxes relative to each of the $B$ anchor boxes as well as a global class prediction vector. Combination of these values using NMS grants the final predictions.}
@@ -225,18 +236,19 @@ This application provides the baseline by which we compare
 our implementation of YOLO 2
 . Redmon et al. have
 released several variants of YOLO. For our purposes, we
-chose the variant "tiny YOLOv3" which is a simplified version of YOLOv3 for restricted environments such as ours.\footnote{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}. In places in which the paper lacks details, we refer to the baseline darknet implementation
+chose the variant ``tiny YOLOv3'' which is a simplified version of YOLOv3 for restricted environments such as ours.\footnote{https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg}. In places in which the paper lacks details, we refer to the baseline darknet implementation
 to resolve ambiguities.
 \subsubsection*{Loss function}
+
+
 YOLO’s loss function must optimize the network's parameters as to simultaneously solve the object localization and object classification tasks. This function
 simultaneously penalizes incorrect object detections
 as well as considers what the best possible classification
-would be. We employ the stochastic gradient descent
-optimization method offered by TensorFlow[10] with the
-Adam optimizer [7] to minimize the cost function. We
+would be. The YOLO is trained to minimize the sum of squared errors, with scale parameters to control how much we want to increase the loss from bounding box coordinate predictions ($\lambda_\textbf{coord}$) and how much we want to decrease the loss from confidence predictions for boxes that don’t contain objects ($\lambda_\textbf{no\_obj}$) We
 implement the following loss function, composed of five
 terms:
-The scale factors $\lambda_\textbf{coord}, \lambda_\textbf{obj}, \lambda_\textbf{no\_obj}$ determine how much to penalize coordinate and classification errors. ${\mathbb{1}}_{ij}^{\text{obj}}$ is 1 for the $i$-th grid square and $j$-th bounding box predictor and 0 otherwise ${{\mathbb{1}}}_i^{\text{obj}}$ is 1 if an object appears in the $i$-th grid square and 0 otherwise.
+${\mathbb{1}}_{ij}^{\text{obj}}$ is 1 for the $i$-th grid square and $j$-th bounding box predictor and 0 otherwise ${{\mathbb{1}}}_i^{\text{obj}}$ is 1 if an object appears in the $i$-th cell and 0 otherwise.
+$p_i(c)$ and $\hat{p}_i(c)$ represent the actual and predicted conditional probabilities of whether cell i contains an object of class c.
 \begin{align*}
 \lambda_\textbf{coord}
 \sum_{i = 0}^{S^2}
@@ -298,7 +310,7 @@ The particular architecture we used for training on our dataset is \textbf{tiny 
 
 
 \includegraphics[width=1\linewidth]{tinyyolo}
-\caption{tiny YOLO-v3 feature extractor}
+\caption{A simple YOLO-v3 feature extractor with a grid size of $7\times 7$, $B=2$ and 20 classes, making the final prediction vector ($7 \times 7 \times 30$) - dimensional. }
 \end{figure}
 
 \subsection{Webcam deployment}
@@ -321,13 +333,13 @@ http://tarangshah.com/blog/2018-01-27/what-is-map-understanding-the-statistic-of
 \\
 https://github.com/rafaelpadilla/Object-Detection-Metrics\\
 \section{Results}
-Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations. However, this is quite the bogus claim as our test sets were composed of 5 \% random samples from the particular dataset that had been trained on.
+Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations (mAP $=99.1 \%$). However, comparing mAPs across different datasets is not very sensible - our test sets were composed of 5 \% random samples from the particular dataset that had been trained on which made it a lot easier for the ``earlier'' dataset as their test set was easy.
 
-In total, training always converged rather quickly. Again, datasets without complex textures led to better (i.e. faster) convergence which intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card.\\
+In total, training always converged rather quickly \ref{fig:curve} Again, datasets without complex textures led to better (i.e. faster) convergence which intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card.\\
 \begin{SCfigure}
 
 \includegraphics[scale=1]{loss}
-
+\label{fig:curve}
 \caption{Precision values after each training epochs evaluated on the test set pertaining to the dataset being trained on. As you would expect, the easier the dataset, the faster the training and the better the results. }
 
 
@@ -357,9 +369,9 @@ name    & description  & precision & recall & mAP \\
 \label{tab:res}
 \end{table}
 \subsection*{Exemplary test results and failure cases}
-Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision allows for an additional inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (REF FIGURE3).
+Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision allows for an additional inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (see figure \ref{fig:testcases}).
 \begin{figure}[h]
-
+\label{fig:testcases}
 \begin{tabular}{ccc}
 
  \includegraphics[width=44mm]{success3} &   \includegraphics[width=44mm]{success2} &   \includegraphics[width=44mm]{success1}\\
@@ -372,10 +384,10 @@ Metrics are most helpful in measuring the effectiveness of algorithms, but more 
 \end{tabular}
 \caption{Successful cases of detection (top row) and typical fail cases (bottom row) }
 \end{figure}
-As was to be expected, when multiple cards were present in an image, it was harder to find a rightfully classified image than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering going on. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
+When multiple cards were present in an image, it was harder to find a completely correctly classified image than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering going on. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
 \subsection*{Extensions and tricks used in training}
 \subsubsection*{Transfer learning}
-For all experiments above, we started training using a network pre-trained on the VOC dataset (CITE). However, we also experimented with using our own fine-tuned weights from previous datasets for training. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and further speed-ups were not needed.
+For all of the experiments above, we started training using a network pre-trained on the VOC dataset \cite{Everingham15} \footnote{PyTorch weights are available at \url{https://pjreddie.com/media/files/yolov3-tiny.weights}.}. After having trained our network on our own dataset, we also experimented with using our own fine-tuned weights from previous datasets for training subsequent models. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and large speed-ups were not needed.
 \subsubsection*{Webcam deployment}
 Depending on the scenery, our model running on a laptop webcam resulted in satisfactory to good results.
 \section{Discussion and Future Work}
@@ -384,21 +396,23 @@ Using an artificially created annotated dataset of playing cards in situations r
 \subsubsection*{Training process}
 The training procedure went rather swiftly. Apparently,  the particular task of detecting ranks/suits of playing cards is easy for our model - it can be thought of as 2D rather than 3D - in the end, playing cards are flat pieces of paper that do not show much variation in a 3D-world unlike other natural objects where algorithms have to learn representations of varying angle and shadow conditions or situations involving occlusion and the likes. \\
 \subsubsection*{Deployment on a webcam}
-Testing our model on a webcam resulted in satisfactory,  results. In many scenarios, especially with very bright backgrounds, the "black" suits \textit{clubs} and \textit{spades} dominated the scenery and were generally easier to be detected. We hypothesize two possible explanations for this: First, our dataset and corresonding transformations might not be general enough to cover the kinds of images captured by a stock laptop webcam. Second,   
+Testing our model on a webcam resulted in satisfactory,  results. In many scenarios, especially with very bright backgrounds, the ``black'' suits \textit{clubs} and \textit{spades} dominated the scenery and were generally easier to be detected. We hypothesize two possible explanations for this: First, our dataset and corresonding transformations might not be general enough to cover the kinds of images captured by a stock laptop webcam. Second,   
 
 \subsection{Future Work}
 Our work works pretty well in the limited domain described above. However, if we were to develop a more reliable system, there are several extensions to be made.
 \begin{description}
 \item[more general dataset] The probably largest room for improval lies in the generation of a more general dataset - we trained on a single deck of cards, using one set of photographs. A more reliable approach would be to train on several decks of cards, include more than one card per image, use more actual photos of more realistic lighting situations, use realistic images as backgrounds instead of textures etc.
 Also, we did not include the realistic scenario of shadows in the dataset at all, which also compromises generalisability.
-\item[more thorough hyperparameter search] There are several hyperparameters of YOLO
+\item[more thorough hyperparameter search] There are several hyperparameters of YOLO. We unsystematically experimented with changing the anchor box sizes, learning rate and grid size without experiencing greatly improved results. A more thorough hyperparameter (grid) search might warrant better results.
 
-\item[explore other architectures] Quite possibly, the inclusion of a more general dataset would cause tiny YOLOv3 to be overwhelmed. While such small architectures are beneficial to training times and risk of overfitting, they also encounter difficulties when relationships to be learned become overly complex. Especially including images with a very large scaling range introduces a large number of more stuff to be learned.
+\item[explore other architectures] Quite possibly, the inclusion of a more general dataset would cause tiny YOLOv3 to be overwhelmed. While small architectures are beneficial to training and inference times as well as decreasing the risk of overfitting, they also encounter difficulties when relationships to be learned become overly complex. Especially including images with a very large range of scaling/zoom introduces a large number of more subtelities to be learned.
 \item[cross-validation] We tested our model on a fixed set of test images. While there is nothing wrong with this approach, it also involves the risk of overfitting hyperparameters to this test set. A more thorough, yet more expensive approach would be repeatedly training models on different h.......... We made sure not to make parameters of our final model dependent on evaluation metrics of the test set, so this was not a big deal.
+\item[extending the cheating pipeline] A system to recognize playing cards is only one part of the big task of effective cheating. The ways in which a system like ours may be used are manifold: for one, one might deploy it into a smart contact lense or smart glasses in order to augment a user's reality with information based on what cards have been seen or, much more evil, might use fixed surveillance cameras in the room to detect cards of opponents and feed this information back to the cheating player. 
 \end{description}
-We did not include shadow and stuff
+
 \section{Conclusion}
-Using the YOLOv3 object detection algorithm, we managed to detect the suits and ranks of playing cards in a general setting. Hereby, our project served as a proof-of-concept - in order to build a model that is actually able to help people cheat effectively, several extensions would need to be made to our approach, which include... \\ Another issue to solving this is the lack of commodity contact lenses equipped with video cameras and GPUs in close proximity - until then, card game players will be protected from this kind of fraud.
+Using the YOLOv3 object detection algorithm, we managed to detect the suits and ranks of playing cards in a general setting. As our project was conceived to be a proof-of-concept - in order to build a model that is actually able to help people cheat effectively, several extensions would need to be made to our approach, which include... \\ Another issue to solving this is the lack of commodity contact lenses equipped with video cameras and GPUs in close proximity - until then, card game players will be protected from this kind of fraud.
+  \bibliographystyle{acm}
 
 \bibliography{cite}
 \end{document}
