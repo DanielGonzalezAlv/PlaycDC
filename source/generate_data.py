@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This code generates new images using linear transformations.
-After this, it crops the images to the middle to have a lower
-resolution.
+After this, it crops the images to the middle to reduce their resolution.
 
 Please read README for USAGE information.
 
