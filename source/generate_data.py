@@ -105,7 +105,7 @@ def create_file_info(filename, cards_dict):
     
 def cut_convex(conv_hull, range_cut, dim_img_cut):
     """
-    This function crops the image to the middle.
+    This function crops the image into the middle.
     It accepts only convex hulls with enough amount of points that are not
     located to near at the boundary.
     """
