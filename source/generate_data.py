@@ -273,9 +273,9 @@ if __name__ == "__main__":
                 print("chech")
                 continue
             else:
-                file_name_txt = "../YOLO/labels/" + file_name + "-" + str(j) + ".txt"
+                file_name_txt = "../YOLO/cards_data/labels/" + file_name + "-" + str(j) + ".txt"
                 create_txt_files(file_name_txt, card_name, list_coords1, list_coords2)   
  
                 # Save images
-                file_name_img = "../YOLO/JPEGImages/" + file_name + "-" + str(j)+ ".jpg"
+                file_name_img = "../YOLO/cards_data/JPEGImages/" + file_name + "-" + str(j)+ ".jpg"
                 scipy.misc.imsave(file_name_img, img_aug_cut)
