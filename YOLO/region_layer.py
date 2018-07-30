@@ -8,6 +8,7 @@ import torch.nn.functional as F
 from utils import bbox_iou, multi_bbox_ious, convert2cpu
 
 class RegionLayer(nn.Module):
+    """Implementation of the region layer."""
     def __init__(self, num_classes=0, anchors=[], num_anchors=1, use_cuda=None):
         super(RegionLayer, self).__init__()
         use_cuda = torch.cuda.is_available() and (True if use_cuda is None else use_cuda)
@@ -15,7 +16,6 @@ class RegionLayer(nn.Module):
         self.num_classes = num_classes
         self.num_anchors = num_anchors
         self.anchor_step = len(anchors)//num_anchors
-        #self.anchors = torch.stack(torch.FloatTensor(anchors).split(self.anchor_step)).to(self.device)
         self.anchors = torch.FloatTensor(anchors).view(self.num_anchors, self.anchor_step).to(self.device)
         self.rescore = 1
         self.coord_scale = 1
@@ -110,7 +110,6 @@ class RegionLayer(nn.Module):
         return {'x':output, 'a':masked_anchors, 'n':num_anchors}
 
     def forward(self, output, target):
-        #output : BxAs*(4+1+num_classes)*H*W
         t0 = time.time()
         nB = output.data.size(0)    # batch size
         nA = self.num_anchors
@@ -161,20 +160,11 @@ class RegionLayer(nn.Module):
         tconf, tcls = tconf.to(self.device), tcls.to(self.device)
         coord_mask, conf_mask = coord_mask.view(cls_anchor_dim).to(self.device), conf_mask.sqrt().to(self.device)
 
-        t3 = time.time()
         loss_coord = self.coord_scale * nn.MSELoss(size_average=False)(coord*coord_mask, tcoord*coord_mask)/2
-        # sqrt(object_scale)/2 is almost equal to 1.
         loss_conf = nn.MSELoss(size_average=False)(conf*conf_mask, tconf*conf_mask)/2 
         loss_cls = self.class_scale * nn.CrossEntropyLoss(size_average=False)(cls, tcls) if cls.size(0) > 0 else 0
         loss = loss_coord + loss_conf + loss_cls
         t4 = time.time()
-        if False:
-            print('-'*30)
-            print('        activation : %f' % (t1 - t0))
-            print(' create pred_boxes : %f' % (t2 - t1))
-            print('     build targets : %f' % (t3 - t2))
-            print('       create loss : %f' % (t4 - t3))
-            print('             total : %f' % (t4 - t0))
         print('%d: nGT %3d, nRC %3d, nPP %3d, loss: box %6.3f, conf %6.3f, class %6.3f, total %7.3f' 
             % (self.seen, nGT, nRecall, nProposals, loss_coord, loss_conf, loss_cls, loss))
         if math.isnan(loss.item()):

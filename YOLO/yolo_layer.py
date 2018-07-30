@@ -8,6 +8,9 @@ import torch.nn.functional as F
 from utils import bbox_iou, multi_bbox_ious, convert2cpu
 
 class YoloLayer(nn.Module):
+    """Implementation of the YOLO Layer, used to make predictions relative to anchor boxes;
+       depending on the .cfg file, there are a different number of YOLO layers - in our case (tiny v3), it's 3
+    """
     def __init__(self, anchor_mask=[], num_classes=0, anchors=[], num_anchors=1, use_cuda=None):
         super(YoloLayer, self).__init__()
         use_cuda = torch.cuda.is_available() and (True if use_cuda is None else use_cuda)

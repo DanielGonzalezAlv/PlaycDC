@@ -8,6 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 import itertools
 import struct # get_image_size
 import imghdr # get_image_size
+import cv2
 
 def sigmoid(x):
     return 1.0/(math.exp(-x)+1.)
@@ -18,6 +19,7 @@ def softmax(x):
     return x
 
 def bbox_iou(box1, box2, x1y1x2y2=True):
+    """calculate IoU of box1 and box2"""
     if x1y1x2y2:
         x1_min = min(box1[0], box2[0])
         x2_max = max(box1[2], box2[2])
@@ -48,6 +50,7 @@ def bbox_iou(box1, box2, x1y1x2y2=True):
     return float(carea/uarea)
 
 def multi_bbox_ious(boxes1, boxes2, x1y1x2y2=True):
+    """calculate all IoUs of boxes1 and boxes2 """
     if x1y1x2y2:
         x1_min = torch.min(boxes1[0], boxes2[0])
         x2_max = torch.max(boxes1[2], boxes2[2])
@@ -76,6 +79,10 @@ def multi_bbox_ious(boxes1, boxes2, x1y1x2y2=True):
     return carea/uarea
 
 def nms(boxes, nms_thresh):
+    """non-maximum suppression loop
+       for given boxes (that are usually close to one another, but don't necessarily have to, sort by confidence and
+       zero out the ones with lower IoU than nms_thresh
+    """
     if len(boxes) == 0:
         return boxes
 
@@ -92,7 +99,6 @@ def nms(boxes, nms_thresh):
             for j in range(i+1, len(boxes)):
                 box_j = boxes[sortIds[j]]
                 if bbox_iou(box_i, box_j, x1y1x2y2=False) > nms_thresh:
-                    #print(box_i, box_j, bbox_iou(box_i, box_j, x1y1x2y2=False))
                     box_j[4] = 0
     return out_boxes
 
@@ -116,6 +122,10 @@ def get_all_boxes(output, conf_thresh, num_classes, only_objectness=1, validatio
     return all_boxes
 
 def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, only_objectness=1, validation=False, use_cuda=True):
+    """method to get all boxes of a cell given the output of the network
+       this method also performs confidence thresholding
+       the output has dimension (batch_size x S x S x (5 x B) x C)
+    """
     device = torch.device("cuda" if use_cuda else "cpu")
     anchors = anchors.to(device)
     anchor_step = anchors.size(0)//num_anchors
@@ -126,7 +136,7 @@ def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, onl
     h = output.size(2)
     w = output.size(3)
     cls_anchor_dim = batch*num_anchors*h*w
-
+    # convert the output of the network to actual bounding boxes (which are absolute, no more relativ to anchors)
     t0 = time.time()
     all_boxes = []
     output = output.view(batch*num_anchors, 5+num_classes, h*w).transpose(0,1).contiguous().view(5+num_classes, cls_anchor_dim)
@@ -147,7 +157,7 @@ def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, onl
     cls_max_confs = cls_max_confs.view(-1)
     cls_max_ids = cls_max_ids.view(-1)
     t1 = time.time()
-    
+
     sz_hw = h*w
     sz_hwa = sz_hw*num_anchors
     det_confs = convert2cpu(det_confs)
@@ -160,18 +170,23 @@ def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, onl
 
     t2 = time.time()
     for b in range(batch):
+        """iterate through each batch"""
         boxes = []
         for cy in range(h):
+            """iterate through the number of horizontal cells S"""
             for cx in range(w):
+                """iterate through the number of vertical cells S"""
                 for i in range(num_anchors):
+                    """iterate through all anchors B and extract boxes relative to image origin"""
                     ind = b*sz_hwa + i*sz_hw + cy*w + cx
                     det_conf =  det_confs[ind]
                     if only_objectness:
                         conf = det_confs[ind]
                     else:
                         conf = det_confs[ind] * cls_max_confs[ind]
-    
+
                     if conf > conf_thresh:
+                        # remove everything that is under conf_thresh
                         bcx = xs[ind]
                         bcy = ys[ind]
                         bw = ws[ind]
@@ -239,6 +254,9 @@ def plot_boxes_cv2(img, boxes, savename=None, class_names=None, color=None):
     return img
 
 def plot_boxes(img, boxes, savename=None, class_names=None):
+    """method to draw boxes and class labels onto images
+       font size can be manipulated below, the thickness of lines sadly not as easily.
+    """
     colors = torch.FloatTensor([[1,0,1],[0,0,1],[0,1,1],[0,1,0],[1,1,0],[1,0,0]])
     def get_color(c, x, max_val):
         ratio = float(x)/max_val * 5
@@ -271,13 +289,55 @@ def plot_boxes(img, boxes, savename=None, class_names=None):
             green = get_color(1, offset, classes)
             blue  = get_color(0, offset, classes)
             rgb = (red, green, blue)
-            font = ImageFont.truetype("./tools/arial.ttf", 30)
+            font = ImageFont.truetype("./tools/arial.ttf", 40)
 
-            draw.text((x1-width/25, y1), class_names[cls_id], fill=rgb, font=font)
+            draw.text((x1-width/25, y1-40), class_names[cls_id], fill=rgb, font=font)
         draw.rectangle([x1, y1, x2, y2], outline=rgb)
     if savename:
         print("save plot results to %s" % savename)
         img.save(savename)
+    return img
+
+def plot_boxes_for_webcam(img, boxes, class_names=None, duration_per_frame = None, color=None):
+    """basically the same as above with bigger font size and smaller resolution"""
+    import cv2
+    colors = torch.FloatTensor([[1,0,1],[0,0,1],[0,1,1],[0,1,0],[1,1,0],[1,0,0]])
+    def get_color(c, x, max_val):
+        ratio = float(x)/max_val * 5
+        i = int(math.floor(ratio))
+        j = int(math.ceil(ratio))
+        ratio = ratio - i
+        r = (1-ratio) * colors[i][c] + ratio*colors[j][c]
+        return int(r*255)
+
+    width = img.shape[1]
+    height = img.shape[0]
+    for i in range(len(boxes)):
+        box = boxes[i]
+        x1 = int(torch.round((box[0] - box[2]/2.0) * width))
+        y1 = int(torch.round((box[1] - box[3]/2.0) * height))
+        x2 = int(torch.round((box[0] + box[2]/2.0) * width))
+        y2 = int(torch.round((box[1] + box[3]/2.0) * height))
+
+        if color:
+            rgb = color
+        else:
+            rgb = (255, 0, 0)
+        if len(box) >= 7 and class_names:
+            cls_conf = box[5]
+            cls_id = box[6]
+            #print('%s: %f' % (class_names[cls_id], cls_conf))
+            classes = len(class_names)
+            offset = cls_id * 123457 % classes
+            red   = get_color(2, offset, classes)
+            green = get_color(1, offset, classes)
+            blue  = get_color(0, offset, classes)
+            if color is None:
+                rgb = (red, green, blue)
+            img = cv2.putText(img, class_names[cls_id], (x1,y1), cv2.FONT_HERSHEY_SIMPLEX, 2, rgb, 1)
+
+        img = cv2.rectangle(img, (x1,y1), (x2,y2), rgb, 1, lineType=cv2.LINE_AA)
+    img = cv2.putText(img, 'Frames per second: ' + str(int(1 / duration_per_frame)), (1, height), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 0), 1)
     return img
 
 def read_truths(lab_path):
@@ -324,6 +384,7 @@ def image2torch(img):
 
 import types
 def do_detect(model, img, conf_thresh, nms_thresh, use_cuda=True):
+    """standard detect method with conf thresholding and nms thresholding"""
     model.eval()
     t0 = time.time()
     img = image2torch(img)
@@ -331,25 +392,20 @@ def do_detect(model, img, conf_thresh, nms_thresh, use_cuda=True):
 
     img = img.to(torch.device("cuda" if use_cuda else "cpu"))
     t2 = time.time()
-
+    # perform forward pass of a single image
     out_boxes = model(img)
+    # get all bounding boxes
     boxes = get_all_boxes(out_boxes, conf_thresh, model.num_classes, use_cuda=use_cuda)[0]
-    
+
     t3 = time.time()
+    # non-maximum thresholding
     boxes = nms(boxes, nms_thresh)
     t4 = time.time()
 
-    if False:
-        print('-----------------------------------')
-        print(' image to tensor : %f' % (t1 - t0))
-        print('  tensor to cuda : %f' % (t2 - t1))
-        print('         predict : %f' % (t3 - t2))
-        print('             nms : %f' % (t4 - t3))
-        print('           total : %f' % (t4 - t0))
-        print('-----------------------------------')
     return boxes
 
 def read_data_cfg(datacfg):
+    """simple method to read data cfg file"""
     options = dict()
     options['gpus'] = '0,1,2,3'
     options['num_workers'] = '10'
@@ -367,6 +423,7 @@ def read_data_cfg(datacfg):
     return options
 
 def scale_bboxes(bboxes, width, height):
+    """unused method to scale BBs"""
     import copy
     dets = copy.deepcopy(bboxes)
     for i in range(len(dets)):

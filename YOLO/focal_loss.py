@@ -46,8 +46,6 @@ class FocalLoss(nn.Module):
         class_mask = inputs.data.new(N, C).fill_(0)
         ids = targets.view(-1, 1)
         class_mask.scatter_(1, ids.data, 1.)
-        #print(class_mask)
-        
 
         if inputs.is_cuda and not self.alpha.is_cuda:
             self.alpha = self.alpha.cuda()
@@ -56,45 +54,12 @@ class FocalLoss(nn.Module):
         probs = (P*class_mask).sum(1).view(-1,1)
 
         log_p = probs.log()
-        #print('probs size= {}'.format(probs.size()))
-        #print(probs)
 
         batch_loss = -alpha*(torch.pow((1-probs), self.gamma))*log_p 
-        #print('-----bacth_loss------')
-        #print(batch_loss)
 
-        
         if self.size_average:
             loss = batch_loss.mean()
         else:
             loss = batch_loss.sum()
         return loss
 
-        
-
-if __name__ == "__main__":
-    alpha = torch.rand(21, 1)
-    print(alpha)
-    FL = FocalLoss(class_num=5, gamma=0 )
-    CE = nn.CrossEntropyLoss()
-    N = 4
-    C = 5
-    inputs = torch.rand(N, C, requires_grad=True)
-    targets = torch.LongTensor(N).random_(C)
-    inputs_fl = inputs.clone()
-    targets_fl = targets.clone()
-
-    inputs_ce = inputs.clone()
-    targets_ce = targets.clone()
-    print('----inputs----')
-    print(inputs)
-    print('---target-----')
-    print(targets)
-
-    fl_loss = FL(inputs_fl, targets_fl)
-    ce_loss = CE(inputs_ce, targets_ce)
-    print('ce = {}, fl ={}'.format(ce_loss.data[0], fl_loss.data[0]))
-    fl_loss.backward()
-    ce_loss.backward()
-    #print(inputs_fl.grad.data)
-    print(inputs_ce.grad.data)

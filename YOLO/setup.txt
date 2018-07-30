@@ -1,2 +1,0 @@
-python train.py -d cfg/voc.data -c cfg/yolov3-tiny.cfg -w yolov3-tiny.conv.15
-

@@ -77,6 +77,7 @@ class EmptyModule(nn.Module):
 # support route shortcut and reorg
 
 class Darknet(nn.Module):
+    """implementation of DarkNet, the neural net backend of YOLO."""
     def getLossLayers(self):
         loss_layers = []
         for m in self.models:
@@ -90,9 +91,6 @@ class Darknet(nn.Module):
         self.blocks = parse_cfg(cfgfile)
         self.models = self.create_network(self.blocks) # merge conv, bn,leaky
         self.loss_layers = self.getLossLayers()
-
-        #self.width = int(self.blocks[0]['width'])
-        #self.height = int(self.blocks[0]['height'])
 
         if len(self.loss_layers) > 0:
             last = len(self.loss_layers)-1
