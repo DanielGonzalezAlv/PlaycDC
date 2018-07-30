@@ -108,3 +108,11 @@ python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg
 **Use the webcam for prediction given a weights file** The prediction will be put in the top level folder
 
 python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.jpg cards_data/cards.names
+
+## Generally:
+
+**cards.data** specifies where to look for class / label mappings, folder of cardstrain.txt and cardsval.txt
+
+**hardest.weights** specifies which weight to start training with
+
+**yolov3-tiny.cfg** specifies the network architecture - and needs to correspond to the .weight file
