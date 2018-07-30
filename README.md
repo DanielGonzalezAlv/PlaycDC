@@ -112,5 +112,7 @@ python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.j
 ## Generally:
 
 **cards.data** specifies where to look for class / label mappings, folder of cardstrain.txt and cardsval.txt
+
 **hardest.weights** specifies which weight to start training with
+
 **yolov3-tiny.cfg** specifies the network architecture - and needs to correspond to the .weight file
