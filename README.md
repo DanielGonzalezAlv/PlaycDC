@@ -83,14 +83,13 @@ The following python packages are required:
 - CUDA 5.2 or newer
 - Python OpenCV (CV2) for webcam and predictions
 ### USAGE:
-
+Navigate to the YOLO folder.
 For training, you need to create a dataset from the above pipeline and have it within cards_data/JPEGImages and cards_data/labels. For testing, none of this is required.
 
 ## Training:
 Before anything, the folder cards_data/JPEGImages needs to contain images and cards_data/labels needs to contain corresponding labels from the above data creation pipeline.
 
-From the top-level YOLO folder (containing train.py, test.py, and all folders), 
-Before running YOLO, we have to know what to train/test on.
+Before running YOLO, we have to know what to train/test on. We need to write absolute paths into the files cardstrain.txt and cardsval.txt, that's what we will do next.
 touch cards_data/cardstrain.txt
 touch cards_data/cardsval.txt 
 python cards_data/prepare_trainlist.py  **this will create a list of absolute paths of images that we can train / test on and write it in cardstrain.txt**
