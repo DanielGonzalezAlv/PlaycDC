@@ -1,12 +1,11 @@
 #!usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-This code generates new images by using randomly linear transformations.
+This code generates new images using linear transformations.
+After this, it crops the images to the middle to have a lower
+resolution.
 
-Usage:
-Following directories need to be created if not existing:
-"../data/YOLO/YOLO_txt/"
-"../data/YOLO/YOLO_img/"
+Please read README for USAGE information.
 
 @author: Frank Gabel & Daniel Gonzalez
 @PlayCDC
@@ -22,6 +21,7 @@ import scipy.misc
 import os
 import glob
 from skimage.transform import rescale, resize, downscale_local_mean
+import sys
 
 def my_seq():
     sometimes = lambda aug: iaa.Sometimes(0.8, aug)
@@ -33,22 +33,11 @@ def my_seq():
                 rotate=(-90, 90),
             )),
             iaa.Affine(
-                 scale= (0.15,0.4)
+                 scale= (0.75,1.1)
             ),
     ])
     return seq
 
-def my_seq2():
-    sometimes = lambda aug: iaa.Sometimes(0.8, aug)
-    seq = iaa.Sequential(
-        [
-            sometimes(iaa.Affine(
-                scale={"x": (0.1, 0.3), "y": (0.1, 0.5)},
-                translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)},
-                rotate=(-90, 90),
-            )),
-        ])
-    return seq
 
 def get_coords(points, dim_img):
     """
@@ -120,7 +109,39 @@ def cut_convex(conv_hull, range_cut, dim_img_cut):
     return cut_hull
 
 if __name__ == "__main__":
-    
+      
+    if len(sys.argv) == 1:
+        print("Generating new data using 5 transormations per image, without ploting the results ...")
+        print("Note: if you want to change this values, use parsing.")
+        print("For more information check the README file")
+        
+        # Plot results
+        PLOT_results = False
+
+        # transformations
+        transformations = 5   
+
+    elif len(sys.argv) == 2:
+        transformations = int(sys.argv[1])
+        print("Creating data using", transformations, " per image, without plotting the results...")
+
+        # Plot results
+        PLOT_results = False
+
+    elif len(sys.argv) == 3:
+        transformations = int(sys.argv[1])
+        print("Creating data using", transformations, " per image and plotting the results...")
+
+        # Plot results
+        PLOT_results = True 
+
+    else:
+        print('Parameters are provided in a wrong way.')
+        print('For more information, pleas consut the README')
+        print('This program ends here!')
+        sys.exit()
+
+     
     # Diretory of all the cards
     cards_dict = {"ad":0,"2d":1,"3d":2,"4d":3,"5d":4,"6d":5,"7d":6,"8d":7,"9d":8,"10d":9,"jd":10,"qd":11,"kd":12,
                   "ah":13,"2h":14,"3h":15,"4h":16,"5h":17,"6h":18,"7h":19,"8h":20,"9h":21,"10h":22,"jh":23,"qh":24,"kh":25,
@@ -128,8 +149,12 @@ if __name__ == "__main__":
                   "as":39,"2s":40,"3s":41,"4s":42,"5s":43,"6s":44,"7s":45,"8s":46,"9s":47,"10s":48,"js":49,"qs":50,"ks":51}
 
     # Create file with info of the cards (necessary for YOLO)
-    file_name = "../data/YOLO/" + "info_files.txt" 
-    create_file_info(file_name, cards_dict)
+    file_name = "../data/" + "info_files.txt" 
+    
+    # This part of the code was intended to generate a file necessary for YOLO.
+    # As this file is already created, this line is commented.
+    #create_file_info(file_name, cards_dict)
+    
     
     # Paths to work with 
     path_images = "../data/textures/images/"
@@ -149,8 +174,8 @@ if __name__ == "__main__":
         keypoints2 = ia.KeypointsOnImage([ia.Keypoint( x = np_file[1][i][0], y = np_file[1][i][1]) 
             for i in range(len(np_file[1]))], shape= img.shape)     
 
-        # Generate 3 tranformations per card
-        for j in range(5):
+        # Generate tranformations on cards
+        for j in range(transformations):
             seq = my_seq()
             seq_det = seq.to_deterministic()
             img_aug = seq_det.augment_images([img])[0]
@@ -168,9 +193,15 @@ if __name__ == "__main__":
             image_after1 = keypoints1_aug.draw_on_image(img_aug,size=10)
             image_after2 = keypoints2_aug.draw_on_image(img_aug,size=10)
             
+
+            img_aug_cut = img_aug[range_cut:img_aug.shape[0]-range_cut, range_cut:img_aug.shape[1]-range_cut] 
+            dim_img_cut = img_aug_cut.shape
+
+            conv_hull1_cut = cut_convex(conv_hull1, range_cut, dim_img_cut)             
+            conv_hull2_cut = cut_convex(conv_hull2, range_cut, dim_img_cut)             
+
             # Plot cards with hulls
-            PLOT = True  
-            if PLOT:
+            if PLOT_results:
                 fig = plt.figure()
                 plt.imshow(img_aug_cut); 
 
@@ -219,9 +250,13 @@ if __name__ == "__main__":
                 card_name = cards_dict[np_file[2]]
 
             # save textfile
-            file_name_txt = "../data/YOLO/YOLO_txt/" + file_name + "-" + str(j) + ".txt"
-            create_txt_files(file_name_txt, card_name, list_coords1, list_coords2)   
+            if list_coords1 == [] and list_coords2 == []:
+                print("chech")
+                continue
+            else:
+                file_name_txt = "../YOLO/labels/" + file_name + "-" + str(j) + ".txt"
+                create_txt_files(file_name_txt, card_name, list_coords1, list_coords2)   
  
-            # Save images
-            file_name_img = "../data/YOLO/YOLO_img/" + file_name + "-" + str(j)+ ".jpg"
-            scipy.misc.imsave(file_name_img, img_aug_cut)
+                # Save images
+                file_name_img = "../YOLO/JPEGImages/" + file_name + "-" + str(j)+ ".jpg"
+                scipy.misc.imsave(file_name_img, img_aug_cut)
