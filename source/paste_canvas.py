@@ -2,14 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 This program perform blurring, sharping and change of lightness to the 
-cards and later paste it into canvanses provided by DDT
+cards.  After this, paste them into canvanses provided by dtd 
 (see: https://github.com/datadriventests/ddt).
 For this is important to save the dtd images in the "../data/" directory
 
-Usage:
-Following directories need to be created if not existing:
-"../data/textures/images/"
-"../data/textures/np_convex/"
+Please read README for USAGE information.
 
 @author: Frank Gabel & Daniel Gonzalez
 @PlayCDC
@@ -21,10 +18,11 @@ from imgaug import augmenters as iaa
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import misc
-import scipy.misc
 import os
 import glob
-from skimage.transform import rescale, resize, downscale_local_mean
+from skimage.transform import resize 
+import sys
+import warnings
 
 def my_seq():
     sometimes = lambda aug: iaa.Sometimes(0.8, aug)
@@ -41,17 +39,30 @@ def my_seq():
 
 if __name__ == "__main__":
 
-    
+    if len(sys.argv) == 1:
+        print("Generating new data using 5 images over 15 directories ...")
+        print("Note: if you want to change this values, use parsing.")
+        print("For more information check the README file")
+        # images per directory
+        images_per_texture = 5 
+
+        # number of directories to go through
+        ndirs = 15
+
+    elif len(sys.argv) == 3:
+        images_per_texture = int(sys.argv[1])
+        ndirs = int(sys.argv[2])
+        print("Creatin data with:", images_per_texture, "image(s) along ",ndirs, "directorie(s) ...")
+    else:
+        print('Parameters are provided in a wrong way.')
+        print('For more information, pleas consut the README')
+        print('This program ends here!')
+        sys.exit()
+        
     # Paths to work
     path_np_files = "../data/npConvex" 
     path_images = "../data/images/post-processed/" 
     path_textures = "../data/dtd-r1.0.1/dtd/images"  # Make sure to download the data first
-
-    # images per directory
-    images_per_texture = 5 
-
-    # number of directories to go through
-    ndirs = 15
 
     for subdir, dirs, files in os.walk(path_textures):
         break_directory = 0
@@ -84,8 +95,8 @@ if __name__ == "__main__":
                     name_of_texture = texture.replace(name_dir_textures ,"").replace(".jpg", "")
 
                     texture = misc.imread(texture)
+                    warnings.filterwarnings("ignore")
                     texture = resize(texture,(texture_canvas[0],texture_canvas[1]))
-
                     seq = my_seq()
                     seq_det = seq.to_deterministic()
                     img_aug = seq_det.augment_images([img])[0]
@@ -98,7 +109,7 @@ if __name__ == "__main__":
                     ##### Save
                     # Save images
                     file_name_img = "../data/textures/images/" + str(np_file[2]) + "-"+ name_of_texture + ".jpg"
-                    scipy.misc.imsave(file_name_img, image_aug)
+                    misc.imsave(file_name_img, image_aug)
 
                     # save npfiles
                     file_name_np = "../data/textures/np_convex/" + str(np_file[2]) + "-"+ name_of_texture 
