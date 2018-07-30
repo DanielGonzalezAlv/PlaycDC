@@ -89,10 +89,13 @@ Before running YOLO, we have to know what to train/test on.
 touch cards_data/cardstrain.txt
 touch cards_data/cardsval.txt 
 python cards_data/prepare_trainlist.py  **this will create a list of absolute paths of images that we can train / test on and write it in cardstrain.txt**
+
 Now, we are ready to use the model:
 **Train YOLO on the data, starting with our weights vector**
 python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w hardest.weights
+
 **Detect a single image (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
 python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg cards_data/cards.names
+
 **Use the webcam for prediction (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
 python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.jpg cards_data/cards.names
