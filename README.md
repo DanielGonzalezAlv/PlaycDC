@@ -75,7 +75,7 @@ The generated data is saved on YOLO/JPEGImages & YOLO/labels
 
 ## External dependencies & Usage
 
-The code is based on the implementation of https://github.com/marvis/pytorch-yolo3 for normal-YOLOv3 training on VOC data. We had to adapt large parts of the code to work on our cards data and tiny YOLOv3.
+The code, especially the YOLO architecture, is based on the implementation of https://github.com/marvis/pytorch-yolo3 for normal-YOLOv3 training on VOC data. We had to adapt large parts of the code to work on pytorch 0.4, our cards data and tiny YOLOv3.
 
 The following python packages are required:
 - Python 3.6
