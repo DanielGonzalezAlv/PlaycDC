@@ -22,7 +22,11 @@ import glob
 from skimage.transform import rescale, resize, downscale_local_mean
 import sys
 
-def my_seq():
+def transformation_seq():
+    """
+    This function defines a sequence of linear transformations to generate
+    new data.
+    """
     sometimes = lambda aug: iaa.Sometimes(0.8, aug)
     seq = iaa.Sequential(
         [
@@ -40,10 +44,13 @@ def my_seq():
 
 def get_coords(points, dim_img):
     """
-    This function take a bunch of points and returns:
-    - "mid_point" : Midpoint given with the help of the max min coords of x and y 
-    - width 
-    - height
+    This function detects the middle point of the convex hulls and
+    returns it together with maximum height and width with respect 
+    to the convex hull.
+    :param points: Points of the convex hull 
+    :type points: numpy.ndarrray
+    :param dim_img: name of the card
+    :type dim_img: numpy.ndarrray
     """
     if points ==[]:
         return [] 
@@ -61,8 +68,8 @@ def get_coords(points, dim_img):
 
 def create_txt_files(filepath, file_name, list_files1, list_files2):
     """
-    This Program writes .txt files for YOLO 
-
+    This function creates a file with the necessary information for YOLO.
+    It writes the labels information together with the Bounding Box positions. 
     """
     f = open(filepath, "w+")
 
@@ -80,7 +87,14 @@ def create_txt_files(filepath, file_name, list_files1, list_files2):
      
 def create_file_info(filename, cards_dict):
     """
-    This function creates a file with the info of the cards
+    This function writes a .txt files with necessery information for YOLO.
+    It needs only to run once, after this, the function can be 
+    ommited/commented in the script.
+    
+    :param filename: name of the file 
+    :type filename: string
+    :param cards_dict: dictionary of the cards and labels 
+    :type carname: dict 
     """
     # Create file mit keys
     f= open(file_name, "w+")
@@ -90,6 +104,12 @@ def create_file_info(filename, cards_dict):
     f.close()
     
 def cut_convex(conv_hull, range_cut, dim_img_cut):
+    """
+    This function crops the image to the middle.
+    It accepts only convex hulls with enough amount of points that are not
+    located to near at the boundary.
+    """
+
     cut_hull = conv_hull - range_cut
     cut_hull = np.maximum(cut_hull, np.zeros(cut_hull.shape))
     cut_hull = np.minimum(cut_hull, dim_img_cut[1] * np.ones(cut_hull.shape))
@@ -175,7 +195,7 @@ if __name__ == "__main__":
 
         # Generate tranformations on cards
         for j in range(transformations):
-            seq = my_seq()
+            seq = transformation_seq()
             seq_det = seq.to_deterministic()
             img_aug = seq_det.augment_images([img])[0]
             keypoints1_aug = seq_det.augment_keypoints([keypoints1])[0]
