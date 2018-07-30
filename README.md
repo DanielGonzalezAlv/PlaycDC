@@ -75,6 +75,8 @@ The generated data is saved on YOLO/JPEGImages & YOLO/labels
 
 ## External dependencies & Usage
 
+The code is based on the implementation of https://github.com/marvis/pytorch-yolo3 for normal-YOLOv3 training on VOC data. We had to adapt large parts of the code to work on our cards data and tiny YOLOv3.
+
 The following python packages are required:
 - Python 3.6
 - pytorch 0.4
@@ -100,7 +102,7 @@ Now, we are ready to use the model:
 python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w hardest.weights
 
 ## Testing:
-**Detect a single image given a weights file (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
+**Detect a single image given a weights file (given in the 3rd argument, e.g. data/fail.jpg or data/test11.jpg)** The prediction will be put in the top level folder
 
 python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg cards_data/cards.names
 
