@@ -1,7 +1,7 @@
 \documentclass[a4paper]{article}
 
 %% Language and font encodings
-\usepackage[english]{babel}
+%%\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{tabu}
 \usepackage[T1]{fontenc}
@@ -166,14 +166,17 @@ This is the reason why, as mentioned before, we decided to work with convex hull
 \end{minipage}
 
 \section{Related work - The object detection landscape}
-The task of object detection in images encompasses both the ``simpler'' form of only localizing and subsequently classifying objects as well as the more ``advanced'' form of additionally segmenting objects pixel-wise. 
+The task of object detection in images encompasses both localizing objects using bounding boxes and subsequently classifying objects within these bounding boxes.
 
-For these tasks, different deep learning architectures have emerged, of which \begin{wrapfigure}{l}{0.40\textwidth}
-\includegraphics[scale=0.38]{images/FRCN_architecture}
+For these tasks, different deep learning architectures have emerged, of which 
+
+\begin{wrapfigure}{l}{0.48\textwidth}
+\includegraphics[scale=0.18]{images/FRCN_architecture}
 \caption{The Faster R-CNN architecture. Note the weight sharing between RPN Network and the classifier.}
-\end{wrapfigure} we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs, \cite{DBLP:journals/corr/RenHG015})} have come up as an enhancement  of the existing R-CNN and Fast R-CNN methods that are based on both region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals. 
+\label{fig:rcnn-architectures}
+\end{wrapfigure} we will present the most important ones in the following.\\ In 2015, \textbf{Faster Region-based Convolutional Networks (Faster R-CNNs}, \cite{DBLP:journals/corr/RenHG015}\textbf{)},  have come up as an enhancement  of the existing R-CNN and Fast R-CNN methods that are based on distinct region proposal networks to find candidate bounding boxes and detection networks to perform classification. Faster R-CNN extend this by introducing weight sharing of the convolutional features between region proposal network and detection network, facilitating nearly cost-free region proposals (see Figure \ref{fig:rcnn-architectures}). 
 
-The previous methods of object detection all share one thing in common: they have one part of their network dedicated to providing region proposals followed by a classifier to classify these proposals. These methods are very accurate but come at a big computational cost (low frame-rate), in other words they are not fit to be used on embedded devices.
+These methods being all based on a two-stage process of having one part of their network dedicated to providing region proposals followed by a classifier to classify these proposals, makes them very accurate - however, this comes at a big computational cost (low frame-rate), making them not fit to be used on embedded devices.\\
 \begin{wrapfigure}{h}{0.55\textwidth}
 
 \includegraphics[scale=0.32]{images/retinanet}
@@ -183,21 +186,22 @@ Another way of doing object detection is by combining these two tasks into one n
 
 
 
-One-stage detectors like \textbf{You Only Look Once (YOLO)}\cite{DBLP:journals/corr/RedmonDGF15}\cite{DBLP:journals/corr/RedmonF16}\cite{DBLP:journals/corr/abs-1804-02767} or \textbf{Single-Shot Detector (SSD)}\cite{DBLP:journals/corr/LiuAESR15} that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors because of extreme class imbalance encountered during training.
-In 2016 and 2017, researchers from FacebookAI have developed concepts \cite{DBLP:journals/corr/abs-1708-02002}\cite{DBLP:journals/corr/LinDGHHB16}circumventing this - the main idea being to reshape cross entropy loss such that it down-weights the loss assigned to well-classified examples. The novel focal loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. Combining this with the concept of pyramidal...., we get the \textbf{Focal Loss for Dense Object Detection (RetinaNet)} which currently outperformes all other ....
+One-stage detectors like \textbf{You Only Look Once (YOLO)} \cite{DBLP:journals/corr/RedmonDGF15}\cite{DBLP:journals/corr/RedmonF16}\cite{DBLP:journals/corr/abs-1804-02767} or \textbf{Single-Shot Detector (SSD)} \cite{DBLP:journals/corr/LiuAESR15} that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors because of extreme class imbalance encountered during training.
+In 2016 and 2017, researchers from FacebookAI have developed concepts \cite{DBLP:journals/corr/abs-1708-02002}\cite{DBLP:journals/corr/LinDGHHB16}circumventing this - the main idea being to reshape cross entropy loss such that it down-weights the loss assigned to well-classified examples. The novel focal loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. Combining this with the concept of pyramidal...., we get the \textbf{Focal Loss for Dense Object Detection (RetinaNet)} which currently outperformes all other object detection algorithms in terms of performance with state-of-the-art inference times. 
 
 \section{Methods}
+As we motivated our project with the implementation of our network in embedded devices such as laptop webcams and smartphone cameras, we decided to use the latest iteration of the YOLO algorithm which has come up in April 2018 and still is the fastest object detection algorithm (despite being outperformed by RetinaNet, SSD and RCNN approaches).
 \subsection*{The YOLO approach to object detection}
-The YOLO model’s novel motivation is that it re-frames
-object detection as a single regression problem, directly
-from image pixels to bounding box coordinates and class
-probabilities. This means that the YOLO model only ”looks
+YOLO's general approach is that object detection is re-framed as a single regression problem, directly
+modelling bounding box coordinates and class
+probabilities from image pixels. This means that the YOLO model only ”looks
 once” at an image for object detection.
 It works as follows: 
 \begin{itemize}
 \item[--] divide an image into an $S\times S$ grid
-\item[--]  predict $B$ bounding boxes and a confidence score for each box representing the probability that an object is contained inside a bounding box (often called \textit{objectness score}) as well as a single $C$-dimensional vector of class probabilities 
-\item[--]  the output vector $S \times S \times (B\times 5 +C)$-dimensional
+\item[--] in training, each grid cell is responsible for predicting only the bounding boxes whose center pixel falls within them (for example, see Figure \ref{fig:cell})
+\item[--]  predict $B$ bounding boxes and a confidence score for each box representing the probability that an object is contained inside a bounding box (often called \textit{objectness score}) as well as a single $C$-dimensional vector of class probabilities, making the output vector $S \times S \times (B\times 5 +C)$-dimensional
+
 \item[--]  predictions are made using a technique called non-maximum suppression in which we remove low probability bounding boxes that are very close to high probability bounding boxes
 \end{itemize}  At test time the conditional class probabilities and the individual box confidence predictions are multiplied, resulting in a feature map of bounding boxes ``weighted'' by their per-class confidence scores. see figure \ref{fig:yolo_model}
 \begin{SCfigure}
@@ -211,16 +215,15 @@ It works as follows:
 
 
 \subsubsection*{Anchor boxes}
-Instead of wildly predicting $B$ bounding boxes per grid cell, the idea of YOLO is to predict offsets to $B$ so-called anchor boxes. Anchor boxes are rectangular boxes that are not learned, but rather pre-defined - the idea being that they should be representative of as many ground-truth bounding boxes as possible. \\
-Usually, one sets these boxes beforehand. However, an even better way to do this in one of the later YOLO research papers, is to use a k-means algorithm, to group together conceivable anchor boxes of objects shapes you tend to get. 
+Instead of wildly predicting $B$ bounding boxes per grid cell, the idea of YOLO is to predict offsets to $B$ so-called anchor boxes. Anchor boxes are rectangular boxes that are not learned, but pre-defined before training - the idea being that they should be representative of as many ground-truth bounding boxes as possible. \\
+Usually, one sets these boxes beforehand, for example by using the k-means algorithm, grouping together conceivable anchor boxes of objects shapes you tend to get. 
 \begin{SCfigure}
 \includegraphics[scale=0.35]{images/yolo_mechanics}
 \caption{For each grid cell, we predict vectors of multiple bounding boxes (here, only one bounding box is predicted, $B=1$), but only one class prediction vector of length $C$ (here, $C$=3).}
-
+\label{fig:cell}
 \end{SCfigure}
 Confidence is formally defined as $P(Object) \times \text{IOU}^{pred}_{truth}$
 
-. So its not something that model learns but something that you have to do up front. Look at the shape of bounding boxes in training data and separate then (maybe using some sort of clustering) and move those boxes to correct anchorbox (part of array) of training data.
 
 \subsubsection*{Architecture and training hyperparameters}
 YOLO is implemented as a 32 layer deep convolutional
@@ -314,9 +317,9 @@ To test the performance of our network and getting into real-life applications, 
 
 
 \subsection{Evaluation}
-Each model is judged by its performance over the validation dataset. For each application, it is critical to find a metric that can be used to objectively compare models.
-In Object detection in particular, it is crucial to measure how well the detection and classification was performed.  
-A widely used approach for evaluating localization and classification is given by the Mean Average Precision (mAP).  \\
+Each model is judged by its performance on a test set that is never seen by the training algorithm. For each application, it is critical to find a metric that can be used to objectively compare models.
+Evaluation in object detection is made more difficult due to localization and classification being distinct tasks needing to be optimized.  
+In literature, the most widely used approach for evaluating localization and classification is mean average precision (mAP).  \\
 The first main idea for this approach, is to judge how well the detection was performed.  For this, we measure the intersection of the Bounding Box detection with the ground truth, over the the union of both.  This rate (so called IoU), let us designate our detection as True Positive, if the IoU is greater than a fix threshold value, or False Positive otherwise.
 Having calculated this for each image on the validation set, we can talk about how well the detection was.  A quantity for this is given by the so called Precision, which is given by:
 \[\text{Precision} = \frac{\text{True Positives}}{\text{True Positives}+\text{False Positives}}, \]
@@ -324,12 +327,14 @@ where Precision $\in [0,1]$ has a higher value when the detection was well perfo
 We can compute the Precision for each class and then take the average of this.  This bring us to the Average Precision. \\
 Notice that for this computations, we fixed a threshold value for the IoU.   In order to get the mAP, we compute the Precision of each class varying at a set of eleven equally spaced levels 
 $[0, 0.1, 0.2, ... , 1]$, and after this computing the mean of them. 
-
+An equivalent way of 
 
 \section{Results}
-Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations (mAP $=99.1 \%$). However, comparing mAPs across different datasets is not very sensible - our test sets were composed of 5 \% random samples from the particular dataset that had been trained on which made it a lot easier for the ``earlier'' dataset as their test set was easy.
+Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations (\textbf{mAP $=99.1 \%$}). However, comparing mAPs across different datasets is not very sensible - our test sets were composed of 5 \% random samples from the particular dataset that we had trained on which made it a lot easier for the ``earlier'' datasets as their test set was comparably easy.
 
-In total, training always converged rather quickly \ref{fig:curve} Again, datasets without complex textures led to better (i.e. faster) convergence which intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card.\\
+In total, training always converged rather quickly (see Figure 11).\\
+Two things are worth noticing in particular: 
+ First, datasets without complex textures ("Simple", "Medium") led to better (i.e. faster) convergence. This intuitively makes sense as the algorithm does not need to spend time ruling out complex dependencies that might be learned from unimportant pixels or regions outside the card. Second, the training procedure experienced much more variance as complexities of the datasets increased, which can be explained by the training algorithm having to deal with much more complex data manifolds and it being possibly hung up in local minima much more which it has to navigate out of. \\
 \begin{SCfigure}
 
 \includegraphics[scale=1]{images/loss}
@@ -347,13 +352,13 @@ In total, training always converged rather quickly \ref{fig:curve} Again, datase
 \cline{1-2}
 name    & description  & precision & recall & mAP \\
 \hline
-\textbf{1 - Simple}      & Paste cards on simple canvases    &  0.977  & 0.983 & \textbf{0.991} \\
+\textbf{1 - Simple}      & Paste cards on simple canvases    &  0.974  & 0.996 & \textbf{0.991} \\
           & \textit{random rotations, brightness, blurring}     & & & \\
-\textbf{2 - Medium}      & Paste randomly scaled cards on simple canvases & 0.977 & 0.983 & \textbf{0.989} \\
+\textbf{2 - Medium}      & Paste randomly scaled cards on simple canvases & 0.946 & 0.988 & \textbf{0.989} \\
           & \textit{random rotations, brightness, blurring}     & & & \\
-\textbf{3 - Elaborate}       & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.971} \\
+\textbf{3 - Elaborate}       & Paste randomly scaled cards on textures & 0.937 & 0.978 & \textbf{0.971} \\
           & \textit{random rotations, brightness, blurring}     & & & \\
-\textbf{4 - Hardest} & Paste randomly scaled cards on textures & 0.977 & 0.983 & \textbf{0.973} \\
+\textbf{4 - Hardest} & Paste randomly scaled cards on textures & 0.940 & 0.983 & \textbf{0.973} \\
           & \textit{random rotations, brightness, blurring, less zoom}     & & & \\
 \hline
 
@@ -363,22 +368,57 @@ name    & description  & precision & recall & mAP \\
 \label{tab:res}
 \end{table}
 \subsection*{Exemplary test results and failure cases}
-Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision allows for an additional inspection of results using our human visual perceptive system. \\Hence, we compiled a couple of results on unseen test images (see figure \ref{fig:testcases}).
+
 \begin{figure}[h]
-\label{fig:testcases}
+
 \begin{tabular}{ccc}
 
- \includegraphics[width=44mm]{images/success3} &   \includegraphics[width=44mm]{images/success2} &   \includegraphics[width=44mm]{images/success1}\\
-\makecell{\textbf{success:} scenario with a \\ highly diverse background}  & \makecell{\textbf{success:}  multiple cards \\ with trivial background} & \makecell{\textbf{success:}  angled shot of sheared card \\ in front of highly diverse background}\\[6pt]
-  \includegraphics[width=44mm]{images/fail1} &   \includegraphics[width=44mm]{images/fail2} &   \includegraphics[width=44mm]{images/fail3}\\
-\makecell{\textbf{fail:}  misdetection of 8c \\ due to motion blur} & \makecell{\textbf{fail:} misdetection of Qc and non- \\detection of 9h for unknown reason} & \makecell{\textbf{fail:} non-detection of Kd, Kh, Ks \\ due to wildly different distribution} \\[6pt]
+ \includegraphics[height=44mm]{images/ad} &   \includegraphics[height=44mm]{images/as} &   \includegraphics[height=44mm]{images/jd}\\
+\makecell{\textbf{success:} classification: \\ \textbf{Ad:} 0.99995, \textbf{Ad:} 0.99997}  & \makecell{\textbf{success:}  classification \\ \textbf{As:} 0.99757, \textbf{As:} 0.99931} & \makecell{\textbf{success:}  classification \\ \textbf{Jd:} 0.99967, \textbf{Jd:} 0.99992}\\[6pt]
+
 
 
 
 \end{tabular}
-\caption{Successful cases of detection (top row) and typical fail cases (bottom row) }
+\caption{Successful cases of detection of images that are pretty representative of the training distribution}
+\label{fig:testcases}
 \end{figure}
-When multiple cards were present in an image, it was harder to find a completely correctly classified image than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering going on. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
+
+Metrics are most helpful in measuring the effectiveness of algorithms, but more often than not, computer vision tasks allow for an additional visual inspection of results. \\Hence, we compiled a couple of results on unseen test images (see figure \ref{fig:testcases}).
+\begin{figure}[h]
+
+\begin{tabular}{ccc}
+
+ \includegraphics[width=44mm]{images/success3} &   \includegraphics[width=44mm]{images/success2} &   \includegraphics[width=44mm]{images/success1}\\
+\makecell{\textbf{success:} scenario with a \\ highly diverse background \\ \textbf{5s:} 0.99932 \textbf{5s:} 0.95450
+}  & \makecell{\textbf{success:}  multiple cards \\ with trivial background \\ \textbf{Kd}: 0.99999 \textbf{Kd}: 0.99994\\
+\textbf{4d}: 0.98266
+\textbf{5s}: 0.90017\\
+\textbf{6c}: 0.99985
+} & \makecell{\textbf{success:}  angled shot of sheared card \\ in front of highly diverse background \\\textbf{Kh:} 0.978553
+\textbf{Kc:} 0.448083
+}\\[6pt]
+  \includegraphics[width=44mm]{images/fail1} &   \includegraphics[width=44mm]{images/fail2} &   \includegraphics[width=44mm]{images/fail3}\\
+\makecell{\textbf{fail:}  misdetection of 8c \\ due to motion blur \\\textbf{8c:} 0.998637
+\textbf{10c:} 0.343506
+} & \makecell{\textbf{fail:} misdetection of Qc and non- \\detection of 9h for unknown reason \\
+\textbf{4h:} 0.972108
+\textbf{4h:} 0.830992\\
+\textbf{9c:} 0.652040
+\textbf{Jd:} 0.241018} & \makecell{\textbf{fail:} very confused model \\ due to wildly different distribution \\ \textbf{Ks:} 0.901385
+\textbf{Ks:} 0.612234\\
+\textbf{Kc:} 0.640308
+\textbf{Kh:} 0.452825
+} \\[6pt]
+
+
+
+\end{tabular}
+\caption{Successful cases of detection (top row) and typical fail cases (bottom row) along with corresponding classification scores.}
+\label{fig:testcases}
+\end{figure}
+Generally, as was to be expected, the predictions were pretty good when the test images were \textit{somewhat} representative of the training data. This is not of particular interst
+When multiple cards were present in an image, it was a tough task to find a completely correctly classified image than to find one that our model did some mistakes on (middle column) as we trained on images with single cards only. Yet, in images with only one card, our model seems quite robust, at least if there is not too much blurring or other types of cluttering going on. Also, as we trained on a single deck of cards, it seems natural that the model has problems with predicting cards coming from completely different decks.
 \subsection*{Extensions and tricks used in training}
 \subsubsection*{Transfer learning}
 For all of the experiments above, we started training using a network pre-trained on the VOC dataset \cite{Everingham15} \footnote{PyTorch weights are available at \url{https://pjreddie.com/media/files/yolov3-tiny.weights}.}. After having trained our network on our own dataset, we also experimented with using our own fine-tuned weights from previous datasets for training subsequent models. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and large speed-ups were not needed.
