@@ -82,6 +82,9 @@ The following python packages are required:
 - Python OpenCV (CV2) for webcam and predictions
 ### USAGE:
 
+For training, you need to create a dataset from the above pipeline and have it within cards_data/JPEGImages and cards_data/labels. For testing, none of this is required.
+
+## Training:
 Before anything, the folder cards_data/JPEGImages needs to contain images and cards_data/labels needs to contain corresponding labels from the above data creation pipeline.
 
 From the top-level YOLO folder (containing train.py, test.py, and all folders), 
@@ -96,7 +99,7 @@ Now, we are ready to use the model:
 
 python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w hardest.weights
 
-
+## Testing:
 **Detect a single image given a weights file (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
 
 python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg cards_data/cards.names
