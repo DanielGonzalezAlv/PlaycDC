@@ -35,7 +35,7 @@ It also randomly performs sharping and lighting operations on the images.
 After doing this, the cards are pasted in the middle of 3000x3000 pixels scaled canvases provided by 
 Describable Textures Dataset (DTD) (https://www.robots.ox.ac.uk/~vgg/data/dtd/)
 
-###USAGE:
+### USAGE:
 
 -python paste_canvas.py:  Generate new data using 5 images over 15 directories of dtd-r1.0.1.
 -python paste_canvas.py Nr_images Nr_directories:  Generate new data using Nr_images over Nr_directories of dtd-r1.0.1. 
@@ -46,7 +46,7 @@ The generated data is saved on data/textures/images & data/textures/np_convex
 This script randomly perform linear transformations on the images on canvases.
 Concluding this, the images are crp to the middle, reducing their pixel resolution by 800x800 pixels.
 
-###USAGE:
+### USAGE:
 python generate_data.py: Generate new data using 5 transformations on each image (Ploting the result is 'off' by default).
 
 -python generate_data.py Nr_transformations: Generate new data using Nr_transformations transformations on each image (Ploting the result is 'off' by default). 
