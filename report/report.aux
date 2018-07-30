@@ -1,23 +1,24 @@
 \relax 
 \citation{DBLP:journals/corr/abs-1804-02767}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Abstract}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Abstract [Frank]}{1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Stock photos of an envisioned camera-equipped contact lense (left) and a mysterious black-jack player (right)\relax }}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction}{1}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset}{1}}
-\citation{cimpoi14describing}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data preparation}{2}}
-\newlabel{fig:evaluation:revenue}{{2a}{2}}
-\newlabel{sub@fig:evaluation:revenue}{{(a)}{a}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction [Daniel]}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset [Daniel]}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Semi automatic detection of the convex hulls.\relax }}{2}}
 \newlabel{fig-data-prep}{{2}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Synthesize a general dataset}{2}}
+\citation{cimpoi14describing}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Some cards pasted into canvases of 3000x3000 pixels.\relax }}{3}}
 \newlabel{fig-canvas}{{3}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Images of the previous paragraph after transformations.\relax }}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Images of the previous paragraph after randomly performed transformations.\relax }}{4}}
 \newlabel{img-cards examples}{{4}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}The convex hull approach}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Green box represents the BB when applying some rotations, while the red box represents the BB of the convex hull.\relax }}{4}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{bb-ch}{{5}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\relax \fontsize {7}{8}\selectfont Queen of spades with a resolution of 600x900 pixels.}}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {\relax \fontsize {7}{8}\selectfont Detected convex hulls. The red points were saved as a NumPy array.}}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces { }}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{4}}
 \citation{DBLP:journals/corr/RenHG015}
 \citation{DBLP:journals/corr/RedmonDGF15}
 \citation{DBLP:journals/corr/RedmonF16}
@@ -25,42 +26,33 @@
 \citation{DBLP:journals/corr/LiuAESR15}
 \citation{DBLP:journals/corr/abs-1708-02002}
 \citation{DBLP:journals/corr/LinDGHHB16}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Related work - The object detection landscape}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Related work - The object detection landscape [Frank]}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The Faster R-CNN architecture. Note the weight sharing between RPN Network and the classifier.\relax }}{5}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:rcnn-architectures}{{6}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Evaluation of different object detection algorithms on the COCO dataset from the RetinaNet paper. Currently, evaluation performance is dominated by the RetinaNet architecture.\relax }}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Methods}{5}}
-\newlabel{SC@1}{{\caption@xref {??}{ on input line 214}}{6}}
-\newlabel{fig:yolo_model}{{5}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Methods [Frank]}{5}}
+\newlabel{SC@1}{{\caption@xref {??}{ on input line 215}}{6}}
+\newlabel{fig:yolomodel}{{5}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces For each of the $S^2$ grid cells, we make one objectness prediction and four positional predictions for bounding boxes relative to each of the $B$ anchor boxes as well as a global class prediction vector. Combination of these values using NMS grants the final predictions.\relax }}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\relax \fontsize {7}{8}\selectfont Queen of spades with a resolution of 600x900 pixels.}}}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {\relax \fontsize {7}{8}\selectfont Convex hulls of the queen of spades. The red points were saved as a NumPy array.}}}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces { }}}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{6}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{6}}
-\newlabel{SC@2}{{\caption@xref {??}{ on input line 224}}{6}}
+\newlabel{SC@2}{{\caption@xref {??}{ on input line 225}}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces For each grid cell, we predict vectors of multiple bounding boxes (here, only one bounding box is predicted, $B=1$), but only one class prediction vector of length $C$ (here, $C$=3).\relax }}{6}}
 \newlabel{fig:cell}{{9}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Webcam deployment}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A simple YOLO-v3 feature extractor with a grid size of $7\times 7$, $B=2$ and 20 classes, making the final prediction vector ($7 \times 7 \times 30$) - dimensional. \relax }}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Evaluation}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{8}}
-\citation{Everingham15}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Webcam deployment [Frank \& Daniel]}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation [Frank \& Daniel]}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Results [Frank \& Daniel]}{8}}
 \newlabel{SC@3}{{\caption@xref {??}{ on input line 345}}{9}}
-\newlabel{fig:curve}{{6}{9}}
+\newlabel{fig:curve}{{8}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Precision values after each training epochs evaluated on the test set pertaining to the dataset being trained on. As you would expect, the easier the dataset, the faster the training and the better the results. \relax }}{9}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Precision and recall values have been calculated using a IOU threshold of 0.5. mAP values are based on averaged precision values over IOU thresholds of $[0.1, 0.2, \dots  0.8, 0.9] $ \relax }}{9}}
 \newlabel{tab:res}{{1}{9}}
+\citation{Everingham15}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Successful cases of detection of images that are pretty representative of the training distribution\relax }}{10}}
 \newlabel{fig:testcases}{{12}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion and Future Work}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Overview}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Discussion and Future Work [Frank \& Daniel]}{10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Successful cases of detection (top row) and typical fail cases (bottom row) along with corresponding classification scores.\relax }}{11}}
 \newlabel{fig:testcases}{{13}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Future Work}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion [Frank \& Daniel]}{12}}
 \bibstyle{acm}
 \bibdata{cite}
 \bibcite{cimpoi14describing}{1}

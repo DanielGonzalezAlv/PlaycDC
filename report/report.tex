@@ -16,7 +16,7 @@
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{mathbbol}
 \usepackage{sidecap}
-\usepackage[format=plain, indention=1cm]{caption}
+
 
 
 %% Useful packages
@@ -25,49 +25,46 @@
 \usepackage{fancyhdr}
 \usepackage{makecell}
 
+%\usepackage{subcaption}
+%\usepackage[format=plain, indention=1cm]{caption}
+\captionsetup[subfigure]{list=true, font=large, labelfont=bf, labelformat=brace, position=b, justification=centering}
+
+
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\bfseries}
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
 %% Title
 \title{\textbf{Playing card detection}\\ PlayCDC\\Object recognition and image understanding lecture}
-\author{Frank Gabel and Daniel Gonzalez}
+\author{Frank Gabel, Matrikel Nr.: 0000000, Master of Science Computer Science \\ Daniel Gonzalez, Matrikel Nr.: 3112012, Master of Science Mathematics}
 
 \date{15.07.2018}
 
 \begin{document}
 \maketitle
-\section{Abstract}
+\section{Abstract [Frank]}
 With the capabilities of upcoming small video capturing devices in, for example, smart contact lenses with built-in cameras, whole new ways of cheating in cardgames emerge. In order to help facilitate these cheating endeavours, we implement an algorithm that detects the suits and ranks of playing cards in the field of view of a camera using the latest iteration of the YOLO object recognition algorithm.
 \begin{figure}[h]
 \includegraphics[scale=0.25]{images/contact_lense}
 \includegraphics[scale=0.532]{images/poker_player}
 \caption{Stock photos of an envisioned camera-equipped contact lense (left) and a mysterious black-jack player (right)}
 \end{figure}
-\section{Introduction}
+\section{Introduction [Daniel]}
 A big topic in computer vision is the search of methods that are, given a query image, capable of answering questions like: What is present in an image? Is there a particular object in it? Where exactly in the image is this object located? Is it possible to semantically segment objects of interest in the image?
 Object detection deals with detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos. Typically, object detection deals with two sub-taks: \textbf{object localization} using bounding boxes and \textbf{multiclass object classification} within said bounding boxes.
 Sometimes, a third sub-task of \textbf{semantic object segmentation} is performed, i.e. the process of labelling objects on pixel level.\\
 In this project, we use the YOLOv3 object detection algorithm \cite{DBLP:journals/corr/abs-1804-02767} for object detection (without additional segmentation) in order to tell apart playing cards of a standard 52-part deck.
+\newpage
+\section{Dataset [Daniel]}
+Machine learning is based on the idea of learning patterns in training data in order to build a model that can later perform predictions on unseen test data. For our detection model, we needed to have a large dataset of cards, together with the bounding box information for each of the suit/rank combinations of cards (subsequently referred to as \textbf{logos}).  Unfortunately, such a dataset is non-existent, therefore, we decided to create it on our own.  We did this in mainly two big steps, ending up with 750 training images for each card, as well as the necessarily Bounding Box information.   \\
+The first important step was destined to data preparation.  We had to create data and rearrange it in a way that could be easily used for data generation.  Beside this, it was also necessary to detect the convex hulls of the card logos, as they were crucial to become the Bounding Boxes information.  The reason why we worked with convex hulls from the beginning on, will be explained in the later subsection.\\
+The second big step was focused on data generation. We randomly blurred, changed the lighning and sharpening on the cards, pasted them on different textures and finally applied linear transformations on them.  All of this, keeping track and rearranging the convex hulls positions when performing the transformations.
 
-\section{Dataset}
-Machine learning is based on the idea of learning patterns in training data in order to build a model that can later perform predictions on unseen test data. For our detection model, we needed to have a large dataset of cards, together with the bounding box information for each of the suit/rank combinations of cards (subsequently referred to as \textbf{logos}).  Unfortunately, such a dataset is non-existent, therefore, we decided to create it on our own.  We did this in two big steps, finally ending up with 750 training images for each card, as well as the bounding box information necessary for the training step.   \\
-The first important step was destined to the data preparation.  We had to create data and rearrange it in a way that could be easily used for data generation.  Beside this, it was also necessary to detect the convex hulls of the card logos, as they were crucial to become the Bounding Boxes information.  The reason why we worked with convex hulls from the beginning on, will be explained in the later subsection.\\
-The second big step was focused on data generation.  For this, we pasted the cards on different textures, applied blurring and linear transformations on them and changed the lightning and sharpening of the cards.  We apply all this transformations in a randomly way, keeping track of the convex hulls positions.
-
-\subsection{Data preparation}
+\subsection*{Data preparation}
 We decided to work with 50 cards of a standard deck of 52 cards, where each card contained two times its logo.  First, we took for each card 2 different photos, manually cropped the cards to a selection and then rescaled the result by 600x900 pixels.  We chose this resolution arbitrary, because we though that it was a good size to begin working with.
 For this step, we used the selection/rotation/cropping/rescale -tools provided by GIMP\footnote{GIMP 2.8.22 - GNU Image Manipulation Program}. \\
 Concluding this, we proceed by detecting the convex hulls of the card logos.   We used the python libraries SciPy\footnote{SciPy: Open Source Scientific Tools for Python} and OpenCV\footnote{OpenCV: Open Source Computer Vision Library} to obtain the desired detections in a semi-automatic way (Figure \ref{fig-data-prep} illustrates this process).  After verifying manually each selection, we saved the two convex hulls of each card as an NumPy array. \\
-
-%\begin{figure}[h]
-%\centering
-%\captionsetup[subfigure]{labelformat=empty}
-%\subfloat[\scriptsize Queen of spades with a resolution of 600x900 pixels ] {\includegraphics[scale=0.387]{qs_2}}  \hspace{2cm}
-%\subfloat[\scriptsize Zoomed convex hulls.  The red points are saved.] {\includegraphics[scale=0.455]{qs_2_1} \quad
-%\includegraphics[scale=0.5]{qs_2_2} }
- %\caption{Stock photos of an envisioned camera-equipped contact lense (left) and a mysterious black-jack player (right)}
-%\end{figure}
+\\ \\
 \begin{minipage}{\columnwidth}
 \makeatletter
 \newcommand{\@captype}{figure}
@@ -76,17 +73,17 @@ Concluding this, we proceed by detecting the convex hulls of the card logos.   W
 \captionsetup[subfigure]{labelformat=empty}
 \subfloat[\scriptsize Queen of spades with a resolution of 600x900 pixels.]{%
 \includegraphics[scale=0.587]{images/qs_2}%
-\label{fig:evaluation:revenue}} \qquad \qquad%
-\subfloat[\scriptsize Convex hulls of the queen of spades.  The red points were saved as a NumPy array.]{%
+} \qquad \qquad%
+\subfloat[\scriptsize Detected convex hulls.  The red points were saved as a NumPy array.]{%
 \includegraphics[scale=0.68]{images/qs_2_1} \quad
 \includegraphics[scale=0.74]{images/qs_2_2}  }
 \caption{Semi automatic detection of the convex hulls.}
 \label{fig-data-prep}
 \end{minipage}
-
-\subsection{Synthesize a general dataset}
+\newpage
+\subsection*{Synthesize a general dataset}
 With all the images in the same resolution and having detected the Bounding Boxes for each card, the next goal was to generate a big amount of new data destined to train our model. \\
-First, we randomly blurred the cards using Gaussian, Average and Median filters.  We did also randomly perform sharping and lightning operations on the image.  After this, we pasted the cards in the middle of 3000x3000 pixels scaled canvases provided by DDT \cite{cimpoi14describing}.  The reason why we chose to work with such big canvases, will be more clear while reading this subsection.  Beside this transformations, we also had to modify the previous detected convex hulls by a translation.\\
+First, we randomly blurred the cards using Gaussian, Average and Median filters.  We did also randomly perform sharping and lightning operations on the image.  After this, we pasted the cards in the middle of 3000x3000 pixels scaled canvases provided by DDT \cite{cimpoi14describing}.  The reason why we chose to work with such big canvases, will be more clear while reading this subsection.  Along this transformations, we also had to modify the previous detected convex hulls by a translation.\\
 In total, we pasted each card in 75 different textures destined for the training and in 15 different textures for testing.  Figure \ref{fig-canvas} illustrate some examples and textures. \\ \\
 
 \begin{minipage}{\columnwidth}
@@ -108,9 +105,9 @@ In total, we pasted each card in 75 different textures destined for the training
 \label{fig-canvas}
 \end{minipage}
 \newline \newline\newline 
-\noindent The next step for the data generation was to perform linear transformations on the images on canvases.  We randomly performed scaling, translation and rotation on the images using the imgaug\footnote{http://imgaug.readthedocs.io/en/latest/} python library.  Concluding this, we crop the images to the middle, reducing their pixel resolution by 800x800 pixels.  This operation allowed us to obtain a more accurate dataset to train our model, as in a real-life problem, some cards might be only partially visible.  But cropping led also the partially/complete lost of some convex hulls, reason why we had to modify our NumPy arrays.  We fixed this, letting some boundary points take the role of the affected convex hulls, but only, if we considered that there were enough points left and not direct at the boundary.  
-See Figure \ref{img-cards examples} to have a clearer image of what might have occur. \\ Notice, that having pasted the images on big canvases, allowed us to have nice backgrounds arround the images after rotation and cropping.  This explain the choice that we notice before.\\
-As mentioned before, we decided to use the imgaug python library for some transformations, because it allowed us to keep track of the convex hulls.
+\noindent The next step for the data generation was to perform linear transformations on the images on canvases.  We randomly performed scaling, translation and rotation on the images using the imgaug\footnote{http://imgaug.readthedocs.io/en/latest/} python library.  Concluding this, we crop the images to the middle, reducing their pixel resolution by 800x800 pixels.  This operation allowed us to obtain a more accurate dataset to train our model, as in a real-life problem, some cards might be only partially visible.  But cropping led also the partially/complete lost of some convex hulls, reason why we had to modify our NumPy arrays.  We fixed this, letting some boundary points take the role of the affected convex hulls, but only, if we considered that there were enough points left and not located direct at the boundary.  
+See Figure \ref{img-cards examples} get a better intuition of what might have occur. \\ Notice, that having pasted the images on big canvases, allowed us to have nice backgrounds arround the images after rotation and cropping.  This explain the choice on the big canvases.\\
+It is also important to remark, that we used the imgaug python library for some transformations, because it allowed us to keep track of the convex hulls in an easy way.
 
 \begin{minipage}{\columnwidth}
 \makeatletter
@@ -143,29 +140,36 @@ As mentioned before, we decided to use the imgaug python library for some transf
 \includegraphics[scale=0.1]{images/as_2}  \
 \includegraphics[scale=1.12]{images/as_4}}  
 \qquad
-\caption{Images of the previous paragraph after transformations.}
+\caption{Images of the previous paragraph after randomly performed transformations.}
 \label{img-cards examples}
 \end{minipage}
 
-\subsection{The convex hull approach}
+\subsection*{The convex hull approach}
 YOLOv3 expected for each image, a .txt file with a line for each ground truth object in the image that looks like:
 <object-class><x><y><width><height>, where x, y are the center positions of the Bounding Boxes (BBs) and the width and height, also of the BBs, are relative to the image's width and height.  
 As is always the case, bounding boxes are perpendicular/aligned with image borders and can't be rotated. Nevertheless, we can rotate bounding boxes around. \\
 This is the reason why, as mentioned before, we decided to work with convex hulls instead BBs from the beginning on.  Otherwise we might have to increase the size of the BBs when doing rotations (Figure \ref{bb-ch} illustrates this problem). 
 
-\begin{minipage}{\columnwidth}
-\makeatletter
-\newcommand{\@captype}{figure}
-\makeatother
+%\begin{minipage}{\columnwidth}
+%\makeatletter
+%\newcommand{\@captype}{figure}
+%\makeatother
+%\centering
+%\captionsetup[subfigure]{labelformat=empty}
+%\subfloat[0]{%
+%\includegraphics[scale=0.19]{images/ch_vs_bb}  }
+%\caption{Green box represents the BB when applying some rotations, while the red box represents the BB of the convex hull.}
+%\label{bb-ch}
+%\end{minipage}
+
+\begin{figure}[h]
 \centering
-\captionsetup[subfigure]{labelformat=empty}
-\subfloat[]{%
-\includegraphics[scale=0.19]{images/ch_vs_bb}  }
+\includegraphics[scale=0.19]{images/ch_vs_bb} 
 \caption{Green box represents the BB when applying some rotations, while the red box represents the BB of the convex hull.}
 \label{bb-ch}
-\end{minipage}
+\end{figure}
 
-\section{Related work - The object detection landscape}
+\section{Related work - The object detection landscape [Frank]}
 The task of object detection in images encompasses both localizing objects using bounding boxes and subsequently classifying objects within these bounding boxes.
 
 For these tasks, different deep learning architectures have emerged, of which 
@@ -189,7 +193,7 @@ Another way of doing object detection is by combining these two tasks into one n
 One-stage detectors like \textbf{You Only Look Once (YOLO)} \cite{DBLP:journals/corr/RedmonDGF15}\cite{DBLP:journals/corr/RedmonF16}\cite{DBLP:journals/corr/abs-1804-02767} or \textbf{Single-Shot Detector (SSD)} \cite{DBLP:journals/corr/LiuAESR15} that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors because of extreme class imbalance encountered during training.
 In 2016 and 2017, researchers from FacebookAI have developed concepts \cite{DBLP:journals/corr/abs-1708-02002}\cite{DBLP:journals/corr/LinDGHHB16}circumventing this - the main idea being to reshape cross entropy loss such that it down-weights the loss assigned to well-classified examples. The novel focal loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. Combining this with the concept of pyramidal...., we get the \textbf{Focal Loss for Dense Object Detection (RetinaNet)} which currently outperformes all other object detection algorithms in terms of performance with state-of-the-art inference times. 
 
-\section{Methods}
+\section{Methods [Frank]}
 As we motivated our project with the implementation of our network in embedded devices such as laptop webcams and smartphone cameras, we decided to use the latest iteration of the YOLO algorithm which has come up in April 2018 and still is the fastest object detection algorithm (despite being outperformed by RetinaNet, SSD and RCNN approaches).
 \subsection*{The YOLO approach to object detection}
 YOLO's general approach is that object detection is re-framed as a single regression problem, directly
@@ -203,14 +207,11 @@ It works as follows:
 \item[--]  predict $B$ bounding boxes and a confidence score for each box representing the probability that an object is contained inside a bounding box (often called \textit{objectness score}) as well as a single $C$-dimensional vector of class probabilities, making the output vector $S \times S \times (B\times 5 +C)$-dimensional
 
 \item[--]  predictions are made using a technique called non-maximum suppression in which we remove low probability bounding boxes that are very close to high probability bounding boxes
-\end{itemize}  At test time the conditional class probabilities and the individual box confidence predictions are multiplied, resulting in a feature map of bounding boxes ``weighted'' by their per-class confidence scores. see figure \ref{fig:yolo_model}
+\end{itemize}  At test time the conditional class probabilities and the individual box confidence predictions are multiplied, resulting in a feature map of bounding boxes ``weighted'' by their per-class confidence scores. see figure 8%\ref{fig:yolomodel}
+
 \begin{SCfigure}
-\label{fig:yolo_model}
-\includegraphics[scale=0.35]{images/yolo_model}
-
+\includegraphics[scale=0.35]{images/yolo_model}\label{fig:yolomodel}
 \caption{For each of the $S^2$ grid cells, we make one objectness prediction and four positional predictions for bounding boxes relative to each of the $B$ anchor boxes as well as a global class prediction vector. Combination of these values using NMS grants the final predictions.}
-
-
 \end{SCfigure}
 
 
@@ -305,18 +306,17 @@ $p_i(c)$ and $\hat{p}_i(c)$ represent the actual and predicted conditional proba
 \subsubsection*{tiny YOLO-v3}
 
 The particular architecture we used for training on our dataset is \textbf{tiny YOLOv3} which essentially is a smaller version of YOLO for constrained environments.
-\begin{figure}
-
-
+\begin{figure}[h]
 \includegraphics[width=1\linewidth]{images/tinyyolo}
 \caption{A simple YOLO-v3 feature extractor with a grid size of $7\times 7$, $B=2$ and 20 classes, making the final prediction vector ($7 \times 7 \times 30$) - dimensional. }
 \end{figure}
-
-\subsection{Webcam deployment}
-To test the performance of our network and getting into real-life applications, we needed a solution running on a computer to deliver the recognition results. As YOLO is a state-of-the-art real-time object detection system, we managed to deploy tinyYOLO on a webcam using a (rather slow) GPU (GeForce GTX 960M) getting about 35 FPS depending on brightness levels, which is essentially real-time.  But in order to achieve this, we had to fix some obstacles.  One of them was that the YOLO model was developed for the DarkNet framework, which was written in C and doesn't have any other programming interface.  And as we were \textbf{noob in C? and wanted to used Pytorch}, we had to mange to integrate it using our skills. \\
+\newpage
 
 
-\subsection{Evaluation}
+\section{Webcam deployment [Frank \& Daniel]}
+To test the performance of our network and getting into real-life applications, we needed a solution running on a computer to deliver the recognition results. As YOLO is a state-of-the-art real-time object detection system, we managed to deploy tinyYOLO on a webcam using a (rather slow) GPU (GeForce GTX 960M) getting about 35 FPS depending on brightness levels, which is essentially real-time.  But in order to achieve this, we had to fix some obstacles.  One of them was that the YOLO model was developed for the DarkNet framework, which was written in C and doesn't have any other programming interface, reason why \textbf{? maybe write the main Idea of what was done?}  \\ \textbf{photo}
+
+\section{Evaluation [Frank \& Daniel]}
 Each model is judged by its performance on a test set that is never seen by the training algorithm. For each application, it is critical to find a metric that can be used to objectively compare models.
 Evaluation in object detection is made more difficult due to localization and classification being distinct tasks needing to be optimized.  
 In literature, the most widely used approach for evaluating localization and classification is mean average precision (mAP).  \\
@@ -329,7 +329,7 @@ Notice that for this computations, we fixed a threshold value for the IoU.   In 
 $[0, 0.1, 0.2, ... , 1]$, and after this computing the mean of them. 
 An equivalent way of 
 
-\section{Results}
+\section{Results [Frank \& Daniel]}
 Our object detection endeavours using a tiny YOLOv3 detector resulted in diverse results depending on the complexity and pecularities of the synthesized dataset in use - the main results are summarize in table \ref{tab:res}. In termns of mAP, we generally achieved the best results for the datasets without using background textures and only simple transformations (\textbf{mAP $=99.1 \%$}). However, comparing mAPs across different datasets is not very sensible - our test sets were composed of 5 \% random samples from the particular dataset that we had trained on which made it a lot easier for the ``earlier'' datasets as their test set was comparably easy.
 
 In total, training always converged rather quickly (see Figure 11).\\
@@ -424,15 +424,15 @@ When multiple cards were present in an image, it was a tough task to find a comp
 For all of the experiments above, we started training using a network pre-trained on the VOC dataset \cite{Everingham15} \footnote{PyTorch weights are available at \url{https://pjreddie.com/media/files/yolov3-tiny.weights}.}. After having trained our network on our own dataset, we also experimented with using our own fine-tuned weights from previous datasets for training subsequent models. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and large speed-ups were not needed.
 \subsubsection*{Webcam deployment}
 Depending on the scenery, our model running on a laptop webcam resulted in satisfactory to good results.
-\section{Discussion and Future Work}
-\subsection{Overview}
+\section{Discussion and Future Work [Frank \& Daniel]}
+\subsection*{Overview}
 Using an artificially created annotated dataset of playing cards in situations reflecting realistic scenarios as good as possible, we perform object detection using the YOLOv3 object detection algorithm, achieving a mAP score of 97.30\% on a holdout dataset. \\ 
 \subsubsection*{Training process}
 The training procedure went rather swiftly. Apparently,  the particular task of detecting ranks/suits of playing cards is easy for our model - it can be thought of as 2D rather than 3D - in the end, playing cards are flat pieces of paper that do not show much variation in a 3D-world unlike other natural objects where algorithms have to learn representations of varying angle and shadow conditions or situations involving occlusion and the likes. \\
 \subsubsection*{Deployment on a webcam}
 Testing our model on a webcam resulted in satisfactory,  results. In many scenarios, especially with very bright backgrounds, the ``black'' suits \textit{clubs} and \textit{spades} dominated the scenery and were generally easier to be detected. We hypothesize two possible explanations for this: First, our dataset and corresonding transformations might not be general enough to cover the kinds of images captured by a stock laptop webcam. Second,   
 
-\subsection{Future Work}
+\subsection*{Future Work [Frank \& Daniel]}
 Our work works pretty well in the limited domain described above. However, if we were to develop a more reliable system, there are several extensions to be made.
 \begin{description}
 \item[more general dataset] The probably largest room for improval lies in the generation of a more general dataset - we trained on a single deck of cards, using one set of photographs. A more reliable approach would be to train on several decks of cards, include more than one card per image, use more actual photos of more realistic lighting situations, use realistic images as backgrounds instead of textures etc.
@@ -444,7 +444,7 @@ Also, we did not include the realistic scenario of shadows in the dataset at all
 \item[extending the cheating pipeline] A system to recognize playing cards is only one part of the big task of effective cheating. The ways in which a system like ours may be used are manifold: for one, one might deploy it into a smart contact lense or smart glasses in order to augment a user's reality with information based on what cards have been seen or, much more evil, might use fixed surveillance cameras in the room to detect cards of opponents and feed this information back to the cheating player. 
 \end{description}
 
-\section{Conclusion}
+\section{Conclusion  [Frank \& Daniel]}
 Using the YOLOv3 object detection algorithm, we managed to detect the suits and ranks of playing cards in a general setting. As our project was conceived to be a proof-of-concept - in order to build a model that is actually able to help people cheat effectively, several extensions would need to be made to our approach, which include... \\ Another issue to solving this is the lack of commodity contact lenses equipped with video cameras and GPUs in close proximity - until then, card game players will be protected from this kind of fraud.
 \\ For further development and usage of our data we create a GitHub repository: \\https://github.com/DanielGonzalezAlv/PlaycDC.git.
 
