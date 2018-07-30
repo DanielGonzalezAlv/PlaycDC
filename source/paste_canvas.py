@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This program perform blurring, sharping and change of lightness to the 
-cards.  After this, paste them into canvanses provided by dtd 
+cards.  After this, paste the images into canvanses provided by dtd 
 (see: https://github.com/datadriventests/ddt).
 For this is important to save the dtd images in the "../data/" directory
 
@@ -24,7 +24,11 @@ from skimage.transform import resize
 import sys
 import warnings
 
-def my_seq():
+def transfo_seq():
+    """
+    This function is a sequence of transformations 
+    to generate new images.
+    """
     sometimes = lambda aug: iaa.Sometimes(0.8, aug)
     seq = iaa.Sequential(
         [
@@ -97,7 +101,7 @@ if __name__ == "__main__":
                     texture = misc.imread(texture)
                     warnings.filterwarnings("ignore")
                     texture = resize(texture,(texture_canvas[0],texture_canvas[1]))
-                    seq = my_seq()
+                    seq = transfo_seq()
                     seq_det = seq.to_deterministic()
                     img_aug = seq_det.augment_images([img])[0]
                         
