@@ -56,7 +56,8 @@ Describable Textures Dataset (DTD) (https://www.robots.ox.ac.uk/~vgg/data/dtd/)
 - python paste_canvas.py:  Generate new data using 5 images over 15 directories of dtd-r1.0.1.
 
 - python paste_canvas.py Nr_images Nr_directories:  Generate new data using Nr_images over Nr_directories of dtd-r1.0.1. 
-Example: python paste_canvas.py 5 2, generates images using 2 directories and 5 images per directory.
+
+Example: python paste_canvas.py 5 2 -> generates images using 2 directories and 5 images per directory.
 
 The generated data is saved on data/textures/images & data/textures/np_convex
 
@@ -71,6 +72,7 @@ Concluding this, the images are cropped into the middle, reducing their pixel re
 - python generate_data.py Nr_transformations: Generate new data using Nr_transformations transformations on each image (Ploting the result is 'off' by default). 
 
 - python generate_data.py Nr_transformations PLOT: Generate new data using Nr_transformations transformations on each image (Ploting the result is depends on PLOT, where PLOT is 'True' or 'False'). 
+
 Example: python generate_data.py 2 -> generates 2 images using different transformations and plots previous results
 
 The generated data is saved on YOLO/cards_data/JPEGImages & YOLO/cards_data/labels
