@@ -46,7 +46,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         print("Generating new data using 5 images over 15 directories ...")
         print("Note: if you want to change this values, use parsing.")
-        print("For more information check the README file")
+        print("For more information check the README file ")
         # images per directory
         images_per_texture = 5 
 
