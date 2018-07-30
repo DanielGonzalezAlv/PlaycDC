@@ -45,7 +45,7 @@ There are two scripts that will lead you to your data creation.
 It is necessary to run the first script after the next one.
 You can not run generate_data.py without having created data using paste_canvas.py.
 
-## Usage: paste_canvas.py
+## paste_canvas.py
 This script randomly blur the cards using Gaussian, Average and Median filters.
 It also randomly performs sharping and lighting operations on the images. 
 After doing this, the cards are pasted in the middle of 3000x3000 pixels scaled canvases provided by 
@@ -58,7 +58,7 @@ Describable Textures Dataset (DTD) (https://www.robots.ox.ac.uk/~vgg/data/dtd/)
 
 The generated data is saved on data/textures/images & data/textures/np_convex
 
-## Usage: generate_data.py
+## generate_data.py
 This script randomly perform linear transformations on the images on canvases.
 Concluding this, the images are crp to the middle, reducing their pixel resolution by 800x800 pixels.
 
@@ -71,6 +71,28 @@ python generate_data.py: Generate new data using 5 transformations on each image
 
 The generated data is saved on YOLO/JPEGImages & YOLO/labels
 
+# YOLO training
 
+## External dependencies & Usage
 
+The following python packages are required:
+- Python 3.6
+- pytorch 0.4
+- CUDA 5.2 or newer
+- Python OpenCV (CV2) for webcam and predictions
+### USAGE:
 
+Before anything, the folder cards_data/JPEGImages needs to contain images and cards_data/labels needs to contain corresponding labels from the above data creation pipeline.
+
+From the top-level YOLO folder (containing train.py, test.py, and all folders), 
+Before running YOLO, we have to know what to train/test on.
+touch cards_data/cardstrain.txt
+touch cards_data/cardsval.txt 
+python cards_data/prepare_trainlist.py  **this will create a list of absolute paths of images that we can train / test on and write it in cardstrain.txt**
+Now, we are ready to use the model:
+**Train YOLO on the data, starting with our weights vector**
+python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w hardest.weights
+**Detect a single image (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
+python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg cards_data/cards.names
+**Use the webcam for prediction (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
+python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.jpg cards_data/cards.names
