@@ -97,10 +97,10 @@ Now, we are ready to use the model:
 python train.py -d cards_data/cards.data -c cards_data/yolov3-tiny.cfg -w hardest.weights
 
 
-**Detect a single image (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
+**Detect a single image given a weights file (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
 
 python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg cards_data/cards.names
 
-**Use the webcam for prediction (given in the 3rd argument, e.g. data/fail.jpg** The prediction will be put in the top level folder
+**Use the webcam for prediction given a weights file** The prediction will be put in the top level folder
 
 python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.jpg cards_data/cards.names
