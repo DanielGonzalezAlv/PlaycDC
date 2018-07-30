@@ -36,7 +36,7 @@
 \renewcommand\cellgape{\Gape[4pt]}
 %% Title
 \title{\textbf{Playing card detection}\\ PlayCDC\\Object recognition and image understanding lecture}
-\author{Frank Gabel, Matrikel Nr.: 0000000, Master of Science Computer Science \\ Daniel Gonzalez, Matrikel Nr.: 3112012, Master of Science Mathematics}
+\author{Frank Gabel, Matrikel Nr.: 3537204 \\ Daniel Gonzalez, Matrikel Nr.: 3112012}
 
 \date{15.07.2018}
 
@@ -408,7 +408,7 @@ When multiple cards were present in an image, it was a tough task to find a comp
 For all of the experiments above, we started training using a network pre-trained on the VOC dataset \cite{Everingham15}\footnote{PyTorch weights are available at \url{https://pjreddie.com/media/files/yolov3-tiny.weights}.}. After having trained our network on our own dataset, we also experimented with using our own fine-tuned weights from previous datasets for training subsequent models. This generally led to distinctly faster convergence which makes sense as the distribution of weights for similar datasets will obviously be similar. However, this was not much of a concern as the training procedure was fast and large speed-ups were not needed.
 \subsubsection*{Webcam deployment}
 Depending on the scenery, our model running on a laptop webcam resulted in satisfactory to good results.
-\section{Discussion and Future Work [Frank \& Daniel]}
+\section{Discussion and Future Work  [Frank \& Daniel]}
 \subsection*{Overview}
 Using an artificially created annotated dataset of playing cards in situations reflecting realistic scenarios as good as possible, we perform object detection using the YOLOv3 object detection algorithm, achieving a mAP score of 97.30\% on a holdout dataset. \\ 
 Two things are worth noticing in particular: 
@@ -419,7 +419,7 @@ The training procedure went rather swiftly. Apparently,  the particular task of 
 \subsubsection*{Deployment on a webcam}
 Testing our model on a webcam resulted in satisfactory,  results. In many scenarios, especially with very bright backgrounds, the ``black'' suits \textit{clubs} and \textit{spades} dominated the scenery and were generally easier to be detected. Apparently, our dataset and corresonding transformations are not be general enough to cover the kinds of images captured by a stock laptop webcam. Light backgrounds cause the color channels of RGB images to be weakened. If a model relies on color information too much, it will subsequently confuse, for example, hearts with spades, due to them having very similar shapes.
 
-\subsection*{Future Work [Frank]}
+\subsection*{Future Work}
 Our model works very well in the limited domain described above. However, if we were to develop a more reliable system, there are several extensions to be made.
 \begin{description}
 \item[more general dataset] The probably largest room for improval lies in the generation of a more general dataset - we trained on a single deck of cards, using one set of photographs. A more reliable approach would be to train on several decks of cards, include more than one card per image, use more actual photos of more realistic lighting situations, use realistic images as backgrounds instead of textures etc.
