@@ -113,7 +113,7 @@ python detect.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/fail.jpg
 
 **Use the webcam for prediction given a weights file** The prediction will be put in the top level folder
 
-python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights data/train3.jpg cards_data/cards.names
+python webcam.py cards_data/yolov3-tiny.cfg backup/hardest.weights cards_data/cards.names
 
 ## Generally:
 
